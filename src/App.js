@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {ConvectForm} from './comonents/Form';
-import {GetData} from './comonents/GetData';
+import {GetData} from './components/GetData';
 import styled from 'styled-components';
-import {Header} from './comonents/Header/Header';
+import {Header} from './components/Header/Header';
+import Landing from './components/Landing/Landing';
 
 const data = new GetData();
 
@@ -19,13 +19,12 @@ class App extends Component {
 
     return (
       <MainDiv>
-        <header className="App-header">
         <Header/>
-          {console.log(data.getUSD())}
+        <Landing>
           <p>{data.getUSD()} PLN
           </p>
-          <ConvectForm/>
-        </header>
+
+        </Landing>
       </MainDiv>
     );
   }

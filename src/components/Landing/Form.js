@@ -1,9 +1,9 @@
 import React from 'react';
-import {ImputValue} from './CurrencyInput';
-import {Calc} from "./Calculation";
+import {ImputValue} from '../CurrencyInput';
+import {Calc} from "../Calculation";
 
 
-export class ConvectForm extends React.Component {
+export default class Form extends React.Component {
 	state = {
 		result: '',
 		inputVaule: ''
