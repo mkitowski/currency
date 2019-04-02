@@ -10,9 +10,6 @@ const MainDiv = styled.div`
 
 class App extends Component {
   render() {
-
-
-
     return (
       <MainDiv>
         <Header/>
