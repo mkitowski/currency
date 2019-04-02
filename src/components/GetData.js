@@ -1,18 +1,27 @@
+import React from 'react';
+const url = "http://api.nbp.pl/api/exchangerates/rates/c/";
 
-const url = "http://api.nbp.pl/api/exchangerates/rates/c/USD";
 
+export class GetPrice extends React.Component {
 
-export class GetData {
-    simulateChanges(el) {
-        console.log(el)
-    }
-    getUSD() {
-        fetch(url).then(res=>{
-           return res.json()
-        }).then(data =>{
-            const cur = data.rates[0];
-            this.simulateChanges(cur)
-        })
-    }
+	state = {
+		currencyValue: false
+	}
 
+	componentDidMount() {
+		fetch(url + this.Curr).then(res => {
+			return res.json()
+		}).then(data => {
+			const cur = data.rates[0];
+			this.setState({
+				currencyValue: cur
+			})
+		})
+	}
+
+	render() {
+		return this.state.currencyValue ? this.state.currencyValue : '...'
+	}
 }
+
+

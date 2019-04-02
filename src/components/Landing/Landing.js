@@ -1,7 +1,9 @@
 import bck from '../../img/background-land.jpg';
 import styled from 'styled-components';
 import React from 'react';
-import QuickConvert from './QuickConvert';
+import Rates from './Rates';
+import CurrencyArray from '../../Data/currencies';
+
 
 const StyledLanding = styled.div`
 position: absolute;
@@ -17,7 +19,7 @@ left: 0;
 export default class Landing extends React.Component {
 	render() {
 		return <StyledLanding>
-			<QuickConvert/>
+			<Rates curArray={CurrencyArray}/>
 		</StyledLanding>
 	}
 }
