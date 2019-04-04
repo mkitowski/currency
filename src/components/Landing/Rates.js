@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { GetPrice } from "../GetData";
+
 
 const StyledDiv = styled.div`
   width: 35%;
@@ -34,7 +34,10 @@ const StyledDiv = styled.div`
 `;
 
 export default class Rates extends React.Component {
+
+
   render() {
+
     return (
       <StyledDiv>
         <h3>Kursy walut:</h3>
@@ -43,17 +46,15 @@ export default class Rates extends React.Component {
           <div className={"colHead"}>Kupno</div>
           <div className={"colHead"}>Sprzedaż</div>
         </div>
-        {this.props.curArray.map(el => {
-
+        {this.props.currentRates.map(el => {
           return (
-            <div key={el} className={"row"}>
-              <div className={"col"}>{el}</div>
+            <div key={el.code} className={"row"}>
+              <div className={"col"}>{el.code}</div>
               <div className={"col"}>
-                <GetPrice curr={el} task={'bid'} />
-					  {console.log(<GetPrice curr={el} task={'bid'} />)}
+                {el.bid}
               </div>
               <div className={"col"}>
-                <GetPrice curr={el} task={'ask'}/>
+                {el.ask}
               </div>
             </div>
           );

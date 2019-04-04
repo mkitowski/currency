@@ -2,7 +2,7 @@ import bck from '../../img/background-land.jpg';
 import styled from 'styled-components';
 import React from 'react';
 import Rates from './Rates';
-import CurrencyArray from '../../Data/currencies';
+// import CurrencyArray from '../../Data/currencies';
 
 
 const StyledLanding = styled.div`
@@ -19,7 +19,7 @@ left: 0;
 export default class Landing extends React.Component {
 	render() {
 		return <StyledLanding>
-			<Rates curArray={CurrencyArray}/>
+			<Rates currentRates={this.props.currentRates}/>
 		</StyledLanding>
 	}
 }
