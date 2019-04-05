@@ -24,12 +24,22 @@ class App extends Component {
     const bid = NBPinput.rates[0].bid;
     const ask = NBPinput.rates[0].ask;
     const spread = Math.floor(bid/ask*10000)/10000;
+    const newRate = {
+      code: code,
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      bid,
+      spread,
+      ask
+    };
     this.setState({  //set base state for rate from NBP
       [code+'-base']: {
         bid,
         ask,
         spread
-      }
+      },
+      actual : [...this.state.actual, newRate]
+
     });
 
     return {code,bid,spread}
@@ -39,11 +49,14 @@ class App extends Component {
     let setMin = minutes;
     let setHour = hours;
     const result = [];
-    for (let i=0; i<1440; i++){ //generates random history for every minute
+    for (let i=0; i<720; i++){ //generates random history for every minute
       let newBid = Math.floor(real.bid*1000 + (Math.floor(Math.random() * (45 + 45) - 45)))/1000;
-      if(setMin === 0) {
+      if(setMin === 0 && setHour===0) {
         setMin =59;
-        setHour--;
+        setHour=23;
+      } else if (setMin === 0) {
+        setMin = 59;
+        setHour--
       } else {
         setMin--;
       }
@@ -77,23 +90,15 @@ class App extends Component {
       ask: Math.floor(newBid*real.spread*1000)/1000
     };
 
-    this.state.actual.forEach((el,i)=>{
-      if(el.code === real.code){
-        this.setState( {
-          actual : [...this.state.actual, newRate].slice(1) /// to be changed
-        })
-      }
-    })
+
     this.setState({
       [real.code+'-day']: [...this.state[real.code+'-day'],newRate].slice(1),
+      actual : [...this.state.actual, newRate].slice(1)
     })
   }
 
   getData() { //getting current rates for defined currencies, generating 24h history, simulating changes
     currencyCodes.forEach(code => {
-      this.setState(prev => {
-        return {actual: [...prev.actual,{code}]}
-      })
       fetch(url + code).then(res => {
         return res.json(); //receive JSON file - conversion to object
       }).then(data => {

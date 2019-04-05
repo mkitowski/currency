@@ -33,6 +33,20 @@ const StyledDiv = styled.div`
   }
 `;
 
+const RowRates = props => {
+  return (
+    <div key={props.code} className={"row"}>
+      <div className={"col"}>{props.code}</div>
+      <div className={"col"}>
+        {props.bid}
+      </div>
+      <div className={"col"}>
+        {props.ask}
+      </div>
+    </div>
+  )
+}
+
 export default class Rates extends React.Component {
 
 
@@ -46,17 +60,9 @@ export default class Rates extends React.Component {
           <div className={"colHead"}>Kupno</div>
           <div className={"colHead"}>Sprzedaż</div>
         </div>
-        {this.props.currentRates.map(el => {
+        {this.props.currentRates.map((el,i) => {
           return (
-            <div key={el.code} className={"row"}>
-              <div className={"col"}>{el.code}</div>
-              <div className={"col"}>
-                {el.bid}
-              </div>
-              <div className={"col"}>
-                {el.ask}
-              </div>
-            </div>
+            <RowRates key={el.code+i} code={el.code} bid={el.bid} ask={el.ask}/>
           );
         })}
       </StyledDiv>
