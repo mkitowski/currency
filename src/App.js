@@ -17,7 +17,19 @@ const MainDiv = styled.div`
 class App extends Component {
 
   state = {
-    actual: []
+    actual: [],
+    userInfo: {
+      Login:{
+        name: 'Cinkciarz',
+        password: 'tajnehaslo',
+        logged: true
+      },
+      accounts:{
+        PLN: 1250,
+        USD: 350,
+        EUR: 125
+      },
+    }
   }
 
   setBase(NBPinput,code){
@@ -78,7 +90,6 @@ class App extends Component {
     return {code,bid,spread}
   }
 
-
   simulateChanges(real) { //Simulation of life rates changes
     const newBid = Math.floor(real.bid*1000 + (Math.floor(Math.random() * (45 + 45) - 45)))/1000;
     const newRate = {
@@ -120,17 +131,19 @@ class App extends Component {
 
   }
 
-
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
   render() {
-
     return (
       <MainDiv>
         <Header/>
-        <Landing currentRates={this.state.actual} />
+        <Landing
+          currentRates={this.state.actual}
+          userInfo={this.state.userInfo.Login}
+          accountsInfo={this.state.userInfo.accounts}
+        />
       </MainDiv>
     );
   }

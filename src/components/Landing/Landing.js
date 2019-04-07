@@ -2,7 +2,8 @@ import bck from '../../img/background-land.jpg';
 import styled from 'styled-components';
 import React from 'react';
 import Rates from './Rates';
-// import CurrencyArray from '../../Data/currencies';
+import {UserLogin} from './UserLogin'
+import {UserAccountsInfo} from "./UserAccountsInfo";
 
 
 const StyledLanding = styled.div`
@@ -19,6 +20,11 @@ left: 0;
 export default class Landing extends React.Component {
 	render() {
 		return <StyledLanding>
+			{this.props.userInfo.logged ?
+				<UserAccountsInfo
+					accountsInfo={this.props.accountsInfo}
+					userInfo={this.props.userInfo} /> :
+				<UserLogin userInfo={this.props.userInfo}/>}
 			<Rates currentRates={this.props.currentRates}/>
 		</StyledLanding>
 	}
