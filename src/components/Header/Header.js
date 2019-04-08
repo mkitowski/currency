@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import {Logo} from "./Logo";
-import UserInfo from './UserInfo';
 import Navigation from './Navigation';
 
 const HeaderStyled = styled.header`
@@ -10,9 +9,13 @@ const HeaderStyled = styled.header`
   width: 100vw;
   height: 80px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 	background-color: rgba(250,250,250,.5);
+	@media(min-width: 720px){
+	  justify-content: space-between;
+	}
 `;
 
 const StyledNav = styled.nav`
@@ -24,7 +27,6 @@ export const Header = () => {
 		<HeaderStyled>
 			<Logo/>
 			<StyledNav>
-				<UserInfo accountInfo={'125,00PLN, 250EUR'}/>
 				<Navigation/>
 			</StyledNav>
 		</HeaderStyled>

@@ -10,8 +10,7 @@ export class UserAccountsInfo extends React.Component {
     for (let key in acc) {
       result.push(
         <p key={key}>
-          {key}
-          <span> {acc[key]}</span>
+          <span> {acc[key]}</span> {key}
         </p>
       );
     }

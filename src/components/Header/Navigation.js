@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const StyledList = styled.ul`
 	display: flex;
@@ -8,21 +9,25 @@ const StyledList = styled.ul`
 	cursor: pointer;
 	padding: 0;
 	li{
-		transition: color .3s ease-in-out,font-weight .3s ease-in-out;
 		padding: 0 5px 0 5px;
-	:hover {
-		color: #0097EC;
-		font-weight: 900;
-	}}
+		a {
+			transition: color .3s ease-in-out;
+			color: #393939
+			text-decoration: none;
+			:hover {
+				color: #0097EC;
+			}
+		}
+	}
 `;
 
 export default class Navigation extends React.Component {
 	render() {
 		return <StyledList>
-			<li>Start</li>
-			<li>Info</li>
-			<li>Wymień</li>
-			<li>Kontact</li>
+			<li><Link to='/'>Start</Link></li>
+			<li><Link to='/exchange'>Wymień</Link></li>
+			<li><Link to='/rates'>Kursy</Link></li>
+			<li><Link to={'/contact'}>Kontact</Link></li>
 		</StyledList>
 	}
 }

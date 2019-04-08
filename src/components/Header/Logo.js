@@ -6,6 +6,6 @@ export const Logo = styled.div`
     background: url(${logo}) no-repeat;
     background-size: contain;
     width: 150px;
-    height: 40px;
+    height: 30px;
     margin-left: 15px;
 `
