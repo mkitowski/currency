@@ -22,7 +22,7 @@ class App extends Component {
       Login:{
         name: 'Cinkciarz',
         password: 'tajnehaslo',
-        logged: true
+        logged: false
       },
       accounts:{
         PLN: 1250,
@@ -30,6 +30,19 @@ class App extends Component {
         EUR: 125
       },
     }
+  }
+
+  UserLogin = () =>{
+    let logged;
+    this.state.userInfo.Login.logged ? logged = false : logged = true;
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        Login:{
+          ...this.state.userInfo.Login, logged
+        }
+      }
+    })
   }
 
   setBase(NBPinput,code){
@@ -143,6 +156,7 @@ class App extends Component {
           currentRates={this.state.actual}
           userInfo={this.state.userInfo.Login}
           accountsInfo={this.state.userInfo.accounts}
+          userLogin={this.UserLogin}
         />
       </MainDiv>
     );
