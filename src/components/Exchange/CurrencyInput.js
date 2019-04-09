@@ -8,6 +8,7 @@ const Input = styled.input`
 	border-radius: 6px;
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
+	padding-left: 10px;
 	height: 34px;
 	border-right: none;
 	transition: background-color .3s linear;
@@ -57,8 +58,8 @@ export class CurrencyInput extends React.Component {
                  type={"number"}
                />
                <Select
-                 value={this.state.selected}
-                 onChange={this.handleSelect}
+                 value={this.props.selected}
+                 onChange={this.props.handleSelect}
                >
 					   {this.props.currenciesArray.map(el => {
                    return (

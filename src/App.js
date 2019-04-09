@@ -37,8 +37,6 @@ class App extends Component {
 		}
 	}
 
-
-
 	UserLogin = () => {
 		let logged;
 		this.state.userInfo.Login.logged ? logged = false : logged = true;
@@ -130,10 +128,9 @@ class App extends Component {
 		})
   }
 
-  timer() {
+  timer() { //timer 1 min interval
     if (!this.state.start){
       this.timerInterval = setInterval(() => {
-        console.log('kupa')
         this.setState(prev => {
           return { timer: prev.timer - 1 }
         })
@@ -155,8 +152,8 @@ class App extends Component {
 			}).then(real => {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
-        this.timer();
-        this.setState({start:true});
+        this.timer(); //start timer
+        this.setState({start:true}); //start confirmed
 				this.interval = setInterval(() => {
           this.simulateChanges(real); //simulate life changes
 				}, 60000)
@@ -171,8 +168,8 @@ class App extends Component {
 	}
 
 	componentWillUnmount() {
-    clearInterval(this.interval);
-    clearInterval(this.timerInterval);
+    clearInterval(this.interval); //clear live updates
+    clearInterval(this.timerInterval); //clear timer
 	}
 
 	render() {
@@ -192,6 +189,7 @@ class App extends Component {
 							{...props}
 							userInfo={this.state.userInfo.Login}
 							accountsInfo={this.state.userInfo.accounts}
+							currentRates={this.state.actual}
 						/>
 						}/>
 						<Route path='*' component={NotFound}/>

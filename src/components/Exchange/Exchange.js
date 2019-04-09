@@ -6,6 +6,7 @@ export class Exchange extends React.Component {
 		return this.props.userInfo.logged ? <LoggedExchange
 			userInfo={this.props.userInfo}
 			accountsInfo={this.props.accountsInfo}
+			currentRates={this.props.currentRates}
 		/> : <div>Weź się zaloguj</div>
 	}
 }
