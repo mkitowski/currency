@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import currencies from '../../Data/currencies';
 
-const allCurrencies = ['PLN', ...currencies];
+
 
 const Input = styled.input`
 	border: 1px solid gray;
@@ -35,30 +34,41 @@ const Select = styled.select`
 	option{
 		background: white;
 		border: none;
-			
+
 	}
 	}
 `;
 
 export class CurrencyInput extends React.Component {
-	state = {
-		selected: allCurrencies[this.props.first]
-	}
+         state = {
+           selected: this.props.currenciesArray[this.props.first]
+         };
 
+         handleSelect = event => {
+           this.setState({ selected: event.target.value });
+         };
 
-	handleSelect = (event) => {
-		this.setState({selected: event.target.value});
-	};
-
-
-	render() {
-		return <div>
-			<Input value={this.props.value} onChange={this.props.handleChange} type={'number'}/>
-			<Select value={this.state.selected} onChange={this.handleSelect}>
-				{allCurrencies.map(el => {
-					return <option value={el} key={el}>{el}</option>
-				})}
-			</Select>
-		</div>
-	}
-}
+         render() {
+           return (
+             <div>
+               <Input
+                 value={this.props.value}
+                 onChange={this.props.handleChange}
+                 type={"number"}
+               />
+               <Select
+                 value={this.state.selected}
+                 onChange={this.handleSelect}
+               >
+					   {this.props.currenciesArray.map(el => {
+                   return (
+                     <option value={el} key={el}>
+                       {el}
+                     </option>
+                   );
+                 })}
+               </Select>
+             </div>
+           );
+         }
+       }

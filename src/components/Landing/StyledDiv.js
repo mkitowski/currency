@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
   width: 300px;
-  
+
   height: 250px;
   position: absolute;
   bottom: ${props => props.bottom};

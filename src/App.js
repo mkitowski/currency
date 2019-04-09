@@ -20,7 +20,9 @@ const MainDiv = styled.div`
 class App extends Component {
 
 	state = {
-		actual: [],
+    actual: [],
+    timer: 60,
+    start: false,
 		userInfo: {
 			Login: {
 				name: 'Cinkciarz',
@@ -34,6 +36,8 @@ class App extends Component {
 			},
 		}
 	}
+
+
 
 	UserLogin = () => {
 		let logged;
@@ -119,11 +123,28 @@ class App extends Component {
 		};
 
 
+
 		this.setState({
 			[real.code + '-day']: [...this.state[real.code + '-day'], newRate].slice(1),
 			actual: [...this.state.actual, newRate].slice(1)
 		})
-	}
+  }
+
+  timer() {
+    if (!this.state.start){
+      this.timerInterval = setInterval(() => {
+        console.log('kupa')
+        this.setState(prev => {
+          return { timer: prev.timer - 1 }
+        })
+        if (this.state.timer < 1) {
+
+          this.setState({ timer: 60 })
+        }
+      }, 1000);
+    }
+
+  }
 
 	getData() { //getting current rates for defined currencies, generating 24h history, simulating changes
 		currencyCodes.forEach(code => {
@@ -134,8 +155,10 @@ class App extends Component {
 			}).then(real => {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
+        this.timer();
+        this.setState({start:true});
 				this.interval = setInterval(() => {
-					this.simulateChanges(real); //simulate life changes
+          this.simulateChanges(real); //simulate life changes
 				}, 60000)
 			})
 		})
@@ -143,13 +166,13 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-
 		this.getData();
 
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.interval);
+    clearInterval(this.interval);
+    clearInterval(this.timerInterval);
 	}
 
 	render() {
