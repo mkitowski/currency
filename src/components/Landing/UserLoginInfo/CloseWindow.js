@@ -1,4 +1,4 @@
-import {StyledCloseButton} from "./StyledClosedButton";
+import {StyledCloseButton} from "../../Styled/StyledClosedButton";
 import React from 'react';
 
 export const CloseWindow = (props) => {

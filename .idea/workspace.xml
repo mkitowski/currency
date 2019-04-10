@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6e9f129e-ff59-406f-a706-9d9ce07b468d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Exchange/CurrencyInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Exchange/CurrencyInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Exchange/Exchange.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Exchange/Exchange.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserLoginInfo/CloseWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/UserLoginInfo/CloseWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserLoginInfo/StyledClosedButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Styled/StyledClosedButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserLoginInfo/StyledInfoWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Styled/StyledInfoWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,27 +21,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="191" column="46" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#890#1109#0" />
-                <element signature="n#!!block;n#setBase#0;n#App#0" />
-                <element signature="n#!!block;n#generateHistory#0;n#App#0" />
-                <element signature="n#!!block;n#simulateChanges#0;n#App#0" />
-                <element signature="e#2729#2866#0" />
-                <element signature="n#!!block;n#timer#0;n#App#0" />
-                <element signature="n#!!block;n#getData#0;n#App#0" />
-                <element signature="n#!!block;n#componentDidMount#0;n#App#0" />
-                <element signature="n#!!block;n#componentWillUnmount#0;n#App#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Exchange/Exchange.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
@@ -53,18 +33,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Landing/Landing.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Landing/Rates.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
+            <state relative-caret-position="500">
               <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -73,15 +44,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="160">
+              <caret line="188" column="35" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#698#778#0" />
-                <element signature="e#812#875#0" />
+                <element signature="e#812#1442#0" />
+                <element signature="e#1477#1651#0" />
+                <element signature="e#1683#3068#0" />
+                <element signature="e#3100#4104#0" />
+                <element signature="n#!!block;n#updateRate#0;n#LoggedExchange#0" />
+                <element signature="n#!!block;n#componentWillReceiveProps#0;n#LoggedExchange#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLogin.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Exchange/ConfirmDialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/components/Landing/UserInfo/StyledInfo.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserInfo/CloseWindow.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserInfo/UserInfo.js" />
-        <option value="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserLogin.js" />
         <option value="$PROJECT_DIR$/src/components/Styled/StyledInputFull.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/Landing.js" />
@@ -155,7 +153,10 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Exchange/Exchange.js" />
         <option value="$PROJECT_DIR$/src/components/Exchange/GetRate.js" />
+        <option value="$PROJECT_DIR$/src/components/Styled/StyledInfoWindow.js" />
+        <option value="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" />
         <option value="$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js" />
+        <option value="$PROJECT_DIR$/src/components/Exchange/ConfirmDialog.js" />
       </list>
     </option>
   </component>
@@ -165,7 +166,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="27" />
     <option name="width" value="927" />
@@ -206,7 +207,22 @@
               <item name="currency" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Exchange" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
+              <item name="currency" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Landing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
+              <item name="currency" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Landing" type="462c0819:PsiDirectoryNode" />
+              <item name="UserLoginInfo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="currency" type="b2602c69:ProjectViewProjectNode" />
@@ -237,8 +253,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/Exchange" />
       <recent name="$PROJECT_DIR$/src/components/Styled" />
+      <recent name="$PROJECT_DIR$/src/components/Exchange" />
       <recent name="$PROJECT_DIR$/src/comonents/Landing" />
     </key>
   </component>
@@ -279,12 +295,13 @@
       <workItem from="1554443830104" duration="5579000" />
       <workItem from="1554654301539" duration="13112000" />
       <workItem from="1554742032594" duration="11961000" />
-      <workItem from="1554824884847" duration="11959000" />
+      <workItem from="1554824884847" duration="13175000" />
+      <workItem from="1554911221525" duration="3344000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89429000" />
+    <option name="totallyTimeSpent" value="93989000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
@@ -348,24 +365,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/StyledClosedButton.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledClosedButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/StyledInfoWindow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/StyledInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -375,16 +378,6 @@
           <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/UserInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -403,28 +396,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/UserInfo.js" />
     <entry file="file://$PROJECT_DIR$/../../CodersLab/GDA_FER_W_02_REACT_React/1_Zadania/Dzien_5/1_Routing_podstawy/js/zadanie00.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-360">
           <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLogin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -497,22 +473,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/currencies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="1660">
           <caret line="191" column="46" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#890#1109#0" />
             <element signature="n#!!block;n#setBase#0;n#App#0" />
             <element signature="n#!!block;n#generateHistory#0;n#App#0" />
             <element signature="n#!!block;n#simulateChanges#0;n#App#0" />
-            <element signature="e#2729#2866#0" />
             <element signature="n#!!block;n#timer#0;n#App#0" />
             <element signature="n#!!block;n#getData#0;n#App#0" />
             <element signature="n#!!block;n#componentDidMount#0;n#App#0" />
             <element signature="n#!!block;n#componentWillUnmount#0;n#App#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/Rates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Exchange/GetRate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/Landing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -526,45 +531,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/Rates.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/StyledInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        <state relative-caret-position="340">
+          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInfoWindow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/Landing.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/UserInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+        <state relative-caret-position="40">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/currencies.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLogin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Exchange/GetRate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        <state relative-caret-position="20">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="160">
+          <caret line="188" column="35" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#698#778#0" />
-            <element signature="e#812#875#0" />
+            <element signature="e#812#1442#0" />
+            <element signature="e#1477#1651#0" />
+            <element signature="e#1683#3068#0" />
+            <element signature="e#3100#4104#0" />
+            <element signature="n#!!block;n#updateRate#0;n#LoggedExchange#0" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#LoggedExchange#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Exchange/ConfirmDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -5,6 +5,7 @@ import { StyledButton } from "../Styled/StyledButton";
 import { AccountsList } from "./AccountsList";
 import ErrorMessage from "./ErrorMessage";
 import currencies from "../../Data/currencies";
+import ConfirmDialog from "./ConfirmDialog";
 
 const StyledExchange = styled.div`
   background: #efefef;
@@ -27,7 +28,8 @@ export class LoggedExchange extends React.Component {
     selected1: Object.keys(this.props.accountsInfo)[0],
     selected2: currencies[0],
     rate: this.props.currentRates[0].ask,
-    error: false
+    error: false,
+		dialogVisible: 0
   };
 
   handleChangeInput1 = event => {
@@ -183,6 +185,10 @@ export class LoggedExchange extends React.Component {
     }
   }
 
+  handleDialog = () => {
+  	this.setState({dialogVisible: !this.state.dialogVisible});
+	}
+
   render() {
     return (
       <StyledExchange>
@@ -204,7 +210,7 @@ export class LoggedExchange extends React.Component {
           handleSelect={this.handleSelected2}
           selected={this.state.selected2}
         />
-        <StyledButton>Wymień</StyledButton>
+        <StyledButton onClick={this.handleDialog}>Wymień</StyledButton>
         <p>
           Tranzakcja zostanie wykonana po kursie:
           <span className={"rate"}>
@@ -213,6 +219,7 @@ export class LoggedExchange extends React.Component {
           </span>
         </p>
         <AccountsList accountsInfo={this.props.accountsInfo} />
+        <ConfirmDialog visible={this.state.dialogVisible} close={this.handleDialog}/>
       </StyledExchange>
     );
   }
