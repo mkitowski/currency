@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CurrencyInput } from "./CurrencyInput";
 import { StyledButton } from "../Styled/StyledButton";
 import { AccountsList } from "./AccountsList";
+import ErrorMessage from "./ErrorMessage";
 import currencies from "../../Data/currencies";
 
 const StyledExchange = styled.div`
@@ -14,28 +15,48 @@ const StyledExchange = styled.div`
   input {
     margin-bottom: 10px;
   }
+  .rate {
+    font-weight: 700;
+  }
 `;
 
 export class LoggedExchange extends React.Component {
   state = {
-    valueInput1: "",
-    valueInput2: "",
+    valueInput1: 0,
+    valueInput2: 0,
     selected1: Object.keys(this.props.accountsInfo)[0],
     selected2: currencies[0],
-    rate: this.props.currentRates[0].ask
+    rate: this.props.currentRates[0].ask,
+    error: false
   };
 
   handleChangeInput1 = event => {
-    this.setState({
-      valueInput1: event.target.value,
-      valueInput2: Math.floor(+event.target.value * this.state.rate * 100) / 100
-    });
+    let rate = this.state.rate;
+
+    if (event.target.value > this.props.accountsInfo[this.state.selected1]) {
+      this.setState({
+        valueInput1: this.props.accountsInfo[this.state.selected1],
+        valueInput2:
+          Math.round(
+            this.props.accountsInfo[this.state.selected1] * rate * 100
+          ) / 100,
+        error:
+          "Nie masz wystarczająco środków, to jest wszystko co moeżesz wymienić"
+      });
+    } else {
+      this.setState({
+        valueInput1: event.target.value,
+        valueInput2: Math.round(event.target.value * rate * 100) / 100,
+        error: false
+      });
+    }
   };
 
   handleChangeInput2 = event => {
+    let rate = this.state.rate;
+
     this.setState({
-      valueInput1:
-        Math.floor((+event.target.value / this.state.rate) * 100) / 100,
+      valueInput1: Math.round(event.target.value * rate * 100) / 100,
       valueInput2: event.target.value
     });
   };
@@ -43,7 +64,19 @@ export class LoggedExchange extends React.Component {
   handleSelected1 = event => {
     const array2 = [...currencies, "PLN"];
     let oldIndex = array2.indexOf(event.target.value);
-    let index;
+    let index, valueInput1;
+
+    if (this.state.valueInput1 > this.props.accountsInfo[event.target.value]) {
+      this.setState({
+        valueInput1: this.props.accountsInfo[event.target.value],
+        error:
+          "Nie masz wystarczająco środków, to jest wszystko co moeżesz wymienić"
+      });
+      valueInput1 = this.props.accountsInfo[event.target.value];
+    } else {
+      valueInput1 = this.state.valueInput1;
+    }
+
     if (this.state.selected2 === event.target.value) {
       if (oldIndex === 0) {
         index = array2.length - 1;
@@ -52,28 +85,21 @@ export class LoggedExchange extends React.Component {
       } else {
         index = oldIndex - 1;
       }
+      let rate = this.updateRate(event.target.value, array2[index]);
+
       this.setState({
         selected1: event.target.value,
         selected2: array2[index],
         rate: this.updateRate(event.target.value, array2[index]),
-        valueInput2:
-          Math.floor(
-            this.state.valueInput1 *
-              this.updateRate(event.target.value, array2[index]) *
-              100
-          ) / 100
+        valueInput2: Math.round(valueInput1 * rate * 100) / 100
       });
-      this.updateRate();
     } else {
+      let rate = this.updateRate(event.target.value, this.state.selected2);
+
       this.setState({
         selected1: event.target.value,
         rate: this.updateRate(event.target.value, this.state.selected2),
-        valueInput2:
-          Math.floor(
-            this.state.valueInput1 *
-              this.updateRate(event.target.value, this.state.selected2) *
-              100
-          ) / 100
+        valueInput2: Math.round(valueInput1 * rate * 100) / 100
       });
     }
   };
@@ -90,40 +116,44 @@ export class LoggedExchange extends React.Component {
       } else {
         index = oldIndex - 1;
       }
+      let rate = this.updateRate(array1[index], event.target.value);
+
       this.setState({
         selected2: event.target.value,
         selected1: array1[index],
         rate: this.updateRate(array1[index], event.target.value),
-        valueInput2:
-          Math.floor(
-            (this.state.valueInput1 *
-              this.updateRate(array1[index], event.target.value)) *
-              100
-          ) / 100
+        valueInput2: Math.round(this.state.valueInput1 * rate * 100) / 100
       });
     } else {
+      let rate = this.updateRate(this.state.selected1, event.target.value);
+
       this.setState({
         selected2: event.target.value,
         rate: this.updateRate(this.state.selected1, event.target.value),
-        valueInput2:
-          Math.floor(
-            (this.state.valueInput1 *
-              this.updateRate(this.state.selected1, event.target.value)) *
-              100
-          ) / 100
+        valueInput2: Math.round(this.state.valueInput1 * rate * 100) / 100
       });
     }
   };
 
   updateRate(first, second) {
     if (first === "PLN") {
-      return this.props.currentRates.filter(el => {
-        return el.code === second;
-      })[0].ask;
+      return (
+        Math.floor(
+          (1 /
+            this.props.currentRates.filter(el => {
+              return el.code === second;
+            })[0].bid) *
+            1000
+        ) / 1000
+      );
     } else if (second === "PLN") {
-      return this.props.currentRates.filter(el => {
-        return el.code === first;
-      })[0].bid;
+      return (
+        Math.floor(
+          this.props.currentRates.filter(el => {
+            return el.code === first;
+          })[0].ask * 10000
+        ) / 10000
+      );
     } else {
       return (
         Math.floor(
@@ -133,8 +163,8 @@ export class LoggedExchange extends React.Component {
             this.props.currentRates.filter(el => {
               return el.code === second;
             })[0].ask) *
-            1000
-        ) / 1000
+            10000
+        ) / 10000
       );
     }
   }
@@ -142,7 +172,13 @@ export class LoggedExchange extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentRates === this.props.currentRates) {
       this.setState({
-        rate: this.updateRate(this.state.selected1, this.state.selected2)
+        rate: this.updateRate(this.state.selected1, this.state.selected2),
+        valueInput2:
+          Math.round(
+            this.state.valueInput1 *
+              this.updateRate(this.state.selected1, this.state.selected2) *
+              100
+          ) / 100
       });
     }
   }
@@ -152,6 +188,7 @@ export class LoggedExchange extends React.Component {
       <StyledExchange>
         <h2>Twoje transakcje</h2>
         <p>Wymień:</p>
+        <ErrorMessage message={this.state.error} />
         <CurrencyInput
           currenciesArray={Object.keys(this.props.accountsInfo)}
           handleChange={this.handleChangeInput1}
@@ -170,7 +207,10 @@ export class LoggedExchange extends React.Component {
         <StyledButton>Wymień</StyledButton>
         <p>
           Tranzakcja zostanie wykonana po kursie:
-          {this.state.rate}
+          <span className={"rate"}>
+            {" "}
+            1 {this.state.selected1} = {this.state.rate} {this.state.selected2}
+          </span>
         </p>
         <AccountsList accountsInfo={this.props.accountsInfo} />
       </StyledExchange>
