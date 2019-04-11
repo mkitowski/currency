@@ -172,6 +172,35 @@ class App extends Component {
     clearInterval(this.timerInterval); //clear timer
 	}
 
+ confirmHandler = goods => {
+		console.log(this.state);
+		let acc = this.state.userInfo.accounts;
+		let newAccounts = JSON.parse(JSON.stringify(acc));
+		for(let key in newAccounts ) {
+				if(key === goods.selected1){
+					newAccounts[key] = +newAccounts[key]-goods.valueInput1;
+					console.log('odejmuje');
+					if (newAccounts[key] === 0){
+						delete newAccounts[key];
+					}
+				} else if(key === goods.selected2){
+					newAccounts[key] = +newAccounts[key]+goods.valueInput2;
+					console.log('dodaje')
+				} else if(!(goods.selected2 in newAccounts)) {
+					newAccounts[goods.selected2] = goods.valueInput2;
+					console.log('dodaje nowe');
+				}
+		}
+		// console.log(acc);
+		this.setState({
+			userInfo :{
+				Login: {...this.state.userInfo.Login},
+				accounts: newAccounts
+			}
+		})
+
+	}
+
 	render() {
 		return (
 			<HashRouter>
@@ -191,6 +220,7 @@ class App extends Component {
 							accountsInfo={this.state.userInfo.accounts}
 							currentRates={this.state.actual}
 							timer={this.state.timer}
+							confirm={this.confirmHandler}
 						/>
 						}/>
 						<Route path='*' component={NotFound}/>

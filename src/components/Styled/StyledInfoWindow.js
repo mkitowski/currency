@@ -11,4 +11,7 @@ export const StyledInfoWindow = styled.div`
   text-align: center;
   border-radius: 5px;
   z-index: 500;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 `;

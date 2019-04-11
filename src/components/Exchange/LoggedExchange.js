@@ -28,9 +28,10 @@ export class LoggedExchange extends React.Component {
     valueInput2: 0,
     selected1: Object.keys(this.props.accountsInfo)[0],
     selected2: currencies[0],
-    rate: this.props.currentRates[0].ask,
+    rate: Math.floor(1 / this.props.currentRates[0].bid * 1000) / 1000,
     error: false,
-		dialogVisible: 0
+    dialogVisible: 0,
+    disabledButton: false,
   };
 
   handleChangeInput1 = event => {
@@ -44,7 +45,7 @@ export class LoggedExchange extends React.Component {
             this.props.accountsInfo[this.state.selected1] * rate * 100
           ) / 100,
         error:
-          "Nie masz wystarczająco środków, to jest wszystko co moeżesz wymienić"
+          "Nie masz wystarczająco środków, to jest wszystko co możesz wymienić"
       });
     } else {
       this.setState({
@@ -58,10 +59,19 @@ export class LoggedExchange extends React.Component {
   handleChangeInput2 = event => {
     let rate = this.state.rate;
 
-    this.setState({
-      valueInput1: Math.round(event.target.value * rate * 100) / 100,
-      valueInput2: event.target.value
-    });
+    if (this.state.selected2 === 'PLN') {
+      this.setState({
+        valueInput1: Math.round(event.target.value / rate * 100) / 100,
+        valueInput2: event.target.value
+      });
+    } else {
+      this.setState({
+        valueInput1: Math.round(event.target.value / rate * 100) / 100,
+        valueInput2: event.target.value
+      });
+    }
+
+
   };
 
   handleSelected1 = event => {
@@ -142,11 +152,10 @@ export class LoggedExchange extends React.Component {
     if (first === "PLN") {
       return (
         Math.floor(
-          (1 /
-            this.props.currentRates.filter(el => {
-              return el.code === second;
-            })[0].bid) *
-            1000
+          1 / (this.props.currentRates.filter(el => {
+            return el.code === second;
+          })[0].bid) *
+          1000
         ) / 1000
       );
     } else if (second === "PLN") {
@@ -162,33 +171,47 @@ export class LoggedExchange extends React.Component {
         Math.floor(
           (this.props.currentRates.filter(el => {
             return el.code === first;
-          })[0].bid /
+          })[0].ask /
             this.props.currentRates.filter(el => {
               return el.code === second;
-            })[0].ask) *
-            10000
+            })[0].bid) *
+          10000
         ) / 10000
       );
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentRates === this.props.currentRates) {
+    if (nextProps.currentRates !== this.props.currentRates) {
       this.setState({
         rate: this.updateRate(this.state.selected1, this.state.selected2),
         valueInput2:
           Math.round(
             this.state.valueInput1 *
-              this.updateRate(this.state.selected1, this.state.selected2) *
-              100
+            this.updateRate(this.state.selected1, this.state.selected2) *
+            100
           ) / 100
       });
     }
   }
 
   handleDialog = () => {
-  	this.setState({dialogVisible: !this.state.dialogVisible});
-	}
+    this.setState({
+      dialogVisible: !this.state.dialogVisible
+    });
+  }
+
+  confirm = () => {
+    this.handleDialog();
+
+    this.props.confirm(this.state);
+
+    this.setState({
+      valueInput1: 0,
+      valueInput2: 0
+    });
+
+  }
 
   render() {
     return (
@@ -229,6 +252,7 @@ export class LoggedExchange extends React.Component {
           selected2={this.state.selected2}
           rate={this.state.rate}
           timer={this.props.timer}
+          confirm={this.confirm}
         />
       </StyledExchange>
     );

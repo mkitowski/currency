@@ -17,6 +17,9 @@ const StyledAccountList = styled.div`
 		:last-child{
 					border-bottom: none;
 		}
+		.bold {
+			font-weight:700;
+		}
 	}
 `;
 
@@ -46,14 +49,22 @@ export class AccountsList extends React.Component {
 					cur = 'Chf';
 					word = 'walutowe - Frank szwajcarski';
 					break;
+				case 'GBP':
+					cur = '£';
+					word = 'walutowe - Funt brytyjski ';
+					break
 				default:
 
 			}
-
-			result.push(
-				<div key={key}> <span>Konto {word} : </span><span>{acc[key]}{cur}</span>
+			let row;
+			if (key==='USD' || key==='EUR' || key==='GBP'){
+				row = <div key={key}> <span>Konto {word} : </span><span className={'bold'}>{cur}{acc[key]}</span>
 				</div>
-			);
+			} else {
+				row = <div key={key}> <span>Konto {word} : </span><span className={'bold'}>{acc[key]}{cur}</span>
+				</div>
+			}
+			result.push(row);
 		}
 		return result;
 	}

@@ -29,4 +29,9 @@ background-color:#dfdfdf;
 	top:1px;
 }
 
+:disabled {
+	background: lightgray;
+	color: darkgray;
+}
+
 `;
