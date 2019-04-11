@@ -190,6 +190,7 @@ class App extends Component {
 							userInfo={this.state.userInfo.Login}
 							accountsInfo={this.state.userInfo.accounts}
 							currentRates={this.state.actual}
+							timer={this.state.timer}
 						/>
 						}/>
 						<Route path='*' component={NotFound}/>

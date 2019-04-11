@@ -7,6 +7,7 @@ export class Exchange extends React.Component {
 			userInfo={this.props.userInfo}
 			accountsInfo={this.props.accountsInfo}
 			currentRates={this.props.currentRates}
+			timer={this.props.timer}
 		/> : <div>Weź się zaloguj</div>
 	}
 }

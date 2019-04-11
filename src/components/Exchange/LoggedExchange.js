@@ -7,6 +7,7 @@ import ErrorMessage from "./ErrorMessage";
 import currencies from "../../Data/currencies";
 import ConfirmDialog from "./ConfirmDialog";
 
+
 const StyledExchange = styled.div`
   background: #efefef;
   height: 100vh;
@@ -219,7 +220,16 @@ export class LoggedExchange extends React.Component {
           </span>
         </p>
         <AccountsList accountsInfo={this.props.accountsInfo} />
-        <ConfirmDialog visible={this.state.dialogVisible} close={this.handleDialog}/>
+        <ConfirmDialog
+          visible={this.state.dialogVisible}
+          close={this.handleDialog}
+          valueInput1={this.state.valueInput1}
+          valueInput2={this.state.valueInput2}
+          selected1={this.state.selected1}
+          selected2={this.state.selected2}
+          rate={this.state.rate}
+          timer={this.props.timer}
+        />
       </StyledExchange>
     );
   }
