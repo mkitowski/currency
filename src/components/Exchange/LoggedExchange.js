@@ -6,6 +6,7 @@ import { AccountsList } from "./AccountsList";
 import ErrorMessage from "./ErrorMessage";
 import currencies from "../../Data/currencies";
 import ConfirmDialog from "./ConfirmDialog";
+import { Redirect } from 'react-router'
 
 
 const StyledExchange = styled.div`
@@ -32,7 +33,20 @@ export class LoggedExchange extends React.Component {
     error: false,
     dialogVisible: 0,
     disabledButton: false,
+    finished: false
   };
+
+  componentWillMount(){
+    let selected2=currencies[0]
+    if (Object.keys(this.props.accountsInfo)[0]===selected2){
+      selected2 = currencies[1];
+    }
+    this.setState({
+      selected1: Object.keys(this.props.accountsInfo)[0],
+      selected2,
+      rate: this.updateRate(Object.keys(this.props.accountsInfo)[0],selected2),
+    })
+  }
 
   handleChangeInput1 = event => {
     let rate = this.state.rate;
@@ -203,29 +217,31 @@ export class LoggedExchange extends React.Component {
 
   confirm = () => {
     this.handleDialog();
-
     this.props.confirm(this.state);
-    let sel2;
-    if (Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-2]==='PLN'){
-      sel2='USD'
-    } else {
-      sel2='PLN'
-    }
-    console.log(Object.keys(this.props.accountsInfo).length-1);
+    // let sel2;
+    // if (Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1]==='PLN'){
+    //   sel2='USD'
+    // } else {
+    //   sel2='PLN'
+    // }
+    // console.log(Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length - 1]);
     this.setState({
-      valueInput1: 0,
-      valueInput2: 0,
-      selected1: Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1],
-      selected2: sel2,
-      rate: this.updateRate(Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1],sel2)
+      finished:true,
+      // valueInput1: 0,
+      // valueInput2: 0,
+      // selected1: Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1],
+      // selected2: sel2,
+      // rate: this.updateRate(Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1],sel2)
     });
 
 
   }
 
   render() {
+
     return (
       <StyledExchange>
+        {this.state.finished && <Redirect to='/#/' />}
         <h2>Twoje transakcje</h2>
         <p>Wymień:</p>
         <ErrorMessage message={this.state.error} />

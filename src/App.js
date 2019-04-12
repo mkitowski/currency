@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import {HashRouter, Route, Switch} from 'react-router-dom';
-import {NotFound} from "./components/NotFound";
-import {Header} from './components/Header/Header';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import { NotFound } from "./components/NotFound";
+import { Header } from './components/Header/Header';
 import Landing from './components/Landing/Landing';
 import currencyCodes from './Data/currencies';
-import {Exchange} from "./components/Exchange/Exchange";
+import { Exchange } from "./components/Exchange/Exchange";
 
 const url = "http://api.nbp.pl/api/exchangerates/rates/c/";
 const date = new Date();
@@ -20,9 +20,9 @@ const MainDiv = styled.div`
 class App extends Component {
 
 	state = {
-    actual: [],
-    timer: 60,
-    start: false,
+		actual: [],
+		timer: 60,
+		start: false,
 		userInfo: {
 			Login: {
 				name: 'Cinkciarz',
@@ -72,7 +72,7 @@ class App extends Component {
 
 		});
 
-		return {code, bid, spread}
+		return { code, bid, spread }
 	}
 
 	generateHistory(real, code) {
@@ -105,7 +105,7 @@ class App extends Component {
 		});
 		const bid = real.bid;
 		const spread = real.spread;
-		return {code, bid, spread}
+		return { code, bid, spread }
 	}
 
 	simulateChanges(real) { //Simulation of life rates changes
@@ -126,22 +126,22 @@ class App extends Component {
 			[real.code + '-day']: [...this.state[real.code + '-day'], newRate].slice(1),
 			actual: [...this.state.actual, newRate].slice(1)
 		})
-  }
+	}
 
-  timer() { //timer 1 min interval
-    if (!this.state.start){
-      this.timerInterval = setInterval(() => {
-        this.setState(prev => {
-          return { timer: prev.timer - 1 }
-        })
-        if (this.state.timer < 1) {
+	timer() { //timer 1 min interval
+		if (!this.state.start) {
+			this.timerInterval = setInterval(() => {
+				this.setState(prev => {
+					return { timer: prev.timer - 1 }
+				})
+				if (this.state.timer < 1) {
 
-          this.setState({ timer: 60 })
-        }
-      }, 1000);
-    }
+					this.setState({ timer: 60 })
+				}
+			}, 1000);
+		}
 
-  }
+	}
 
 	getData() { //getting current rates for defined currencies, generating 24h history, simulating changes
 		currencyCodes.forEach(code => {
@@ -152,10 +152,10 @@ class App extends Component {
 			}).then(real => {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
-        this.timer(); //start timer
-        this.setState({start:true}); //start confirmed
+				this.timer(); //start timer
+				this.setState({ start: true }); //start confirmed
 				this.interval = setInterval(() => {
-          this.simulateChanges(real); //simulate life changes
+					this.simulateChanges(real); //simulate life changes
 				}, 60000)
 			})
 		})
@@ -168,33 +168,34 @@ class App extends Component {
 	}
 
 	componentWillUnmount() {
-    clearInterval(this.interval); //clear live updates
-    clearInterval(this.timerInterval); //clear timer
+		clearInterval(this.interval); //clear live updates
+		clearInterval(this.timerInterval); //clear timer
 	}
 
- confirmHandler = goods => {
+	confirmHandler = goods => {
 		console.log(this.state);
 		let acc = this.state.userInfo.accounts;
 		let newAccounts = JSON.parse(JSON.stringify(acc));
-		for(let key in newAccounts ) {
-				if(key === goods.selected1){
-					newAccounts[key] = +newAccounts[key]-goods.valueInput1;
-					console.log('odejmuje');
-					if (newAccounts[key] === 0){
-						delete newAccounts[key];
-					}
-				} else if(key === goods.selected2){
-					newAccounts[key] = +newAccounts[key]+goods.valueInput2;
-					console.log('dodaje')
-				} else if(!(goods.selected2 in newAccounts)) {
-					newAccounts[goods.selected2] = goods.valueInput2;
-					console.log('dodaje nowe');
+		console.log(newAccounts.length);
+		for (let key in newAccounts) {
+			if (key === goods.selected2) {
+				newAccounts[key] = +newAccounts[key] + goods.valueInput2;
+				console.log('dodaje')
+			} else if (key === goods.selected1) {
+				newAccounts[key] = +newAccounts[key] - goods.valueInput1;
+				console.log('odejmuje');
+				if (newAccounts[key] === 0) {
+					delete newAccounts[key];
 				}
+			}
+		}
+		if (!(goods.selected2 in newAccounts)){
+			newAccounts[goods.selected2] = goods.valueInput2;
 		}
 		// console.log(acc);
 		this.setState({
-			userInfo :{
-				Login: {...this.state.userInfo.Login},
+			userInfo: {
+				Login: { ...this.state.userInfo.Login },
 				accounts: newAccounts
 			}
 		})
@@ -205,7 +206,7 @@ class App extends Component {
 		return (
 			<HashRouter>
 				<MainDiv>
-					<Header/>
+					<Header />
 					<Switch>
 						<Route exact path='/' render={(props) => <Landing
 							{...props}
@@ -213,7 +214,7 @@ class App extends Component {
 							userInfo={this.state.userInfo.Login}
 							accountsInfo={this.state.userInfo.accounts}
 							userLogin={this.UserLogin}
-						/>}/>
+						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}
 							userInfo={this.state.userInfo.Login}
@@ -222,8 +223,8 @@ class App extends Component {
 							timer={this.state.timer}
 							confirm={this.confirmHandler}
 						/>
-						}/>
-						<Route path='*' component={NotFound}/>
+						} />
+						<Route path='*' component={NotFound} />
 					</Switch>
 				</MainDiv>
 			</HashRouter>
