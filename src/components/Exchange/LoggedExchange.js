@@ -205,11 +205,21 @@ export class LoggedExchange extends React.Component {
     this.handleDialog();
 
     this.props.confirm(this.state);
-
+    let sel2;
+    if (Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-2]==='PLN'){
+      sel2='USD'
+    } else {
+      sel2='PLN'
+    }
+    console.log(Object.keys(this.props.accountsInfo).length-1);
     this.setState({
       valueInput1: 0,
-      valueInput2: 0
+      valueInput2: 0,
+      selected1: Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1],
+      selected2: sel2,
+      rate: this.updateRate(Object.keys(this.props.accountsInfo)[Object.keys(this.props.accountsInfo).length-1],sel2)
     });
+
 
   }
 
