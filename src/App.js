@@ -23,6 +23,7 @@ class App extends Component {
 		actual: [],
 		timer: 60,
 		start: false,
+		showConfirmationDialog: false,
 		userInfo: {
 			Login: {
 				name: 'Cinkciarz',
@@ -209,10 +210,16 @@ class App extends Component {
 				Login: { ...this.state.userInfo.Login },
 				accounts: newAccounts,
 				history: [newTransaction, ...this.state.userInfo.history]
-			}
+			},
+			showConfirmationDialog: true
 		});
 
+	}
 
+	closeDialog = () => {
+		this.setState({
+			showConfirmationDialog: false
+		})
 	}
 
 	render() {
@@ -228,6 +235,8 @@ class App extends Component {
 							accountsInfo={this.state.userInfo.accounts}
 							userLogin={this.UserLogin}
 							history={this.state.userInfo.history}
+							showConfirmationDialog={this.state.showConfirmationDialog}
+							closeConfirmationDialog={this.closeDialog}
 						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}

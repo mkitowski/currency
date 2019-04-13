@@ -35,7 +35,7 @@ export default class Landing extends React.Component {
           />
         )}
         <Rates currentRates={this.props.currentRates} />
-        <TransactionConfirmed/>
+        {this.props.showConfirmationDialog && <TransactionConfirmed history={this.props.history} close={this.props.closeConfirmationDialog}/>}
       </StyledLanding>
     );
   }

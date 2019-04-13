@@ -12,6 +12,10 @@ export const StyledInfoWindow = styled.div`
   border-radius: 5px;
   z-index: 500;
   display: flex;
-  justify-content: space-around;
+  justify-content: ${props => props.justify || "space-around"};
   flex-direction: column;
+  .bold {
+  	font-weight: 700;
+  }
+
 `;

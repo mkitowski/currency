@@ -26,7 +26,7 @@ export default class Navigation extends React.Component {
 		return <StyledList>
 			<li><Link to='/'>Start</Link></li>
 			<li><Link to='/exchange'>Wymień</Link></li>
-			<li><Link to='/rates'>Kursy</Link></li>
+			<li><Link to='/history'>Historia</Link></li>
 			<li><Link to={'/contact'}>Kontact</Link></li>
 		</StyledList>
 	}

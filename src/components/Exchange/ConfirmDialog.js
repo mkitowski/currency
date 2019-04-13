@@ -27,7 +27,7 @@ export default class ConfirmDialog extends React.Component {
 
 	render() {
 		return this.props.visible ? <StyledInfoWindow>
-			<StyledCloseButton onClick={this.close}>X</StyledCloseButton>
+			<StyledCloseButton onClick={this.props.confirm}>X</StyledCloseButton>
 			<ConfirmationMessage
 				valueInput1={this.props.valueInput1}
 				valueInput2={this.props.valueInput2}
