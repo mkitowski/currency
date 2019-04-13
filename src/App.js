@@ -34,6 +34,7 @@ class App extends Component {
 				USD: 350,
 				EUR: 125
 			},
+			history: []
 		}
 	}
 
@@ -173,11 +174,9 @@ class App extends Component {
 	}
 
 	confirmHandler = goods => {
-		console.log(this.state);
 		let acc = this.state.userInfo.accounts;
 		let newAccounts = JSON.parse(JSON.stringify(acc));
-		console.log(newAccounts.length);
-		for (let key in newAccounts) {
+		for (let key in newAccounts) { //set new accounts state
 			if (key === goods.selected2) {
 				newAccounts[key] = +newAccounts[key] + goods.valueInput2;
 				console.log('dodaje')
@@ -192,13 +191,27 @@ class App extends Component {
 		if (!(goods.selected2 in newAccounts)){
 			newAccounts[goods.selected2] = goods.valueInput2;
 		}
-		// console.log(acc);
+		let date = new Date();
+
+		let newTransaction ={
+			date: date.toLocaleDateString('pl-PL'),
+			time: date.toLocaleTimeString('pl-PL'),
+			sellCurrency: goods.selected1,
+			sellValue: goods.valueInput1,
+			buyCurrency: goods.selected2,
+			buyValue: goods.valueInput2,
+			rate: goods.rate
+		};
+
+
 		this.setState({
 			userInfo: {
 				Login: { ...this.state.userInfo.Login },
-				accounts: newAccounts
+				accounts: newAccounts,
+				history: [newTransaction, ...this.state.userInfo.history]
 			}
-		})
+		});
+
 
 	}
 
@@ -214,6 +227,7 @@ class App extends Component {
 							userInfo={this.state.userInfo.Login}
 							accountsInfo={this.state.userInfo.accounts}
 							userLogin={this.UserLogin}
+							history={this.state.userInfo.history}
 						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}

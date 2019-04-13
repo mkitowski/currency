@@ -4,6 +4,8 @@ import React from "react";
 import Rates from "./Rates";
 import { UserLogin } from "./UserLogin";
 import { UserAccountsInfo } from "./UserAccountsInfo";
+import {TransactionConfirmed} from "./TransactionConfirmed";
+
 
 const StyledLanding = styled.div`
   position: absolute;
@@ -33,6 +35,7 @@ export default class Landing extends React.Component {
           />
         )}
         <Rates currentRates={this.props.currentRates} />
+        <TransactionConfirmed/>
       </StyledLanding>
     );
   }
