@@ -6,6 +6,7 @@ import { Header } from './components/Header/Header';
 import Landing from './components/Landing/Landing';
 import currencyCodes from './Data/currencies';
 import { Exchange } from "./components/Exchange/Exchange";
+import {History} from "./components/History/History";
 
 const url = "http://api.nbp.pl/api/exchangerates/rates/c/";
 const date = new Date();
@@ -81,8 +82,9 @@ class App extends Component {
 		let setMin = minutes;
 		let setHour = hours;
 		const result = [];
-		for (let i = 0; i < 720; i++) { //generates random history for every minute
-			let newBid = Math.floor(real.bid * 1000 + (Math.floor(Math.random() * (45 + 45) - 45))) / 1000;
+		let newBid = real.bid;
+		for (let i = 0; i < 240; i++) { //generates random history for every minute
+			newBid = Math.floor(newBid * 1000 + (Math.floor(Math.random() * (5 + 5) - 5))) / 1000;
 			if (setMin === 0 && setHour === 0) {
 				setMin = 59;
 				setHour = 23;
@@ -247,11 +249,15 @@ class App extends Component {
 							confirm={this.confirmHandler}
 						/>
 						} />
+						<Route exact path='/history' render={props => <History
+							{...props}
+							data={this.state}
+						/>
+						} />
 						<Route path='*' component={NotFound} />
 					</Switch>
 				</MainDiv>
 			</HashRouter>
-
 		);
 	}
 }
