@@ -36,7 +36,13 @@ class App extends Component {
 				USD: 350,
 				EUR: 125
 			},
-			history: []
+			history: [{date: 'poprzednia data',
+				time: 'poprzedni czas',
+				sellCurrency: 'PLN',
+				sellValue: 1254,
+				buyCurrency: 'GBP',
+				buyValue: '124',
+				rate: 0.154}]
 		}
 	}
 
@@ -83,7 +89,7 @@ class App extends Component {
 		let setHour = hours;
 		const result = [];
 		let newBid = real.bid;
-		for (let i = 0; i < 240; i++) { //generates random history for every minute
+		for (let i = 0; i < 720; i++) { //generates random history for every minute
 			newBid = Math.floor(newBid * 1000 + (Math.floor(Math.random() * (5 + 5) - 5))) / 1000;
 			if (setMin === 0 && setHour === 0) {
 				setMin = 59;
