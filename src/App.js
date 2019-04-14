@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
-import { HashRouter, Route, Switch } from 'react-router-dom';
-import { NotFound } from "./components/NotFound";
-import { Header } from './components/Header/Header';
-import Landing from './components/Landing/Landing';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {NotFound} from "./components/NotFound";
+import {Header} from './components/Header/Header';
+import Landing from './pages/Landing';
 import currencyCodes from './Data/currencies';
-import { Exchange } from "./components/Exchange/Exchange";
-import {History} from "./components/History/History";
+import {Exchange} from "./pages/Exchange";
+import {History} from "./pages/History";
 
 const url = "http://api.nbp.pl/api/exchangerates/rates/c/";
 const date = new Date();
@@ -36,14 +36,27 @@ class App extends Component {
 				USD: 350,
 				EUR: 125
 			},
-			history: [{date: 'poprzednia data',
+			history: [{
+				date: 'poprzednia data',
 				time: 'poprzedni czas',
 				sellCurrency: 'PLN',
 				sellValue: 1254,
 				buyCurrency: 'GBP',
 				buyValue: '124',
-				rate: 0.154}]
+				rate: 0.154
+			}]
+		},
+		error: false,
+		moved: {
+			AIx: '120px',
+			AIy: '120px',
+			ULx: '120px',
+			ULy: '120px',
+			Rx: '120px',
+			Ry: '60px'
 		}
+
+
 	}
 
 	UserLogin = () => {
@@ -81,7 +94,7 @@ class App extends Component {
 
 		});
 
-		return { code, bid, spread }
+		return {code, bid, spread}
 	}
 
 	generateHistory(real, code) {
@@ -115,7 +128,7 @@ class App extends Component {
 		});
 		const bid = real.bid;
 		const spread = real.spread;
-		return { code, bid, spread }
+		return {code, bid, spread}
 	}
 
 	simulateChanges(real) { //Simulation of life rates changes
@@ -131,7 +144,6 @@ class App extends Component {
 		};
 
 
-
 		this.setState({
 			[real.code + '-day']: [...this.state[real.code + '-day'], newRate].slice(1),
 			actual: [...this.state.actual, newRate].slice(1)
@@ -142,11 +154,11 @@ class App extends Component {
 		if (!this.state.start) {
 			this.timerInterval = setInterval(() => {
 				this.setState(prev => {
-					return { timer: prev.timer - 1 }
+					return {timer: prev.timer - 1}
 				})
 				if (this.state.timer < 1) {
 
-					this.setState({ timer: 60 })
+					this.setState({timer: 60})
 				}
 			}, 1000);
 		}
@@ -163,10 +175,15 @@ class App extends Component {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
 				this.timer(); //start timer
-				this.setState({ start: true }); //start confirmed
+				this.setState({start: true}); //start confirmed
 				this.interval = setInterval(() => {
 					this.simulateChanges(real); //simulate life changes
 				}, 60000)
+			}).catch(error => {
+				console.log(error.code + ' ' + error.message);
+				this.setState({
+					error: true
+				})
 			})
 		})
 
@@ -197,12 +214,12 @@ class App extends Component {
 				}
 			}
 		}
-		if (!(goods.selected2 in newAccounts)){
+		if (!(goods.selected2 in newAccounts)) {
 			newAccounts[goods.selected2] = goods.valueInput2;
 		}
 		let date = new Date();
 
-		let newTransaction ={
+		let newTransaction = {
 			date: date.toLocaleDateString('pl-PL'),
 			time: date.toLocaleTimeString('pl-PL'),
 			sellCurrency: goods.selected1,
@@ -215,7 +232,7 @@ class App extends Component {
 
 		this.setState({
 			userInfo: {
-				Login: { ...this.state.userInfo.Login },
+				Login: {...this.state.userInfo.Login},
 				accounts: newAccounts,
 				history: [newTransaction, ...this.state.userInfo.history]
 			},
@@ -230,11 +247,17 @@ class App extends Component {
 		})
 	}
 
+	moved = moved => {
+		this.setState({
+			moved
+		})
+	}
+
 	render() {
 		return (
-			<HashRouter>
+			<BrowserRouter>
 				<MainDiv>
-					<Header />
+					<Header error={this.state.error}/>
 					<Switch>
 						<Route exact path='/' render={(props) => <Landing
 							{...props}
@@ -245,7 +268,10 @@ class App extends Component {
 							history={this.state.userInfo.history}
 							showConfirmationDialog={this.state.showConfirmationDialog}
 							closeConfirmationDialog={this.closeDialog}
-						/>} />
+							error={this.state.error}
+							handleMoved={this.moved}
+							moved={this.state.moved}
+						/>}/>
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}
 							userInfo={this.state.userInfo.Login}
@@ -254,16 +280,16 @@ class App extends Component {
 							timer={this.state.timer}
 							confirm={this.confirmHandler}
 						/>
-						} />
+						}/>
 						<Route exact path='/history' render={props => <History
 							{...props}
 							data={this.state}
 						/>
-						} />
-						<Route path='*' component={NotFound} />
+						}/>
+						<Route path='*' component={NotFound}/>
 					</Switch>
 				</MainDiv>
-			</HashRouter>
+			</BrowserRouter>
 		);
 	}
 }

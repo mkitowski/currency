@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@amcharts/amcharts4": "^4.3.5",
+    "@material-ui/core": "^3.9.3",
+    "material-design-icons": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",

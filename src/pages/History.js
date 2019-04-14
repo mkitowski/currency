@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ChartHistory} from "./ChartHistory";
-import {UserHistory} from "./UserHistory";
+import {ChartHistory} from "../components/History/ChartHistory";
+import {UserHistory} from "../components/History/UserHistory";
 
 const StyledDiv = styled.div`
   padding-top: 125px;
@@ -89,14 +89,14 @@ export class History extends React.Component {
 	render() {
 		return <StyledDiv>
 			{this.props.data.userInfo.Login.logged && <UserHistory history={this.props.data.userInfo.history}/>}
-			<ChartHistory
+			{!this.props.data.error && <ChartHistory
 				handleChangeCurrency={this.handleChangeCurrency}
 				currencySelected={this.state.currencySelected}
 				handleChangeTime={this.handleChangeTime}
 				timeSelected={this.state.timeSelected}
 				time={this.state.timeArray}
 				chartData={this.state.chartData}
-			/>
+			/>}
 		</StyledDiv>
 	}
 }

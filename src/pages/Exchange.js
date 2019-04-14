@@ -1,5 +1,5 @@
 import React from 'react';
-import {LoggedExchange} from "./LoggedExchange";
+import {LoggedExchange} from "../components/Exchange/LoggedExchange";
 
 export class Exchange extends React.Component {
 	render(){

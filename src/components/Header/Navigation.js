@@ -21,13 +21,15 @@ const StyledList = styled.ul`
 	}
 `;
 
-export default class Navigation extends React.Component {
-	render() {
-		return <StyledList>
-			<li><Link to='/'>Start</Link></li>
-			<li><Link to='/exchange'>Wymień</Link></li>
-			<li><Link to='/history'>Historia</Link></li>
-			<li><Link to={'/contact'}>Kontact</Link></li>
-		</StyledList>
-	}
-}
+
+const Navigation = ({error}) => {
+
+	return <StyledList>
+		<li><Link to='/'>Start</Link></li>
+		{!error && <li><Link to='/exchange'>Wymień</Link></li>}
+		<li><Link to='/history'>Historia</Link></li>
+		<li><Link to={'/contact'}>Kontact</Link></li>
+	</StyledList>
+
+};
+export default Navigation;

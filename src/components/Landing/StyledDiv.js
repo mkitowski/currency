@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
-  width: 300px;
-
-  height: 250px;
+  min-width: 300px;
+  min-height: 250px;
   position: absolute;
   bottom: ${props => props.bottom};
   top: ${props => props.top};
@@ -12,7 +11,6 @@ export const StyledDiv = styled.div`
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
   text-align: center;
   border-radius: 5px;
-
   .row {
     width: 100%;
     height: 30px;
