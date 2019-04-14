@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledDiv = styled.div`
+const StyledDiv = styled.div`
   min-width: 300px;
   min-height: 250px;
   position: absolute;
@@ -29,4 +29,25 @@ export const StyledDiv = styled.div`
       font-weight: 800;
     }
   }
+
+  ul {
+		list-style: none;
+		background: white;
+		padding: 0;
+		max-width: 80%;
+	 	li {
+	 		padding: 5px 15px;
+	 		border-bottom: solid 1px gray;
+	 		transition: background-color .3s linear, font-weight .3s linear;
+	 		display: flex;
+	 		.head{
+	 			font-weight: 600;
+	 		}
+	 		.col2{
+	 			min-width:150px;
+	 		}
+	 	}
+	}
 `;
+
+export default StyledDiv;

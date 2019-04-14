@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledDiv} from "./StyledDiv";
+import StyledDiv from "./StyledDiv";
 import styled from 'styled-components';
 import {UserPasswordInfo} from "./UserPasswordInfo";
 import {StyledButton} from "../Styled/StyledButton";

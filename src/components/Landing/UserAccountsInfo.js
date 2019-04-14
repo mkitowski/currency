@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledDiv } from "./StyledDiv";
+import StyledDiv from "./StyledDiv";
 import { StyledButton } from "../Styled/StyledButton";
 
 export class UserAccountsInfo extends React.Component {

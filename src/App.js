@@ -48,12 +48,12 @@ class App extends Component {
 		},
 		error: false,
 		moved: {
-			AIx: '120px',
-			AIy: '120px',
-			ULx: '120px',
-			ULy: '120px',
-			Rx: '120px',
-			Ry: '60px'
+			AIx: '70px',
+			AIy: '140px',
+			Rx: '420px',
+			Ry: '140px',
+			UHx:'70px',
+			UHy:'60%'
 		}
 
 
@@ -247,9 +247,9 @@ class App extends Component {
 		})
 	}
 
-	moved = moved => {
+	movedpositions = movedpos => {
 		this.setState({
-			moved
+			moved: movedpos
 		})
 	}
 
@@ -269,7 +269,7 @@ class App extends Component {
 							showConfirmationDialog={this.state.showConfirmationDialog}
 							closeConfirmationDialog={this.closeDialog}
 							error={this.state.error}
-							handleMoved={this.moved}
+							handleMoved={this.movedpositions}
 							moved={this.state.moved}
 						/>}/>
 						<Route exact path='/exchange' render={props => <Exchange

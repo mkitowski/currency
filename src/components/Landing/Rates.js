@@ -1,5 +1,5 @@
 import React from "react";
-import {StyledDiv} from "./StyledDiv";
+import StyledDiv from "./StyledDiv";
 import RowRates from './RowRates';
 import imgPath from '../../img/trev.gif';
 

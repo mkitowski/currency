@@ -6,6 +6,7 @@ import {UserLogin} from "../components/Landing/UserLogin";
 import {UserAccountsInfo} from "../components/Landing/UserAccountsInfo";
 import {TransactionConfirmed} from "../components/Landing/TransactionConfirmed";
 import MovedContainer from "../components/Landing/MovedContainer/MovedContainer"
+import UserHistoryLanding from "../components/Landing/UserHistory/UserHistory";
 
 
 const StyledLanding = styled.div`
@@ -22,12 +23,12 @@ const StyledLanding = styled.div`
 
 class Landing extends React.Component{
 	state = {
-		AIx:'120px',
-		AIy:'120px',
-		ULx:'120px',
-		ULy:'120px',
-		Rx:'120px',
-		Ry:'60px'
+		AIx:'120',
+		AIy:'120',
+		Rx:'120',
+		Ry:'60',
+		UHx:'250',
+		UHy:'60%'
 	}
 
 	AImoved = (x,y) =>{
@@ -36,23 +37,12 @@ class Landing extends React.Component{
 			AIy:y
 		})
 		this.props.handleMoved({
-			...this.props,
+			...this.state,
 			AIx:x,
 			AIy:y
 		})
 	};
 
-	ULmoved = (x,y) =>{
-		this.setState({
-			ULx:x,
-			ULy:y
-		})
-		this.props.handleMoved({
-			...this.props,
-			ULx:x,
-			ULy:y
-		})
-	};
 
 	Rmoved = (x,y) =>{
 		this.setState({
@@ -60,9 +50,21 @@ class Landing extends React.Component{
 			Ry:y
 		})
 		this.props.handleMoved({
-			...this.props,
+			...this.state,
 			Rx:x,
 			Ry:y
+		})
+	}
+
+	UHmoved = (x,y) =>{
+		this.setState({
+			UHx:x,
+			UHy:y
+		})
+		this.props.handleMoved({
+			...this.state,
+			UHx:x,
+			UHy:y
 		})
 	}
 
@@ -78,7 +80,7 @@ class Landing extends React.Component{
 						/>
 					</MovedContainer>
 				) : (
-					<MovedContainer action={this.ULmoved} x={this.props.moved.ULx} y={this.props.moved.ULy} >
+					<MovedContainer action={this.AImoved} x={this.props.moved.AIx} y={this.props.moved.AIy} >
 						<UserLogin
 							userInfo={this.props.userInfo}
 							userLogin={this.props.userLogin}
@@ -89,6 +91,11 @@ class Landing extends React.Component{
 					<Rates currentRates={this.props.currentRates} error={this.props.error}/>
 				</MovedContainer>
 				{this.props.showConfirmationDialog && <TransactionConfirmed history={this.props.history} close={this.props.closeConfirmationDialog}/>}
+				{this.props.userInfo.logged && <MovedContainer
+					action={this.UHmoved}
+					x={this.props.moved.UHx}
+					y={this.props.moved.UHy}>
+					<UserHistoryLanding history={this.props.history}/></MovedContainer>}
 			</StyledLanding>
 		);
 	}
