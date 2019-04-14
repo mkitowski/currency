@@ -8,7 +8,7 @@ import currencyCodes from './Data/currencies';
 import {Exchange} from "./pages/Exchange";
 import {History} from "./pages/History";
 
-const url = "http://api.nbp.pl/api/exchangerates/rates/c/";
+const url = "https://api.nbp.pl/api/exchangerates/rates/c/";
 const date = new Date();
 const hours = date.getHours();
 const minutes = date.getMinutes();
