@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import bck from "../../img/background-land.jpg";
 import { CurrencyInput } from "./CurrencyInput";
 import { StyledButton } from "../Styled/StyledButton";
 import { AccountsList } from "./AccountsList";
@@ -10,7 +11,9 @@ import { Redirect } from 'react-router'
 
 
 const StyledExchange = styled.div`
-  background: #efefef;
+  background: url(${bck}), no-repeat, center;
+  background-size: cover;
+  background-attachment: fixed;
   height: 100vh;
   width: 100vw;
   padding-top: 80px;

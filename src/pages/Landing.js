@@ -15,6 +15,7 @@ const StyledLanding = styled.div`
   left: 0;
   background: url(${bck}), no-repeat, center;
   background-size: cover;
+  background-attachment: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 0;
@@ -22,9 +23,6 @@ const StyledLanding = styled.div`
 
 
 class Landing extends React.Component {
-
-
-
 
 	render() {
 		return (
