@@ -7,12 +7,22 @@ class MovedContainer extends React.Component {
 		x: this.props.x,
 		y: this.props.y
 	}
-
+	_isMounted = false
 	action = (x, y) => {
-		this.setState({
-			x, y
-		});
-		this.props.action(x,y);
+		if (this._isMounted) {
+			this.setState({
+				x, y
+			});
+			this.props.action(x, y);
+		}
+	}
+
+	componentDidMount(){
+		this._isMounted=true;
+	}
+
+	componentWillUnmount(){
+		this._isMounted=false;
 	}
 
 	render() {
@@ -22,7 +32,7 @@ class MovedContainer extends React.Component {
 			left: this.state.x,
 			top: this.state.y,
 		}}>
-			<MovedContainerHeader x={this.state.x} y={this.state.y} action={this.action}/>
+			<MovedContainerHeader x={this.state.x} y={this.state.y} action={this.action} />
 			{this.props.children}
 		</div>
 	}

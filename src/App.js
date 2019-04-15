@@ -1,13 +1,24 @@
+//import main packages
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+//import firebase
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import firebaseConfig from './Firebase/firebaseConfig';
+//import pages
 import {NotFound} from "./components/NotFound";
-import {Header} from './components/Header/Header';
+import { Exchange } from "./pages/Exchange";
 import Landing from './pages/Landing';
-import currencyCodes from './Data/currencies';
-import {Exchange} from "./pages/Exchange";
+//import modules
+import { Header } from './components/Header/Header';
 import {History} from "./pages/History";
+//import data
+import currencyCodes from './Data/currencies';
 
+
+//set API addres and current date
 const url = "https://api.nbp.pl/api/exchangerates/rates/c/";
 const date = new Date();
 const hours = date.getHours();
@@ -29,7 +40,7 @@ class App extends Component {
 			Login: {
 				name: 'Cinkciarz',
 				password: 'tajnehaslo',
-				logged: true
+				logged: false
 			},
 			accounts: {
 				PLN: 1250,
@@ -191,12 +202,14 @@ class App extends Component {
 
 	componentDidMount() {
 		this.getData();
+		firebase.initializeApp(firebaseConfig);
 
 	}
 
 	componentWillUnmount() {
 		clearInterval(this.interval); //clear live updates
 		clearInterval(this.timerInterval); //clear timer
+
 	}
 
 	confirmHandler = goods => {
@@ -248,8 +261,41 @@ class App extends Component {
 	}
 
 	movedpositions = movedpos => {
+		if(typeof movedpos === 'object'){
+			this.setState({
+				moved: movedpos
+			})
+		}
+
+	}
+	AImoved = (x, y) => {
 		this.setState({
-			moved: movedpos
+			moved:{
+				...this.state.moved,
+				AIx: x,
+				AIy: y
+			}
+		})
+	};
+
+
+	Rmoved = (x, y) => {
+		this.setState({
+			moved:{
+				...this.state.moved,
+				Rx: x,
+				Ry: y
+			}
+		})
+	}
+
+	UHmoved = (x, y) => {
+		this.setState({
+			moved:{
+				...this.state.moved,
+				UHx: x,
+				UHy: y
+			}
 		})
 	}
 
@@ -271,6 +317,9 @@ class App extends Component {
 							error={this.state.error}
 							handleMoved={this.movedpositions}
 							moved={this.state.moved}
+							UHmoved={this.UHmoved}
+							Rmoved={this.Rmoved}
+							AImoved={this.AImoved}
 						/>}/>
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}

@@ -1,6 +1,8 @@
 import React from 'react';
 import StyledDiv from "./StyledDiv";
 import styled from 'styled-components';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 import {UserPasswordInfo} from "./UserPasswordInfo";
 import {StyledButton} from "../Styled/StyledButton";
 import {StyledInputFull} from "../Styled/StyledInputFull";
@@ -21,7 +23,7 @@ const StyledLabel = styled.label`
 export class UserLogin extends React.Component {
 	state = {
 		InfoVisible: false,
-		name: '',
+		email: '',
 		password: '',
 		error: false
 	}
@@ -42,17 +44,27 @@ export class UserLogin extends React.Component {
 	}
 
 	validation = () => {
-		const name = this.state.name;
-		const password = this.state.password
-		if(name === this.props.userInfo.name && password === this.props.userInfo.password){
-			console.log('Kurde good password you have');
-			this.props.userLogin();
-		} else {
-			console.log('pudlo');
+		const email = this.state.email;
+		const password = this.state.password;
+
+		firebase.auth().signInWithEmailAndPassword(email, password)
+		.catch(error => {
+			console.log('bed');
 			this.setState({
 				error: true
 			})
-		}
+		}).then(() => {
+			console.log('good')
+			this.props.userLogin()
+		})
+		// if(name === this.props.userInfo.name && password === this.props.userInfo.password){
+		// 	this.props.userLogin();
+		// } else {
+		// 	console.log('pudlo');
+		// 	this.setState({
+		// 		error: true
+		// 	})
+		// }
 	}
 
 	render() {
@@ -60,10 +72,10 @@ export class UserLogin extends React.Component {
       <StyledDiv top={"15%"}>
         <h3>Zaloguj się</h3>
         <StyledInputFull
-          type={"text"}
-          placeholder={"Nazwa użytkownika"}
-          name={"name"}
-          value={this.state.name}
+          type={"email"}
+          placeholder={"Twój e-mail"}
+          name={"email"}
+          value={this.state.email}
           onChange={this.handleInputChange}
         />
         <StyledInputFull

@@ -14,45 +14,61 @@ const StyledHeader = styled.div`
 
 class MovedContainerHeader extends React.Component {
 
-	state={
+	state = {
 		x: this.props.x,
 		y: this.props.y,
 	}
+	componentDidMount() {
+		this._isMounted = true;
+	}
 
-	mouseDown = (e) =>{
+	componentWillUnmount() {
+		this._isMounted = false;
+	}
+
+	mouseDown = (e) => {
 
 		const x = e.pageX;
 		const y = e.pageY;
-
-		this.setState({x,y});
+		if (this._isMounted) {
+			this.setState({ x, y });
+		}
 		e.preventDefault();
-		document.addEventListener('mousemove',this.mouseMove);
-		document.addEventListener('mouseup',this.mouseUp)
+		document.addEventListener('mousemove', this.mouseMove);
+		document.addEventListener('mouseup', this.mouseUp)
 	}
 
-	mouseMove = e =>{
-		const x = Math.trunc(e.pageX/10)*10;
-		const y = Math.trunc(e.pageY/10)*10;
-		this.setState({x,y});
-		this.props.action(x,y);
+	mouseMove = e => {
+		const x = Math.trunc(e.pageX / 10) * 10;
+		const y = Math.trunc(e.pageY / 10) * 10;
+		if (this._isMounted) {
+			this.setState({ x, y });
+		}
+		this.props.action(x, y);
+		e.preventDefault();
 	}
 
-	mouseUp = e =>{
-		const x = Math.trunc(e.pageX/10)*10;
-		const y = Math.trunc(e.pageY/10)*10;
-		this.setState({x,y});
+	mouseUp = e => {
+		const x = Math.trunc(e.pageX / 10) * 10;
+		const y = Math.trunc(e.pageY / 10) * 10;
+		if (this._isMounted) {
+			this.setState({ x, y });
+		}
 		// this.props.action(x,y);
-		document.removeEventListener('mousemove',this.mouseMove);
-		document.removeEventListener('mouseup',this.moueseUp);
+		document.removeEventListener('mousemove', this.mouseMove);
+		document.removeEventListener('mouseup', this.moueseUp);
+		e.preventDefault();
 	}
+
+
 
 	render() {
-		return(
+		return (
 			<div onMouseDown={this.mouseDown} style={{
-				position:"absolute",
-				x:this.state.x,
-				y:this.state.y,
-				zIndex:7
+				position: "absolute",
+				x: this.state.x,
+				y: this.state.y,
+				zIndex: 7
 			}}>
 				<StyledHeader>
 					<Icon>
