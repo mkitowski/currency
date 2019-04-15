@@ -30,7 +30,6 @@ const MainDiv = styled.div`
 `;
 
 class App extends Component {
-
 	state = {
 		actual: [],
 		timer: 60,
@@ -39,7 +38,7 @@ class App extends Component {
 		userInfo: {
 			Login: {
 				name: 'Cinkciarz',
-				password: 'tajnehaslo',
+				email: 'tajnehaslo',
 				logged: false
 			},
 			accounts: {
@@ -66,21 +65,44 @@ class App extends Component {
 			UHx:'70px',
 			UHy:'60%'
 		}
-
-
 	}
 
 	UserLogin = () => {
-		let logged;
-		this.state.userInfo.Login.logged ? logged = false : logged = true;
-		this.setState({
-			userInfo: {
-				...this.state.userInfo,
-				Login: {
-					...this.state.userInfo.Login, logged
-				}
+		if(this.state.userInfo.Login.logged){
+			firebase.auth().signOut().then(()=>{
+				console.log('SignOut'); //future popup info about succesfull signout
+			}).catch(error=>{
+				console.log(error.message); //future popup with error message from signout
+			})
+		}
+		firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				// User is signed in - user data set to state
+				let uname = user.name || 'Cinkciarz'
+				this.setState({
+					userInfo: {
+						...this.state.userInfo,
+						Login: {
+							name: uname,
+							email: user.email,
+							logged: true
+						}
+					}
+				})
+				//future popup about succesful signin
+
+			} else {
+				this.setState({
+					userInfo: {
+						...this.state.userInfo,
+						Login: {
+							logged: false
+						}
+					}
+				})
 			}
-		})
+		});
+
 	}
 
 	setBase(NBPinput, code) {
@@ -203,13 +225,11 @@ class App extends Component {
 	componentDidMount() {
 		this.getData();
 		firebase.initializeApp(firebaseConfig);
-
 	}
 
 	componentWillUnmount() {
 		clearInterval(this.interval); //clear live updates
 		clearInterval(this.timerInterval); //clear timer
-
 	}
 
 	confirmHandler = goods => {
@@ -268,6 +288,7 @@ class App extends Component {
 		}
 
 	}
+
 	AImoved = (x, y) => {
 		this.setState({
 			moved:{
@@ -277,7 +298,6 @@ class App extends Component {
 			}
 		})
 	};
-
 
 	Rmoved = (x, y) => {
 		this.setState({

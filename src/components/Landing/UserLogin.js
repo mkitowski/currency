@@ -6,6 +6,7 @@ import 'firebase/auth';
 import {UserPasswordInfo} from "./UserPasswordInfo";
 import {StyledButton} from "../Styled/StyledButton";
 import {StyledInputFull} from "../Styled/StyledInputFull";
+import CircleProgress from '../Progres/CircleProgress';
 
 
 const StyledPe = styled.p`
@@ -20,12 +21,15 @@ const StyledLabel = styled.label`
 	color: red;
 `;
 
+
+
 export class UserLogin extends React.Component {
 	state = {
 		InfoVisible: false,
 		email: '',
 		password: '',
-		error: false
+		error: false,
+		loading: false,
 	}
 
 	handlerPasswordInfo =() => {
@@ -46,15 +50,16 @@ export class UserLogin extends React.Component {
 	validation = () => {
 		const email = this.state.email;
 		const password = this.state.password;
-
+		this.setState({loading:true});
 		firebase.auth().signInWithEmailAndPassword(email, password)
 		.catch(error => {
 			console.log('bed');
 			this.setState({
-				error: true
+				error: true,
+				loading: false
 			})
 		}).then(() => {
-			console.log('good')
+			this.setState({ loading: false });
 			this.props.userLogin()
 		})
 		// if(name === this.props.userInfo.name && password === this.props.userInfo.password){
@@ -70,7 +75,7 @@ export class UserLogin extends React.Component {
 	render() {
 		return (
       <StyledDiv top={"15%"}>
-        <h3>Zaloguj się</h3>
+        {this.state.loading ? <h3><CircleProgress/> Czekaj...</h3> : <h3>Zaloguj się</h3>}
         <StyledInputFull
           type={"email"}
           placeholder={"Twój e-mail"}

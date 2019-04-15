@@ -4,7 +4,7 @@
 Online currencies exchange service
 
 
-## Technologies: 
+## Technologies:
 - React
 - ES6
 - API
@@ -12,10 +12,11 @@ Online currencies exchange service
 - styled-component
 - recharts
 - material-designs
+- google firebase
 
 ## Main functionality:
 
-- User login
+- User login via Firebise
 - Simulation of live updated currency rates
 - Online currency converse
 - Display user exchange history
@@ -26,6 +27,8 @@ Online currencies exchange service
 ## To do:
 
 - Contact form
+- Connection to firestore data base
+- Registration of new user
 - Live update timer on specific components
 - mobile version
 
@@ -38,12 +41,12 @@ Online currencies exchange service
 
 
 ### Run app on local machine
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
-   
-Clone repository from: 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Clone repository from:
 
     https://github.com/mkitowski/currency.git
-   
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
