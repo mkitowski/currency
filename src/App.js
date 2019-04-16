@@ -38,7 +38,7 @@ class App extends Component {
 		userInfo: {
 			Login: {
 				name: 'Cinkciarz',
-				email: 'tajnehaslo',
+				email: false,
 				logged: false
 			},
 			accounts: {
@@ -71,14 +71,13 @@ class App extends Component {
 		if (this.state.userInfo.Login.logged) {
 			let move = this.state.moved //update db with curent positions of elements on landing page
 			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-					moved: { ...move }
-			}).then(() =>{
-
-			firebase.auth().signOut().then(() => {
-				console.log('SignOut'); //future popup info about succesfull signout
-			}).catch(error => {
-				console.log(error.message); //future popup with error message from signout
-			})
+				moved: { ...move }
+			}).then(() => {
+				firebase.auth().signOut().then(() => {
+					console.log('SignOut'); //future popup info about succesfull signout
+				}).catch(error => {
+					console.log(error.message); //future popup with error message from signout
+				})
 
 			})
 
@@ -238,19 +237,39 @@ class App extends Component {
 		this.setState({
 			db,
 		})
+		this.DBinterval = setInterval(() => {
+			if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
+				this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
+					moved: this.state.moved
+				})
+			}
+		}, 30000);
+		// window.addEventListener('beforeunload', event => {
+		// 	event.preventDefault();
+		// 	let move = this.state.moved //update db with curent positions of elements on landing page
+		// 	if (this.state.userInfo.Login.logged) {
+
+		// 		this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
+		// 			moved: { ...move }
+		// 		}).then(() => {
+
+		// 		})
+		// 		// event.returnValue = 'Zamykamy?';
+
+		// 	}
+		// 	// if(this.state.userInfo.Login.logged){ //only do that if user is logged
+		// 	// 	event.returnValue = 'Zamykamy?';
+		// 	// }
+		// }, false);
 
 	}
+
 
 	componentWillUnmount() {
 
 		clearInterval(this.interval); //clear live updates
 		clearInterval(this.timerInterval); //clear timer
-		let move = this.state.moved //update db with curent positions of elements on landing page
-		if (this.state.userInfo.Login.logged) {
-			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-				moved: { ...move }
-			})
-		}
+
 	}
 
 	confirmHandler = goods => {
@@ -301,14 +320,6 @@ class App extends Component {
 		})
 	}
 
-	movedpositions = movedpos => {
-		if (typeof movedpos === 'object') {
-			this.setState({
-				moved: movedpos
-			})
-		}
-
-	}
 
 	AImoved = (x, y) => {
 		this.setState({
@@ -318,6 +329,15 @@ class App extends Component {
 				AIy: y
 			}
 		})
+		if (this.state.userInfo.Login.logged) {
+			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
+				moved: {
+					...this.state.moved,
+					AIx: x,
+					AIy: y
+				}
+			})
+		}
 	};
 
 	Rmoved = (x, y) => {
@@ -328,6 +348,15 @@ class App extends Component {
 				Ry: y
 			}
 		})
+		if (this.state.userInfo.Login.logged) {
+			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
+				moved: {
+					...this.state.moved,
+					Rx: x,
+					Ry: y
+				}
+			})
+		}
 	}
 
 	UHmoved = (x, y) => {
@@ -338,15 +367,19 @@ class App extends Component {
 				UHy: y
 			}
 		})
+
 	}
 
 	getDataFromDb = (email) => {
-		this.state.db.doc(`${email}/dataBase`).get().then(e => {
-			this.setState({
-				moved: {...e.data().moved}
-			});
-			console.log(e.data().moved)
-		})
+		if(email!==''){
+			this.state.db.doc(`${email}/dataBase`).get().then(e => {
+				this.setState({
+					moved: { ...e.data().moved }
+				});
+				console.log(e.data().moved)
+			})
+		}
+
 	}
 
 	render() {
@@ -365,7 +398,7 @@ class App extends Component {
 							showConfirmationDialog={this.state.showConfirmationDialog}
 							closeConfirmationDialog={this.closeDialog}
 							error={this.state.error}
-							handleMoved={this.movedpositions}
+							// handleMoved={this.movedpositions}
 							moved={this.state.moved}
 							UHmoved={this.UHmoved}
 							Rmoved={this.Rmoved}

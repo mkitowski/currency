@@ -70,7 +70,7 @@ export class UserLogin extends React.Component {
 	render() {
 		return (
       <StyledDiv top={"15%"}>
-        {this.state.loading ? <h3><CircleProgress/> Czekaj...</h3> : <h3>Zaloguj się</h3>}
+        <h3>Zaloguj się</h3>
         <StyledInputFull
           type={"email"}
           placeholder={"Twój e-mail"}
@@ -86,7 +86,7 @@ export class UserLogin extends React.Component {
           onChange={this.handleInputChange}
         />
 		{this.state.error && <StyledLabel>Chyba pomyliłeś hasło lub login</StyledLabel>}
-        <StyledButton onClick={this.validation}>Zaloguj</StyledButton>
+				{this.state.loading ? <StyledButton><CircleProgress /> Czekaj...</StyledButton> : <StyledButton onClick={this.validation}>Zaloguj</StyledButton>}
         <StyledPe onClick={this.handlerPasswordInfo}>
           Nie pamiętam hasłą :(
         </StyledPe>
