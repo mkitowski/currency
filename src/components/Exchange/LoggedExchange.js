@@ -47,7 +47,7 @@ export class LoggedExchange extends React.Component {
 	state = {
 		valueInput1: 0,
 		valueInput2: 0,
-		selected1: Object.keys(this.props.accountsInfo)[0],
+		selected1: '',
 		selected2: currencies[0],
 		rate: Math.floor(1 / this.props.currentRates[0].bid * 1000) / 1000,
 		error: false,
@@ -70,9 +70,16 @@ export class LoggedExchange extends React.Component {
 
 	handleChangeInput1 = event => {
 		let rate = this.state.rate;
-
-		if (event.target.value > this.props.accountsInfo[this.state.selected1]) {
+		console.log(event.target.value);
+		console.log(this.props.accountsInfo[this.state.selected1]);
+		if (event.target.value <= +this.props.accountsInfo[this.state.selected1]) {
 			this.setState({
+				valueInput1: event.target.value,
+				valueInput2: Math.round(event.target.value * rate * 100) / 100,
+				error: false
+			});
+		} else {
+				this.setState({
 				valueInput1: this.props.accountsInfo[this.state.selected1],
 				valueInput2:
 					Math.round(
@@ -80,12 +87,6 @@ export class LoggedExchange extends React.Component {
 					) / 100,
 				error:
 					"Nie masz wystarczająco środków, to jest wszystko co możesz wymienić"
-			});
-		} else {
-			this.setState({
-				valueInput1: event.target.value,
-				valueInput2: Math.round(event.target.value * rate * 100) / 100,
-				error: false
 			});
 		}
 	};
@@ -230,31 +231,50 @@ export class LoggedExchange extends React.Component {
 	}
 
 	handleDialog = () => {
-		this.setState({
-			dialogVisible: !this.state.dialogVisible
-		});
+		if (this.state.valueInput1 !== 0) {
+			this.setState({
+				dialogVisible: !this.state.dialogVisible
+			});
+		}
 	}
 
 	confirm = () => {
-		this.handleDialog();
-		this.props.confirm(this.state);
-		this.setState({
-			finished: true,
-		});
+			this.handleDialog();
+			this.props.confirm(this.state);
+			this.setState({
+				finished: true,
+			});
 
+	}
+	componentDidMount() {
+		if(Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
+			this.arrayInput1 = ['PLN',...Object.keys(this.props.accountsInfo).filter(e=> e!=='PLN')];
+		}else{
+			this.arrayInput1 = Object.keys(this.props.accountsInfo);
+		}
+		console.log(this.arrayInput1);
+
+		this.setState({
+			selected1:this.arrayInput1[0],
+			rate: this.updateRate(this.arrayInput1[0],currencies[0])
+		})
 	}
 
 	render() {
-
+		if(Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
+			this.arrayInput1 = ['PLN',...Object.keys(this.props.accountsInfo).filter(e=> e!=='PLN')];
+		}else{
+			this.arrayInput1 = Object.keys(this.props.accountsInfo);
+		}
 		return (
 			<StyledExchange>
 				<InternaConatiner>
-					{this.state.finished && <Redirect to='/#/'/>}
+					{this.state.finished && <Redirect to='/'/>}
 					<h2>Twoje transakcje</h2>
 					<p>Wymień:</p>
 					<ErrorMessage message={this.state.error}/>
 					<CurrencyInput
-						currenciesArray={Object.keys(this.props.accountsInfo)}
+						currenciesArray={this.arrayInput1}
 						handleChange={this.handleChangeInput1}
 						value={this.state.valueInput1}
 						handleSelect={this.handleSelected1}
@@ -277,8 +297,7 @@ export class LoggedExchange extends React.Component {
           </span>
 					</p>
 					<AccountsList accountsInfo={this.props.accountsInfo}/>
-					<ConfirmDialog
-						visible={this.state.dialogVisible}
+					{this.state.dialogVisible && <ConfirmDialog
 						close={this.handleDialog}
 						valueInput1={this.state.valueInput1}
 						valueInput2={this.state.valueInput2}
@@ -287,7 +306,7 @@ export class LoggedExchange extends React.Component {
 						rate={this.state.rate}
 						timer={this.props.timer}
 						confirm={this.confirm}
-					/>
+					/>}
 				</InternaConatiner>
 			</StyledExchange>
 		);

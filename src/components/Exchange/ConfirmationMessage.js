@@ -5,7 +5,7 @@ import React from 'react';
 export class ConfirmationMessage extends React.Component {
 
 	render() {
-		return !(this.props.confirmDisabled) && <div className={'confirmed'}>
+		return <div className={'confirmed'}>
 			<h2>Zatwierdź transakcje</h2>
 			<p>Transakcja wymiany:</p>
 			<h4>{this.props.valueInput1} {this.props.selected1}</h4>

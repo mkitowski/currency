@@ -39,8 +39,7 @@ text-shadow:0px 1px 0px #ffffff;
 }
 
 :disabled {
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+	
 	background-color:#ededed;
 	color: #000;
 }
