@@ -22,12 +22,12 @@ const StyledNav = styled.nav`
 	margin: 15px 15px 15px 0;
 `;
 
-export const Header = ({error}) => {
+export const Header = ({error,userLogged}) => {
 	return (
 		<HeaderStyled>
 			<Logo/>
 			<StyledNav>
-				<Navigation error={error}/>
+				<Navigation error={error} userLogged={userLogged}/>
 			</StyledNav>
 		</HeaderStyled>
 	);

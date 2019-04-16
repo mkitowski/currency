@@ -22,11 +22,11 @@ const StyledList = styled.ul`
 `;
 
 
-const Navigation = ({error}) => {
+const Navigation = ({error, userLogged}) => {
 
 	return <StyledList>
 		<li><Link to='/'>Start</Link></li>
-		{!error && <li><Link to='/exchange'>Wymień</Link></li>}
+		{!error &&  userLogged && <li><Link to='/exchange'>Wymień</Link></li>}
 		<li><Link to='/history'>Historia</Link></li>
 		<li><Link to={'/contact'}>Kontact</Link></li>
 	</StyledList>

@@ -60,10 +60,10 @@ class App extends Component {
 		moved: {
 			AIx: '70px',
 			AIy: '140px',
-			Rx: '420px',
+			Rx: '380px',
 			Ry: '140px',
 			UHx:'70px',
-			UHy:'60%'
+			UHy:'400px'
 		}
 	}
 
@@ -323,7 +323,7 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<MainDiv>
-					<Header error={this.state.error}/>
+					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged}/>
 					<Switch>
 						<Route exact path='/' render={(props) => <Landing
 							{...props}
