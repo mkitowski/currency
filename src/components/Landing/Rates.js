@@ -1,5 +1,5 @@
 import React from "react";
-import StyledDiv from "./StyledDiv";
+import StyledContainer from "../Styled/StyledContainer";
 import RowRates from './RowRates';
 import imgPath from '../../img/trev.gif';
 
@@ -8,7 +8,7 @@ const Rates = ({
 							 }) => {
 
 	return (
-		<StyledDiv>
+		<StyledContainer>
 			{!error ? <div><h3>Kursy walut:</h3>
 				<div className={"row"}>
 					<div className={"colHead"}></div>
@@ -26,7 +26,7 @@ const Rates = ({
 			</div>
 
 			}
-		</StyledDiv>
+		</StyledContainer>
 	);
 
 }

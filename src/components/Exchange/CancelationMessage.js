@@ -10,7 +10,7 @@ export class CancelationMessage extends React.Component {
     }
     render() {
 
-        return (this.props.confirmDisabled) && <div>
+        return (this.props.confirmDisabled) && <div className={'confirmed'}>
             <h2>Zatwierdzenie transakcji - anulowanie</h2>
             <p>Transakcja wymiany:</p>
             <h4>{this.state.vi1} {this.state.s1}</h4>

@@ -1,14 +1,15 @@
 import React from 'react';
-import StyledDiv from '../StyledDiv';
+import StyledContainer from '../../Styled/StyledContainer';
 import {UserHistoryPosition} from "../../History/UserHistoryPosition";
 
 const UserHistoryLanding = ({history}) => {
-
-	return (<StyledDiv>
-			<ul className={'history'}>
-				{history.length === 0 ? <li>Brak historii na koncie</li> : <UserHistoryPosition history={history}/>}
+	let hist = history || [];
+	return (<StyledContainer>
+			<h3>Ostanie transakcje</h3>
+			<ul className={'hist'}>
+				{hist.length === 0 ? <li>Brak historii na koncie</li> : <UserHistoryPosition history={hist}/>}
 			</ul>
-		</StyledDiv>
+		</StyledContainer>
 	);
 }
 

@@ -14,7 +14,7 @@ const HeaderStyled = styled.header`
   align-items: center;
 	background-color: rgba(250,250,250,.5);
 	@media(min-width: 720px){
-	  justify-content: space-between;
+	  justify-content: space-around;
 	}
 `;
 

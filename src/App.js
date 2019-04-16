@@ -1,19 +1,19 @@
 //import main packages
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 //import firebase
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import firebaseConfig from './Firebase/firebaseConfig';
 //import pages
-import { NotFound } from "./components/NotFound";
-import { Exchange } from "./pages/Exchange";
+import {NotFound} from "./components/NotFound";
+import {Exchange} from "./pages/Exchange";
 import Landing from './pages/Landing';
 //import modules
-import { Header } from './components/Header/Header';
-import { History } from "./pages/History";
+import {Header} from './components/Header/Header';
+import {History} from "./pages/History";
 //import data
 import currencyCodes from './Data/currencies';
 
@@ -46,15 +46,7 @@ class App extends Component {
 				USD: 350,
 				EUR: 125
 			},
-			history: [{
-				date: 'poprzednia data',
-				time: 'poprzedni czas',
-				sellCurrency: 'PLN',
-				sellValue: 1254,
-				buyCurrency: 'GBP',
-				buyValue: '124',
-				rate: 0.154
-			}]
+			history: []
 		},
 		error: false,
 		moved: {
@@ -70,11 +62,11 @@ class App extends Component {
 	UserLogin = () => {
 		if (this.state.userInfo.Login.logged) {
 			let move = this.state.moved //update db with curent positions of elements on landing page
-			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-				moved: { ...move }
+			this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
+				...move
 			}).then(() => {
 				firebase.auth().signOut().then(() => {
-					console.log('SignOut'); //future popup info about succesfull signout
+					clearInterval(this.DBinterval);
 				}).catch(error => {
 					console.log(error.message); //future popup with error message from signout
 				})
@@ -82,12 +74,12 @@ class App extends Component {
 			})
 
 		}
-		let email;
+		let email; // AUTHORISATION
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
 				// User is signed in - user data set to state
-				let name = user.displayName || 'Cinkciarz'
-				email = user.email
+				let name = user.displayName || 'Cinkciarz';
+				email = user.email;
 				this.setState({
 					userInfo: {
 						...this.state.userInfo,
@@ -97,9 +89,44 @@ class App extends Component {
 							logged: true
 						}
 					}
-				})
-				//future popup about succesful signin
+				});
+				//   ---->>DATABASE<<---
+				//future popup about successful signin
+				this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).get().then(el => {
+					this.setState({
+						userInfo: {
+							Login: {...this.state.userInfo.Login},
+							accounts: el.data().accounts,
+							history: [...this.state.userInfo.history]
+						}
+					})
+				});
+				this.state.db.doc(`${this.state.userInfo.Login.email}/history`).get().then(el => {
+					console.log(el.data().history[0]);
+					this.setState({
+						userInfo: {
+							Login: {...this.state.userInfo.Login},
+							accounts: {...this.state.userInfo.accounts},
+							history: el.data().history
+						}
+					})
+				});
 
+				//set interval for DB sync
+				this.DBinterval = setInterval(() => {
+					if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
+						this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
+							...this.state.moved,
+						})
+						// this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).set({
+						// 	accounts: this.state.userInfo.accounts
+						// })
+						// this.state.db.doc(`${this.state.userInfo.Login.email}/history`).set({
+						// 	history: this.state.userInfo.history
+						// })
+					}
+				}, 30000);
+				//
 			} else {
 				this.setState({
 					userInfo: {
@@ -111,7 +138,7 @@ class App extends Component {
 				})
 			}
 		});
-	}
+	};
 
 	setBase(NBPinput, code) {
 		const bid = NBPinput.rates[0].bid;
@@ -135,7 +162,7 @@ class App extends Component {
 
 		});
 
-		return { code, bid, spread }
+		return {code, bid, spread}
 	}
 
 	generateHistory(real, code) {
@@ -169,8 +196,8 @@ class App extends Component {
 		});
 		const bid = real.bid;
 		const spread = real.spread;
-		return { code, bid, spread }
-	}
+		return {code, bid, spread}
+	};
 
 	simulateChanges(real) { //Simulation of life rates changes
 		const date = new Date();
@@ -195,11 +222,11 @@ class App extends Component {
 		if (!this.state.start) {
 			this.timerInterval = setInterval(() => {
 				this.setState(prev => {
-					return { timer: prev.timer - 1 }
+					return {timer: prev.timer - 1}
 				})
 				if (this.state.timer < 1) {
 
-					this.setState({ timer: 60 })
+					this.setState({timer: 60})
 				}
 			}, 1000);
 		}
@@ -216,7 +243,7 @@ class App extends Component {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
 				this.timer(); //start timer
-				this.setState({ start: true }); //start confirmed
+				this.setState({start: true}); //start confirmed
 				this.interval = setInterval(() => {
 					this.simulateChanges(real); //simulate life changes
 				}, 60000)
@@ -237,42 +264,15 @@ class App extends Component {
 		this.setState({
 			db,
 		})
-		this.DBinterval = setInterval(() => {
-			if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
-				this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-					moved: this.state.moved
-				})
-			}
-		}, 30000);
-		// window.addEventListener('beforeunload', event => {
-		// 	event.preventDefault();
-		// 	let move = this.state.moved //update db with curent positions of elements on landing page
-		// 	if (this.state.userInfo.Login.logged) {
-
-		// 		this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-		// 			moved: { ...move }
-		// 		}).then(() => {
-
-		// 		})
-		// 		// event.returnValue = 'Zamykamy?';
-
-		// 	}
-		// 	// if(this.state.userInfo.Login.logged){ //only do that if user is logged
-		// 	// 	event.returnValue = 'Zamykamy?';
-		// 	// }
-		// }, false);
-
 	}
-
 
 	componentWillUnmount() {
-
 		clearInterval(this.interval); //clear live updates
 		clearInterval(this.timerInterval); //clear timer
-
+		clearInterval(this.DBinterval); // clear DB sync
 	}
 
-	confirmHandler = goods => {
+	confirmHandler = goods => { //after confirmation of transaction
 		let acc = this.state.userInfo.accounts;
 		let newAccounts = JSON.parse(JSON.stringify(acc));
 		for (let key in newAccounts) { //set new accounts state
@@ -302,26 +302,45 @@ class App extends Component {
 			rate: goods.rate
 		};
 
-
 		this.setState({
 			userInfo: {
-				Login: { ...this.state.userInfo.Login },
+				Login: {...this.state.userInfo.Login},
 				accounts: newAccounts,
 				history: [newTransaction, ...this.state.userInfo.history]
 			},
 			showConfirmationDialog: true
 		});
 
-	}
+		//  ---> DATABASE <---
+		// set actual states to DB
+		if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
+
+			this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
+				...this.state.moved,
+			});
+			this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).set({
+				accounts: newAccounts
+			});
+			this.state.db.doc(`${this.state.userInfo.Login.email}/history`).set({
+				history: [newTransaction, ...this.state.userInfo.history]
+			});
+
+		}
+	};
 
 	closeDialog = () => {
 		this.setState({
 			showConfirmationDialog: false
 		})
-	}
-
+	};
 
 	AImoved = (x, y) => {
+		if (x <= 10) {
+			x = 10;
+		}
+		if (y <= 80) {
+			y = 90;
+		}
 		this.setState({
 			moved: {
 				...this.state.moved,
@@ -329,18 +348,16 @@ class App extends Component {
 				AIy: y
 			}
 		})
-		if (this.state.userInfo.Login.logged) {
-			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-				moved: {
-					...this.state.moved,
-					AIx: x,
-					AIy: y
-				}
-			})
-		}
+
 	};
 
 	Rmoved = (x, y) => {
+		if (x <= 10) {
+			x = 10;
+		}
+		if (y <= 80) {
+			y = 90;
+		}
 		this.setState({
 			moved: {
 				...this.state.moved,
@@ -348,18 +365,16 @@ class App extends Component {
 				Ry: y
 			}
 		})
-		if (this.state.userInfo.Login.logged) {
-			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
-				moved: {
-					...this.state.moved,
-					Rx: x,
-					Ry: y
-				}
-			})
-		}
-	}
+
+	};
 
 	UHmoved = (x, y) => {
+		if (x <= 10) {
+			x = 10;
+		}
+		if (y <= 80) {
+			y = 90;
+		}
 		this.setState({
 			moved: {
 				...this.state.moved,
@@ -368,25 +383,23 @@ class App extends Component {
 			}
 		})
 
-	}
+	};
 
 	getDataFromDb = (email) => {
-		if(email!==''){
+		if (email !== '') {
 			this.state.db.doc(`${email}/dataBase`).get().then(e => {
 				this.setState({
-					moved: { ...e.data().moved }
+					moved: {...e.data().moved}
 				});
-				console.log(e.data().moved)
 			})
 		}
-
-	}
+	};
 
 	render() {
 		return (
 			<BrowserRouter>
 				<MainDiv>
-					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged} />
+					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged}/>
 					<Switch>
 						<Route exact path='/' render={(props) => <Landing
 							{...props}
@@ -398,13 +411,12 @@ class App extends Component {
 							showConfirmationDialog={this.state.showConfirmationDialog}
 							closeConfirmationDialog={this.closeDialog}
 							error={this.state.error}
-							// handleMoved={this.movedpositions}
 							moved={this.state.moved}
 							UHmoved={this.UHmoved}
 							Rmoved={this.Rmoved}
 							AImoved={this.AImoved}
 							getDataFromDb={this.getDataFromDb}
-						/>} />
+						/>}/>
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}
 							userInfo={this.state.userInfo.Login}
@@ -413,13 +425,13 @@ class App extends Component {
 							timer={this.state.timer}
 							confirm={this.confirmHandler}
 						/>
-						} />
+						}/>
 						<Route exact path='/history' render={props => <History
 							{...props}
 							data={this.state}
 						/>
-						} />
-						<Route path='*' component={NotFound} />
+						}/>
+						<Route path='*' component={NotFound}/>
 					</Switch>
 				</MainDiv>
 			</BrowserRouter>

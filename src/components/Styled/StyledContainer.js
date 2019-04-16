@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledDiv = styled.div`
+const StyledContainer = styled.div`
   min-width: 300px;
   min-height: 250px;
   position: absolute;
@@ -11,6 +11,10 @@ const StyledDiv = styled.div`
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
   text-align: center;
   border-radius: 5px;
+  padding-bottom: 20px;
+  .bold {
+  	font-weight: 600;
+  }
   .row {
     width: 100%;
     height: 30px;
@@ -34,7 +38,6 @@ const StyledDiv = styled.div`
 		list-style: none;
 		background: white;
 		padding: 0;
-		max-width: 80%;
 	 	li {
 	 		padding: 5px 15px;
 	 		border-bottom: solid 1px gray;
@@ -44,10 +47,11 @@ const StyledDiv = styled.div`
 	 			font-weight: 600;
 	 		}
 	 		.col2{
-	 			min-width:150px;
+	 			width: 20%;
+	 			min-width: 120px;
 	 		}
 	 	}
 	}
 `;
 
-export default StyledDiv;
+export default StyledContainer;

@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledDiv from "./StyledDiv";
+import StyledContainer from "../Styled/StyledContainer";
 import styled from 'styled-components';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -69,7 +69,7 @@ export class UserLogin extends React.Component {
 
 	render() {
 		return (
-      <StyledDiv top={"15%"}>
+      <StyledContainer top={"15%"}>
         <h3>Zaloguj się</h3>
         <StyledInputFull
           type={"email"}
@@ -86,7 +86,7 @@ export class UserLogin extends React.Component {
           onChange={this.handleInputChange}
         />
 		{this.state.error && <StyledLabel>Chyba pomyliłeś hasło lub login</StyledLabel>}
-				{this.state.loading ? <StyledButton><CircleProgress /> Czekaj...</StyledButton> : <StyledButton onClick={this.validation}>Zaloguj</StyledButton>}
+				{this.state.loading ? <StyledButton disabled><CircleProgress />Czekaj  </StyledButton> : <StyledButton onClick={this.validation}>Zaloguj</StyledButton>}
         <StyledPe onClick={this.handlerPasswordInfo}>
           Nie pamiętam hasłą :(
         </StyledPe>
@@ -95,7 +95,7 @@ export class UserLogin extends React.Component {
           action={this.handlerPasswordInfo}
           userInfo={this.props.userInfo}
         />
-      </StyledDiv>
+      </StyledContainer>
     );
 	}
 

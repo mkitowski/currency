@@ -1,5 +1,5 @@
 import React from "react";
-import StyledDiv from "./StyledDiv";
+import StyledContainer from "../Styled/StyledContainer";
 import { StyledButton } from "../Styled/StyledButton";
 
 export class UserAccountsInfo extends React.Component {
@@ -21,12 +21,12 @@ export class UserAccountsInfo extends React.Component {
     const user = this.props.userInfo;
 
     return (
-      <StyledDiv top={"15%"}>
-        <p>Witaj {user.name}</p>
+      <StyledContainer top={"15%"}>
+        <p>Witaj <span className={'bold'}>{user.name}</span></p>
         <p>Stan Twojego konta:</p>
         <div>{this.checkAccounts()}</div>
         <StyledButton onClick={this.props.userLogin}>Wyloguj</StyledButton>
-      </StyledDiv>
+      </StyledContainer>
     );
   }
 }

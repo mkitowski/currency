@@ -9,6 +9,7 @@ const StyledAccountList = styled.div`
 	width: 80%;
 	margin: 0 auto;
 	background: white;
+	color: #000;
 	div {
 		padding:5px 10%;
 		border-bottom: 1px solid #777;
