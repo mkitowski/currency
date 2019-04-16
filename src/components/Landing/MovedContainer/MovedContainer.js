@@ -29,10 +29,10 @@ class MovedContainer extends React.Component {
 
 		return <div style={{
 			position: 'absolute',
-			left: this.state.x,
-			top: this.state.y,
+			left: this.props.x,
+			top: this.props.y,
 		}}>
-			<MovedContainerHeader x={this.state.x} y={this.state.y} action={this.action} />
+			<MovedContainerHeader x={this.props.x} y={this.props.y} action={this.action} />
 			{this.props.children}
 		</div>
 	}

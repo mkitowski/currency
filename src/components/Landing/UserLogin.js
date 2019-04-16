@@ -61,15 +61,10 @@ export class UserLogin extends React.Component {
 		}).then(() => {
 			this.setState({ loading: false });
 			this.props.userLogin()
+		}).then(()=>{
+			this.props.getDataFromDb(email);
 		})
-		// if(name === this.props.userInfo.name && password === this.props.userInfo.password){
-		// 	this.props.userLogin();
-		// } else {
-		// 	console.log('pudlo');
-		// 	this.setState({
-		// 		error: true
-		// 	})
-		// }
+
 	}
 
 	render() {

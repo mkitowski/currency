@@ -1,19 +1,19 @@
 //import main packages
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //import firebase
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import firebaseConfig from './Firebase/firebaseConfig';
 //import pages
-import {NotFound} from "./components/NotFound";
+import { NotFound } from "./components/NotFound";
 import { Exchange } from "./pages/Exchange";
 import Landing from './pages/Landing';
 //import modules
 import { Header } from './components/Header/Header';
-import {History} from "./pages/History";
+import { History } from "./pages/History";
 //import data
 import currencyCodes from './Data/currencies';
 
@@ -62,29 +62,39 @@ class App extends Component {
 			AIy: '140px',
 			Rx: '380px',
 			Ry: '140px',
-			UHx:'70px',
-			UHy:'400px'
+			UHx: '70px',
+			UHy: '400px'
 		}
 	}
 
 	UserLogin = () => {
-		if(this.state.userInfo.Login.logged){
-			firebase.auth().signOut().then(()=>{
+		if (this.state.userInfo.Login.logged) {
+			let move = this.state.moved //update db with curent positions of elements on landing page
+			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
+					moved: { ...move }
+			}).then(() =>{
+
+			firebase.auth().signOut().then(() => {
 				console.log('SignOut'); //future popup info about succesfull signout
-			}).catch(error=>{
+			}).catch(error => {
 				console.log(error.message); //future popup with error message from signout
 			})
+
+			})
+
 		}
+		let email;
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
 				// User is signed in - user data set to state
-				let uname = user.name || 'Cinkciarz'
+				let name = user.displayName || 'Cinkciarz'
+				email = user.email
 				this.setState({
 					userInfo: {
 						...this.state.userInfo,
 						Login: {
-							name: uname,
-							email: user.email,
+							name,
+							email,
 							logged: true
 						}
 					}
@@ -102,7 +112,6 @@ class App extends Component {
 				})
 			}
 		});
-
 	}
 
 	setBase(NBPinput, code) {
@@ -127,7 +136,7 @@ class App extends Component {
 
 		});
 
-		return {code, bid, spread}
+		return { code, bid, spread }
 	}
 
 	generateHistory(real, code) {
@@ -161,7 +170,7 @@ class App extends Component {
 		});
 		const bid = real.bid;
 		const spread = real.spread;
-		return {code, bid, spread}
+		return { code, bid, spread }
 	}
 
 	simulateChanges(real) { //Simulation of life rates changes
@@ -187,11 +196,11 @@ class App extends Component {
 		if (!this.state.start) {
 			this.timerInterval = setInterval(() => {
 				this.setState(prev => {
-					return {timer: prev.timer - 1}
+					return { timer: prev.timer - 1 }
 				})
 				if (this.state.timer < 1) {
 
-					this.setState({timer: 60})
+					this.setState({ timer: 60 })
 				}
 			}, 1000);
 		}
@@ -208,7 +217,7 @@ class App extends Component {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
 				this.timer(); //start timer
-				this.setState({start: true}); //start confirmed
+				this.setState({ start: true }); //start confirmed
 				this.interval = setInterval(() => {
 					this.simulateChanges(real); //simulate life changes
 				}, 60000)
@@ -225,11 +234,23 @@ class App extends Component {
 	componentDidMount() {
 		this.getData();
 		firebase.initializeApp(firebaseConfig);
+		let db = firebase.firestore();
+		this.setState({
+			db,
+		})
+
 	}
 
 	componentWillUnmount() {
+
 		clearInterval(this.interval); //clear live updates
 		clearInterval(this.timerInterval); //clear timer
+		let move = this.state.moved //update db with curent positions of elements on landing page
+		if (this.state.userInfo.Login.logged) {
+			this.state.db.doc(`${this.state.userInfo.Login.email}/dataBase`).set({
+				moved: { ...move }
+			})
+		}
 	}
 
 	confirmHandler = goods => {
@@ -265,7 +286,7 @@ class App extends Component {
 
 		this.setState({
 			userInfo: {
-				Login: {...this.state.userInfo.Login},
+				Login: { ...this.state.userInfo.Login },
 				accounts: newAccounts,
 				history: [newTransaction, ...this.state.userInfo.history]
 			},
@@ -281,7 +302,7 @@ class App extends Component {
 	}
 
 	movedpositions = movedpos => {
-		if(typeof movedpos === 'object'){
+		if (typeof movedpos === 'object') {
 			this.setState({
 				moved: movedpos
 			})
@@ -291,7 +312,7 @@ class App extends Component {
 
 	AImoved = (x, y) => {
 		this.setState({
-			moved:{
+			moved: {
 				...this.state.moved,
 				AIx: x,
 				AIy: y
@@ -301,7 +322,7 @@ class App extends Component {
 
 	Rmoved = (x, y) => {
 		this.setState({
-			moved:{
+			moved: {
 				...this.state.moved,
 				Rx: x,
 				Ry: y
@@ -311,7 +332,7 @@ class App extends Component {
 
 	UHmoved = (x, y) => {
 		this.setState({
-			moved:{
+			moved: {
 				...this.state.moved,
 				UHx: x,
 				UHy: y
@@ -319,11 +340,20 @@ class App extends Component {
 		})
 	}
 
+	getDataFromDb = (email) => {
+		this.state.db.doc(`${email}/dataBase`).get().then(e => {
+			this.setState({
+				moved: {...e.data().moved}
+			});
+			console.log(e.data().moved)
+		})
+	}
+
 	render() {
 		return (
 			<BrowserRouter>
 				<MainDiv>
-					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged}/>
+					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged} />
 					<Switch>
 						<Route exact path='/' render={(props) => <Landing
 							{...props}
@@ -340,7 +370,8 @@ class App extends Component {
 							UHmoved={this.UHmoved}
 							Rmoved={this.Rmoved}
 							AImoved={this.AImoved}
-						/>}/>
+							getDataFromDb={this.getDataFromDb}
+						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}
 							userInfo={this.state.userInfo.Login}
@@ -349,13 +380,13 @@ class App extends Component {
 							timer={this.state.timer}
 							confirm={this.confirmHandler}
 						/>
-						}/>
+						} />
 						<Route exact path='/history' render={props => <History
 							{...props}
 							data={this.state}
 						/>
-						}/>
-						<Route path='*' component={NotFound}/>
+						} />
+						<Route path='*' component={NotFound} />
 					</Switch>
 				</MainDiv>
 			</BrowserRouter>

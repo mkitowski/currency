@@ -40,6 +40,7 @@ class Landing extends React.Component {
 							<UserLogin
 								userInfo={this.props.userInfo}
 								userLogin={this.props.userLogin}
+								getDataFromDb={this.props.getDataFromDb}
 							/>
 						</MovedContainer>
 					)}

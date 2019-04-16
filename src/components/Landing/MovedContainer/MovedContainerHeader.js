@@ -66,8 +66,8 @@ class MovedContainerHeader extends React.Component {
 		return (
 			<div onMouseDown={this.mouseDown} style={{
 				position: "absolute",
-				x: this.state.x,
-				y: this.state.y,
+				x: this.props.x,
+				y: this.props.y,
 				zIndex: 7
 			}}>
 				<StyledHeader>
