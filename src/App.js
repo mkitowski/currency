@@ -1,19 +1,19 @@
 //import main packages
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //import firebase
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import firebaseConfig from './Firebase/firebaseConfig';
 //import pages
-import {NotFound} from "./components/NotFound";
-import {Exchange} from "./pages/Exchange";
+import { NotFound } from "./components/NotFound";
+import { Exchange } from "./pages/Exchange";
 import Landing from './pages/Landing';
 //import modules
-import {Header} from './components/Header/Header';
-import {History} from "./pages/History";
+import { Header } from './components/Header/Header';
+import { History } from "./pages/History";
 //import data
 import currencyCodes from './Data/currencies';
 
@@ -90,40 +90,48 @@ class App extends Component {
 						}
 					}
 				});
-				//   ---->>DATABASE<<---
 				//future popup about successful signin
+
+				//   ---->>DATABASE<<---
+				// sync from DB
 				this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).get().then(el => {
 					this.setState({
 						userInfo: {
-							Login: {...this.state.userInfo.Login},
+							Login: { ...this.state.userInfo.Login },
 							accounts: el.data().accounts,
 							history: [...this.state.userInfo.history]
 						}
 					})
 				});
 				this.state.db.doc(`${this.state.userInfo.Login.email}/history`).get().then(el => {
-					console.log(el.data().history[0]);
 					this.setState({
 						userInfo: {
-							Login: {...this.state.userInfo.Login},
-							accounts: {...this.state.userInfo.accounts},
+							Login: { ...this.state.userInfo.Login },
+							accounts: { ...this.state.userInfo.accounts },
 							history: el.data().history
 						}
 					})
 				});
+				this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).get().then(el => {
+					this.setState({
+						moved: { ...el.data() }
+					})
+				});
 
-				//set interval for DB sync
+
+				//set interval for sync to DB
+				let oldMoved;
 				this.DBinterval = setInterval(() => {
-					if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
-						this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
-							...this.state.moved,
-						})
-						// this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).set({
-						// 	accounts: this.state.userInfo.accounts
-						// })
-						// this.state.db.doc(`${this.state.userInfo.Login.email}/history`).set({
-						// 	history: this.state.userInfo.history
-						// })
+					if (oldMoved !== this.state.moved) {
+						if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
+							this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
+								...this.state.moved,
+							}).then(() => {
+								console.log('moved');
+
+							})
+						}
+						oldMoved = this.state.moved;
 					}
 				}, 30000);
 				//
@@ -162,7 +170,7 @@ class App extends Component {
 
 		});
 
-		return {code, bid, spread}
+		return { code, bid, spread }
 	}
 
 	generateHistory(real, code) {
@@ -196,7 +204,7 @@ class App extends Component {
 		});
 		const bid = real.bid;
 		const spread = real.spread;
-		return {code, bid, spread}
+		return { code, bid, spread }
 	};
 
 	simulateChanges(real) { //Simulation of life rates changes
@@ -222,11 +230,11 @@ class App extends Component {
 		if (!this.state.start) {
 			this.timerInterval = setInterval(() => {
 				this.setState(prev => {
-					return {timer: prev.timer - 1}
+					return { timer: prev.timer - 1 }
 				})
 				if (this.state.timer < 1) {
 
-					this.setState({timer: 60})
+					this.setState({ timer: 60 })
 				}
 			}, 1000);
 		}
@@ -243,7 +251,7 @@ class App extends Component {
 				return this.generateHistory(real, code) //generating 24hour history
 			}).then(real => {
 				this.timer(); //start timer
-				this.setState({start: true}); //start confirmed
+				this.setState({ start: true }); //start confirmed
 				this.interval = setInterval(() => {
 					this.simulateChanges(real); //simulate life changes
 				}, 60000)
@@ -304,7 +312,7 @@ class App extends Component {
 
 		this.setState({
 			userInfo: {
-				Login: {...this.state.userInfo.Login},
+				Login: { ...this.state.userInfo.Login },
 				accounts: newAccounts,
 				history: [newTransaction, ...this.state.userInfo.history]
 			},
@@ -315,9 +323,7 @@ class App extends Component {
 		// set actual states to DB
 		if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
 
-			this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
-				...this.state.moved,
-			});
+
 			this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).set({
 				accounts: newAccounts
 			});
@@ -387,9 +393,9 @@ class App extends Component {
 
 	getDataFromDb = (email) => {
 		if (email !== '') {
-			this.state.db.doc(`${email}/dataBase`).get().then(e => {
+			this.state.db.doc(`${email}/moved`).get().then(e => {
 				this.setState({
-					moved: {...e.data().moved}
+					moved: { ...e.data() }
 				});
 			})
 		}
@@ -399,7 +405,7 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<MainDiv>
-					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged}/>
+					<Header error={this.state.error} userLogged={this.state.userInfo.Login.logged} />
 					<Switch>
 						<Route exact path='/' render={(props) => <Landing
 							{...props}
@@ -416,7 +422,7 @@ class App extends Component {
 							Rmoved={this.Rmoved}
 							AImoved={this.AImoved}
 							getDataFromDb={this.getDataFromDb}
-						/>}/>
+						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}
 							userInfo={this.state.userInfo.Login}
@@ -425,13 +431,13 @@ class App extends Component {
 							timer={this.state.timer}
 							confirm={this.confirmHandler}
 						/>
-						}/>
+						} />
 						<Route exact path='/history' render={props => <History
 							{...props}
 							data={this.state}
 						/>
-						}/>
-						<Route path='*' component={NotFound}/>
+						} />
+						<Route path='*' component={NotFound} />
 					</Switch>
 				</MainDiv>
 			</BrowserRouter>
