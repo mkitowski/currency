@@ -14,6 +14,14 @@ export const ChartHistory = props => {
 				selected={props.currencySelected}
 				message={'Wybierz walute'}
 				array={currencies}
+				name={'first'}
+			/>
+			<ChartHistorySelection
+				handleChange={props.handleChangeCurrency}
+				selected={props.currencySelected}
+				message={'Wybierz walute'}
+				array={currencies}
+				name={'second'}
 			/>
 			<ChartHistorySelection
 				handleChange={props.handleChangeTime}

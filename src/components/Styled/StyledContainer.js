@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
   bottom: ${props => props.bottom};
   top: ${props => props.top};
   left: 5%;
-  background-color: white;
+  background-color: rgba(250,250,250,0.8);
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
   text-align: center;
   border-radius: 5px;

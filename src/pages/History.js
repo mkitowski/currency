@@ -2,9 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import {ChartHistory} from "../components/History/ChartHistory";
 import {UserHistory} from "../components/History/UserHistory";
+import bck from "../img/background-land.jpg";
+import InternalContainer from '../components/Styled/InternalContainer';
 
 const StyledDiv = styled.div`
-  padding-top: 125px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(${bck}), no-repeat, center;
+  background-size: cover;
+  background-attachment: fixed;
 	background-color: #efefef;
 	width: 100vw;
 	min-height: 100vh;
@@ -87,7 +94,7 @@ export class History extends React.Component {
 
 
 	render() {
-		return <StyledDiv>
+		return <StyledDiv><InternalContainer>
 			{this.props.data.userInfo.Login.logged && <UserHistory history={this.props.data.userInfo.history}/>}
 			{!this.props.data.error && <ChartHistory
 				handleChangeCurrency={this.handleChangeCurrency}
@@ -97,6 +104,7 @@ export class History extends React.Component {
 				time={this.state.timeArray}
 				chartData={this.state.chartData}
 			/>}
+		</InternalContainer>
 		</StyledDiv>
 	}
 }

@@ -8,7 +8,7 @@ import ErrorMessage from "./ErrorMessage";
 import currencies from "../../Data/currencies";
 import ConfirmDialog from "./ConfirmDialog";
 import {Redirect} from 'react-router'
-
+import InternalContainer from '../Styled/InternalContainer';
 
 const StyledExchange = styled.div`
 	position: absolute;
@@ -28,20 +28,7 @@ const StyledExchange = styled.div`
   }
 `;
 
-const InternaConatiner = styled.div`
-	
-	max-width: 1024px;
-	width: 80%;
-	min-height: 60%;
-	padding: 10px;
-	margin: 90px auto 0;
-	background: rgba(0,0,0,0.6);
-	border-radius: 6px;
-	color: white;
-	.confirmed {
-		color: black;
-	}
-`;
+
 
 export class LoggedExchange extends React.Component {
 	state = {
@@ -51,7 +38,7 @@ export class LoggedExchange extends React.Component {
 		selected2: currencies[0],
 		rate: Math.floor(1 / this.props.currentRates[0].bid * 1000) / 1000,
 		error: false,
-		dialogVisible: 0,
+		dialogVisible: false,
 		disabledButton: false,
 		finished: false
 	};
@@ -268,7 +255,7 @@ export class LoggedExchange extends React.Component {
 		}
 		return (
 			<StyledExchange>
-				<InternaConatiner>
+				<InternalContainer>
 					{this.state.finished && <Redirect to='/'/>}
 					<h2>Twoje transakcje</h2>
 					<p>Wymień:</p>
@@ -293,7 +280,7 @@ export class LoggedExchange extends React.Component {
 						Tranzakcja zostanie wykonana po kursie:
 						<span className={"rate"}>
             {" "}
-							1 {this.state.selected1} = {this.state.rate} {this.state.selected2}
+            1 {this.state.selected1} = {this.state.rate} {this.state.selected2}
           </span>
 					</p>
 					<AccountsList accountsInfo={this.props.accountsInfo}/>
@@ -307,7 +294,7 @@ export class LoggedExchange extends React.Component {
 						timer={this.props.timer}
 						confirm={this.confirm}
 					/>}
-				</InternaConatiner>
+				</InternalContainer>
 			</StyledExchange>
 		);
 	}

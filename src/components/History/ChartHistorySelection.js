@@ -5,10 +5,11 @@ export const ChartHistorySelection = ({
 	handleChange,
 	selected,
 	message,
-	array
+	array,
+	name
 																			}) => {
 	return <div>
-		<select onChange={handleChange} value={selected}>
+		<select onChange={handleChange} name={name} value={selected}>
 			<option value={'first'} disabled >{message}</option>
 			{array.map(el => {
 					return <option key={el} value={el} name={el}>{el}</option>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Icon from '@material-ui/core/Icon';
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const StyledHeader = styled.div`
@@ -18,6 +19,7 @@ class MovedContainerHeader extends React.Component {
 		x: this.props.x,
 		y: this.props.y,
 	}
+
 	componentDidMount() {
 		this._isMounted = true;
 	}
@@ -31,7 +33,7 @@ class MovedContainerHeader extends React.Component {
 		const x = e.pageX;
 		const y = e.pageY;
 		if (this._isMounted) {
-			this.setState({ x, y });
+			this.setState({x, y});
 		}
 		e.preventDefault();
 		document.addEventListener('mousemove', this.mouseMove);
@@ -42,7 +44,7 @@ class MovedContainerHeader extends React.Component {
 		const x = Math.trunc(e.pageX / 10) * 10;
 		const y = Math.trunc(e.pageY / 10) * 10;
 		if (this._isMounted) {
-			this.setState({ x, y });
+			this.setState({x, y});
 		}
 		this.props.action(x, y);
 		e.preventDefault();
@@ -52,14 +54,13 @@ class MovedContainerHeader extends React.Component {
 		const x = Math.trunc(e.pageX / 10) * 10;
 		const y = Math.trunc(e.pageY / 10) * 10;
 		if (this._isMounted) {
-			this.setState({ x, y });
+			this.setState({x, y});
 		}
 		// this.props.action(x,y);
 		document.removeEventListener('mousemove', this.mouseMove);
 		document.removeEventListener('mouseup', this.moueseUp);
 		e.preventDefault();
 	}
-
 
 
 	render() {
@@ -71,9 +72,11 @@ class MovedContainerHeader extends React.Component {
 				zIndex: 7
 			}}>
 				<StyledHeader>
-					<Icon>
-						drag_indicator
-					</Icon>
+					<Tooltip title="Przenieś" placement="top">
+						<Icon>
+							drag_indicator
+						</Icon>
+					</Tooltip>
 				</StyledHeader>
 			</div>
 		);
