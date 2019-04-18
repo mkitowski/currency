@@ -71,6 +71,7 @@ export class UserLogin extends React.Component {
 		return (
       <StyledContainer top={"15%"}>
         <h3>Zaloguj się</h3>
+				<form onSubmit={this.validation}>
         <StyledInputFull
           type={"email"}
           placeholder={"Twój e-mail"}
@@ -87,6 +88,7 @@ export class UserLogin extends React.Component {
         />
 		{this.state.error && <StyledLabel>Chyba pomyliłeś hasło lub login</StyledLabel>}
 				{this.state.loading ? <StyledButton disabled><CircleProgress />Czekaj  </StyledButton> : <StyledButton onClick={this.validation}>Zaloguj</StyledButton>}
+				</form>
         <StyledPe onClick={this.handlerPasswordInfo}>
           Nie pamiętam hasłą :(
         </StyledPe>

@@ -56,7 +56,8 @@ class App extends Component {
 			Ry: '140px',
 			UHx: '70px',
 			UHy: '400px'
-		}
+		},
+		loading:false
 	}
 
 	UserLogin = () => {
@@ -88,7 +89,8 @@ class App extends Component {
 							email,
 							logged: true
 						}
-					}
+					},
+					loading:true
 				});
 				//future popup about successful signin
 
@@ -116,7 +118,11 @@ class App extends Component {
 					this.setState({
 						moved: { ...el.data() }
 					})
-				});
+				}).then(()=>{
+					this.setState({
+						loading: false
+					})
+				})
 
 
 				//set interval for sync to DB
@@ -133,7 +139,7 @@ class App extends Component {
 						}
 						oldMoved = this.state.moved;
 					}
-				}, 30000);
+				}, 10000);
 				//
 			} else {
 				this.setState({
@@ -422,6 +428,7 @@ class App extends Component {
 							Rmoved={this.Rmoved}
 							AImoved={this.AImoved}
 							getDataFromDb={this.getDataFromDb}
+							loading={this.state.loading}
 						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}

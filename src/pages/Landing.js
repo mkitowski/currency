@@ -7,6 +7,7 @@ import { UserAccountsInfo } from "../components/Landing/UserAccountsInfo";
 import { TransactionConfirmed } from "../components/Landing/TransactionConfirmed";
 import MovedContainer from "../components/Landing/MovedContainer/MovedContainer"
 import UserHistoryLanding from "../components/Landing/UserHistory/UserHistory";
+import LoaderDialog from '../components/Landing/LoaderDialog';
 
 
 const StyledLanding = styled.div`
@@ -53,6 +54,7 @@ class Landing extends React.Component {
 					x={this.props.moved.UHx}
 					y={this.props.moved.UHy}>
 					<UserHistoryLanding history={this.props.history} /></MovedContainer>}
+					<LoaderDialog open={this.props.loading}/>
 			</StyledLanding>
 		);
 	}
