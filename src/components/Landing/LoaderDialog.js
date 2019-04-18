@@ -11,10 +11,6 @@ class LoaderDialog extends React.Component {
     open: false,
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
   handleClose = () => {
     this.setState({ open: false });
   };
