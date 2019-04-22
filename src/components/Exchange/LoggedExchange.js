@@ -9,6 +9,7 @@ import currencies from "../../Data/currencies";
 import ConfirmDialog from "./ConfirmDialog";
 import {Redirect} from 'react-router'
 import InternalContainer from '../Styled/InternalContainer';
+import InfoDialog from "./InfoDialog";
 
 const StyledExchange = styled.div`
 	position: absolute;
@@ -40,7 +41,8 @@ export class LoggedExchange extends React.Component {
 		error: false,
 		dialogVisible: false,
 		disabledButton: false,
-		finished: false
+		finished: false,
+		infoOpen: false
 	};
 
 	componentWillMount() {
@@ -222,7 +224,17 @@ export class LoggedExchange extends React.Component {
 			this.setState({
 				dialogVisible: !this.state.dialogVisible
 			});
+		} else {
+			this.setState({
+				infoOpen: true
+			})
 		}
+	};
+
+	closeInfo = () => {
+		this.setState({
+			infoOpen: false
+		})
 	}
 
 	confirm = () => {
@@ -294,6 +306,8 @@ export class LoggedExchange extends React.Component {
 						timer={this.props.timer}
 						confirm={this.confirm}
 					/>}
+					<InfoDialog open={this.state.infoOpen} close={this.closeInfo}/>
+
 				</InternalContainer>
 			</StyledExchange>
 		);
