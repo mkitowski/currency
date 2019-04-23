@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import React from 'react';
+import {mix} from 'polished';
 
 const StyledTimerLine = styled.div`
-    width : ${props=>props.width};
+
+    width : 100%;
+    transform: scaleX(${props => props.width});
     height : 90%;
-    background : green;
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index:1;
+    background: ${props => mix( props.width ,'lightgreen','red')};
+    border-radius: 2px;
+    transition: transform .62s ease-out;
+    transform-origin: left;
 `;
 
 const StyledLineContainer = styled.div`
@@ -28,7 +30,7 @@ const LinearTimerProgress = props => {
     return <div>
         {props.text}
         <StyledLineContainer width={props.width} height={props.height} >
-        <StyledTimerLine width={`${Math.floor((+props.timer / 60) * 100)}%`} height={props.height}></StyledTimerLine>
+        <StyledTimerLine width={Math.floor((+props.timer / 60)*100)/100} height={props.height}></StyledTimerLine>
         </StyledLineContainer>
     </div>
 }

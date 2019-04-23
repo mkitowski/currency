@@ -2,6 +2,7 @@ import React from 'react';
 import {UserInfo} from "./UserLoginInfo/UserInfo";
 import {StyledInfoWindow} from "../Styled/StyledInfoWindow";
 import {CloseWindow} from "./UserLoginInfo/CloseWindow";
+// import Dialog from '@material-ui/core/Dialog';
 
 export class UserPasswordInfo extends React.Component {
 

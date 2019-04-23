@@ -10,6 +10,7 @@ import ConfirmDialog from "./ConfirmDialog";
 import {Redirect} from 'react-router'
 import InternalContainer from '../Styled/InternalContainer';
 import InfoDialog from "./InfoDialog";
+import LinearTimerProgress from '../Progres/LinearTimerProgress';
 
 const StyledExchange = styled.div`
 	position: absolute;
@@ -295,6 +296,7 @@ export class LoggedExchange extends React.Component {
             1 {this.state.selected1} = {this.state.rate} {this.state.selected2}
           </span>
 					</p>
+					<p><LinearTimerProgress width={'70%'} height={'10px'} timer={this.props.timer} text={''} /></p>
 					<AccountsList accountsInfo={this.props.accountsInfo}/>
 					{this.state.dialogVisible && <ConfirmDialog
 						close={this.handleDialog}

@@ -21,7 +21,7 @@ const Rates = ({
 						<RowRates key={el.code + i} code={el.code} bid={el.bid} ask={el.ask}/>
 					);
 				})}<div>
-					<LinearTimerProgress width={'90%'} height={'7px'} timer={timer} text={'Aktualizacja kursów'} />
+					<LinearTimerProgress width={'90%'} height={'7px'} timer={timer} text={''} />
 					</div>
 					</div> : <div>
 				<h3>Coś nam nie wyszło</h3>
