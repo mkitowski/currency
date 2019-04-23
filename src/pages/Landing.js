@@ -46,7 +46,7 @@ class Landing extends React.Component {
 						</MovedContainer>
 					)}
 				<MovedContainer action={this.props.Rmoved} x={this.props.moved.Rx} y={this.props.moved.Ry}>
-					<Rates currentRates={this.props.currentRates} error={this.props.error} />
+					<Rates currentRates={this.props.currentRates} error={this.props.error} timer={this.props.timer} />
 				</MovedContainer>
 				{this.props.showConfirmationDialog && <TransactionConfirmed history={this.props.history} close={this.props.closeConfirmationDialog} />}
 				{this.props.userInfo.logged && <MovedContainer

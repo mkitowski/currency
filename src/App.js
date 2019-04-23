@@ -429,6 +429,7 @@ class App extends Component {
 							AImoved={this.AImoved}
 							getDataFromDb={this.getDataFromDb}
 							loading={this.state.loading}
+							timer={this.state.timer}
 						/>} />
 						<Route exact path='/exchange' render={props => <Exchange
 							{...props}
