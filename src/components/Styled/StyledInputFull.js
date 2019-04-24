@@ -8,7 +8,7 @@ export const StyledInputFull = styled.input`
 	border-radius: 6px;
 	height: 25px;
 	transition: background-color .3s linear;
-	&:focus {
+	:focus {
 		box-shadow: none;
 		outline: none;
 		background-color: lightgray;

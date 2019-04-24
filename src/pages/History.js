@@ -21,7 +21,7 @@ export class History extends React.Component {
 	state = {
 		currencySelected: 'first',
 		timeSelected: 'first',
-		timeArray: ['1h', '2h', '3h', '6h', '12h', 'przedział dat'],
+		timeArray: ['1h', '2h', '3h', '6h', '12h'],
 		chartData: []
 	}
 
@@ -40,6 +40,15 @@ export class History extends React.Component {
 
 	}
 
+	checkTime = t => {
+
+		if (t <10){
+			return '0'+t;
+		} else {
+			return t;
+		}
+	}
+
 	prepareChartData = (currency, time) => {
 		if(currency === 'first' || time === 'first'){
 			return null;
@@ -51,7 +60,7 @@ export class History extends React.Component {
 				minutes = (minutes+1)*60;
 				result = this.props.data[currency + '-day']
 					.map(el=>{
-						let time = el.hour +':'+el.minute;
+						let time = this.checkTime(el.hour) +':'+this.checkTime(el.minute);
 						return{...el,time}
 					})
 					.slice(0,minutes)
@@ -62,7 +71,7 @@ export class History extends React.Component {
 				minutes = minutes*120;
 				result = this.props.data[currency + '-day']
 					.map(el=>{
-						let time = el.hour +':'+el.minute;
+						let time = this.checkTime(el.hour) +':'+this.checkTime(el.minute);
 						return{...el,time}
 					})
 					.slice(0,minutes)
@@ -75,7 +84,7 @@ export class History extends React.Component {
 				minutes = minutes*180;
 				result = this.props.data[currency + '-day']
 					.map(el=>{
-						let time = el.hour +':'+el.minute;
+						let time = this.checkTime(el.hour) +':'+this.checkTime(el.minute);
 						return{...el,time}
 					})
 					.slice(0,minutes)
@@ -86,7 +95,6 @@ export class History extends React.Component {
 					});
 			}
 		}
-		console.log(result);
 		this.setState({
 			chartData: result
 		})

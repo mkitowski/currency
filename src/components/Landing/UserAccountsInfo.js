@@ -21,7 +21,7 @@ export class UserAccountsInfo extends React.Component {
     const user = this.props.userInfo;
 
     return (
-      <StyledContainer top={"15%"}>
+      <StyledContainer>
         <p>Witaj <span className={'bold'}>{user.name}</span></p>
         <p>Stan Twojego konta:</p>
         <div>{this.checkAccounts()}</div>

@@ -21,7 +21,6 @@ class InfoDialog extends React.Component {
 					<DialogTitle id="alert-dialog-title">{"Błąd!!"}</DialogTitle>
 					<DialogContent>
 						<DialogContentText id="alert-dialog-description">
-
 							Proszę wpisać wartość waluty na wymianę
 						</DialogContentText>
 						<DialogActions>
