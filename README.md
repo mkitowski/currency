@@ -17,19 +17,18 @@ Online currencies exchange service
 ## Main functionality:
 
 - User login via Firebise
+- User specific landing page containers position
+- User exchange history sync with Firestore
 - Simulation of live updated currency rates
 - Online currency converse
 - Display user exchange history
 - Display currency rates history on line chart
-- Customised Landing Page
 
 
 ## To do:
 
-- Contact form
-- Connection to firestore data base
+- Contact form/page
 - Registration of new user
-- Live update timer on specific components
 - mobile version
 
 
