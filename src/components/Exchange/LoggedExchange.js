@@ -246,6 +246,7 @@ export class LoggedExchange extends React.Component {
 			});
 
 	}
+
 	componentDidMount() {
 		if(Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
 			this.arrayInput1 = ['PLN',...Object.keys(this.props.accountsInfo).filter(e=> e!=='PLN')];
