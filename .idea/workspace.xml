@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6e9f129e-ff59-406f-a706-9d9ce07b468d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Exchange/InfoDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Exchange/InfoDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/History/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/History/Chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/History/ChartHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/History/ChartHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserAccountsInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/UserAccountsInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Styled/StyledInputFull.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Styled/StyledInputFull.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/History/ChartHistorySelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/History/ChartHistorySelection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/History.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/History.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -41,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/History.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
-              <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+            <state relative-caret-position="315">
+              <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -53,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/History/ChartHistory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+            <state relative-caret-position="635">
+              <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -63,10 +59,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInputFull.js">
+        <entry file="file://$PROJECT_DIR$/src/components/History/ChartHistorySelection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="3" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="14" selection-end-column="3" />
+            <state relative-caret-position="80">
+              <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -74,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/History/Chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="320">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -146,7 +142,6 @@
         <option value="$PROJECT_DIR$/src/components/History/InternalContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Styled/StyledContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Styled/InternalContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/History/ChartHistorySelection.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/MovedContainer/MovedContainerHeader.js" />
         <option value="$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserAccountsInfo.js" />
@@ -154,8 +149,9 @@
         <option value="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" />
         <option value="$PROJECT_DIR$/src/components/Styled/StyledInputFull.js" />
         <option value="$PROJECT_DIR$/src/components/History/ChartHistory.js" />
-        <option value="$PROJECT_DIR$/src/components/History/Chart.js" />
+        <option value="$PROJECT_DIR$/src/components/History/ChartHistorySelection.js" />
         <option value="$PROJECT_DIR$/src/pages/History.js" />
+        <option value="$PROJECT_DIR$/src/components/History/Chart.js" />
       </list>
     </option>
   </component>
@@ -165,7 +161,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1990" />
     <option name="y" value="27" />
     <option name="width" value="917" />
@@ -202,46 +198,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="History" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="currency" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Landing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="currency" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Landing" type="462c0819:PsiDirectoryNode" />
-              <item name="UserLoginInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="currency" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Styled" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="currency" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="currency" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="currency" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -325,15 +281,16 @@
       <workItem from="1555351086095" duration="659000" />
       <workItem from="1555430954304" duration="18378000" />
       <workItem from="1555957898364" duration="2151000" />
-      <workItem from="1556127004957" duration="5539000" />
+      <workItem from="1556127004957" duration="6222000" />
+      <workItem from="1556170031247" duration="3768000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178793000" />
+    <option name="totallyTimeSpent" value="183244000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1990" y="27" width="1850" height="1053" extended-state="7" />
+    <frame x="1990" y="27" width="1850" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15763547" />
@@ -377,23 +334,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledClosedButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLoginInfo/CloseWindow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/UserInfo.js" />
     <entry file="file://$PROJECT_DIR$/../../CodersLab/GDA_FER_W_02_REACT_React/1_Zadania/Dzien_5/1_Routing_podstawy/js/zadanie00.jsx">
       <provider selected="true" editor-type-id="text-editor">
@@ -649,19 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="112" column="40" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
-          <folding>
-            <element signature="e#23#64#0" expanded="true" />
-            <element signature="e#188#229#0" expanded="true" />
-            <element signature="e#354#403#0" expanded="true" />
-            <element signature="e#505#557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Exchange/AccountsList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -729,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/History/ChartHistorySelection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -746,27 +666,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInputFull.js">
+    <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="3" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="14" selection-end-column="3" />
+        <state relative-caret-position="2080">
+          <caret line="112" column="40" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
+          <folding>
+            <element signature="e#23#64#0" expanded="true" />
+            <element signature="e#188#229#0" expanded="true" />
+            <element signature="e#354#403#0" expanded="true" />
+            <element signature="e#505#557#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/History/ChartHistory.js">
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state>
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInputFull.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/History/ChartHistorySelection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/History.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        <state relative-caret-position="315">
+          <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/History/ChartHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -775,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/History/Chart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="320">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

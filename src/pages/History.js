@@ -19,25 +19,32 @@ const StyledDiv = styled.div`
 
 export class History extends React.Component {
 	state = {
-		currencySelected: 'first',
+		currencySelectedSell: 'first',
+		currencySelectedBuy: 'first',
 		timeSelected: 'first',
 		timeArray: ['1h', '2h', '3h', '6h', '12h'],
 		chartData: []
 	}
 
-	handleChangeCurrency = event => {
+	handleChangeCurrencySell = event => {
 		this.setState({
-			currencySelected: event.target.value
+			currencySelectedSell: event.target.value
 		});
 		this.prepareChartData(event.target.value, this.state.timeSelected);
+	}
+
+	handleChangeCurrencyBuy = event => {
+		this.setState({
+			currencySelectedBuy: event.target.value
+		});
+		// this.prepareChartData(event.target.value, this.state.timeSelected);
 	}
 
 	handleChangeTime = event => {
 		this.setState({
 			timeSelected: event.target.value
 		});
-		this.prepareChartData(this.state.currencySelected,event.target.value);
-
+		this.prepareChartData(this.state.currencySelectedSell,event.target.value);
 	}
 
 	checkTime = t => {
@@ -61,7 +68,8 @@ export class History extends React.Component {
 				result = this.props.data[currency + '-day']
 					.map(el=>{
 						let time = this.checkTime(el.hour) +':'+this.checkTime(el.minute);
-						return{...el,time}
+						let code2 = this.state.currencySelectedBuy;
+						return{...el,time,code2}
 					})
 					.slice(0,minutes)
 					.sort((a,b)=>{
@@ -72,7 +80,8 @@ export class History extends React.Component {
 				result = this.props.data[currency + '-day']
 					.map(el=>{
 						let time = this.checkTime(el.hour) +':'+this.checkTime(el.minute);
-						return{...el,time}
+						let code2 = this.state.currencySelectedBuy;
+						return{...el,time,code2}
 					})
 					.slice(0,minutes)
 					.filter(el=>{
@@ -85,7 +94,8 @@ export class History extends React.Component {
 				result = this.props.data[currency + '-day']
 					.map(el=>{
 						let time = this.checkTime(el.hour) +':'+this.checkTime(el.minute);
-						return{...el,time}
+						let code2 = this.state.currencySelectedBuy;
+						return{...el,time,code2}
 					})
 					.slice(0,minutes)
 					.filter(el=>{
@@ -105,8 +115,10 @@ export class History extends React.Component {
 		return <StyledDiv><InternalContainer>
 			{this.props.data.userInfo.Login.logged && <UserHistory history={this.props.data.userInfo.history}/>}
 			{!this.props.data.error && <ChartHistory
-				handleChangeCurrency={this.handleChangeCurrency}
-				currencySelected={this.state.currencySelected}
+				handleChangeCurrencySell={this.handleChangeCurrencySell}
+				currencySelectedSell={this.state.currencySelectedSell}
+				handleChangeCurrencyBuy={this.handleChangeCurrencyBuy}
+				currencySelectedBuy={this.state.currencySelectedBuy}
 				handleChangeTime={this.handleChangeTime}
 				timeSelected={this.state.timeSelected}
 				time={this.state.timeArray}
