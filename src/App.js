@@ -11,6 +11,7 @@ import firebaseConfig from './Firebase/firebaseConfig';
 import { NotFound } from "./components/NotFound";
 import { Exchange } from "./pages/Exchange";
 import Landing from './pages/Landing';
+import Contact from './pages/Contact';
 //import modules
 import { Header } from './components/Header/Header';
 import { History } from "./pages/History";
@@ -37,7 +38,7 @@ class App extends Component {
 		showConfirmationDialog: false,
 		userInfo: {
 			Login: {
-				name: 'Cinkciarz',
+				name: '',
 				email: false,
 				logged: false
 			},
@@ -443,6 +444,11 @@ class App extends Component {
 						<Route exact path='/history' render={props => <History
 							{...props}
 							data={this.state}
+						/>
+						} />
+						<Route exact path='/contact' render={props => <Contact
+							{...props}
+							data={this.state.userInfo.Login}
 						/>
 						} />
 						<Route path='*' component={NotFound} />
