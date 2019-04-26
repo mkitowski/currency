@@ -7,22 +7,21 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
 
-class InfoDialog extends React.Component {
-
+class SentDialog extends React.Component {
 
 	render() {
 		return (
 			<div>
 				<Dialog
 					open={this.props.open}
-					onClose={this.handleClose}
+					onClose={this.props.close}
 					aria-labelledby="alert-dialog-title"
 					aria-describedby="alert-dialog-description"
 				>
-					<DialogTitle id="alert-dialog-title">{"Błąd!!"}</DialogTitle>
+					<DialogTitle id="alert-dialog-title">{"Wiadomość wysłana!!"}</DialogTitle>
 					<DialogContent>
 						<DialogContentText id="alert-dialog-description">
-							Proszę wpisać wartość waluty na wymianę
+							Twoja wiadomość została wysłana!! Może kiedyś, ktoś, bedzie się bardzo nudził, i ją usunie bez czytania...
 						</DialogContentText>
 						<DialogActions>
 							<Button onClick={this.props.close} color="primary" autoFocus>
@@ -36,4 +35,4 @@ class InfoDialog extends React.Component {
 	}
 }
 
-export default InfoDialog;
+export default SentDialog;

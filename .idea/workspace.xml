@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6e9f129e-ff59-406f-a706-9d9ce07b468d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Exchange/InfoDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Exchange/InfoDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/UserLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Contact.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="121">
-              <caret line="72" column="25" lean-forward="true" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+              <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
               <folding>
                 <element signature="e#23#64#0" expanded="true" />
                 <element signature="e#188#229#0" expanded="true" />
@@ -37,38 +39,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/Contact.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+            <state relative-caret-position="235">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
+                <element signature="e#120#146#0" expanded="true" />
+                <element signature="n#!!block;n#validation#0;n#Contact#0" />
+                <element signature="e#753#921#0" />
+                <element signature="e#1688#1695#0" />
+                <element signature="e#2009#2016#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Exchange/LoggedExchange.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Progres/LinearTimerProgress.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="940">
-              <caret line="175" selection-start-line="175" selection-end-line="175" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#982#1239#0" />
-                <element signature="n#!!block;n#componentWillMount#0;n#LoggedExchange#0" />
-                <element signature="e#1602#2264#0" />
-                <element signature="e#2298#2650#0" />
-                <element signature="e#2681#3952#0" />
-                <element signature="e#3983#4904#0" />
-                <element signature="n#!!block;n#updateRate#0;n#LoggedExchange#0" />
-                <element signature="n#!!block;n#componentWillReceiveProps#0;n#LoggedExchange#0" />
-                <element signature="e#5953#6125#0" />
-                <element signature="e#6147#6193#0" />
-                <element signature="e#6212#6322#0" />
-                <element signature="n#!!block;n#componentDidMount#0;n#LoggedExchange#0" />
-              </folding>
+            <state relative-caret-position="40">
+              <caret line="2" selection-start-line="2" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInputFull.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" selection-start-line="6" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -95,7 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Landing/UserInfo/CloseWindow.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserInfo/UserInfo.js" />
         <option value="$PROJECT_DIR$/src/components/NotFound.js" />
         <option value="$PROJECT_DIR$/src/components/Header/Logo.js" />
@@ -120,7 +120,6 @@
         <option value="$PROJECT_DIR$/src/components/Landing/Rates.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/StyledDiv.js" />
         <option value="$PROJECT_DIR$/src/pages/Landing.js" />
-        <option value="$PROJECT_DIR$/src/components/Landing/UserLogin.js" />
         <option value="$PROJECT_DIR$/src/components/Progres/CircleProgress.js" />
         <option value="$PROJECT_DIR$/src/pages/Exchange.js" />
         <option value="$PROJECT_DIR$/src/components/Exchange/AccountsList.js" />
@@ -135,7 +134,6 @@
         <option value="$PROJECT_DIR$/src/components/Styled/InternalContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/MovedContainer/MovedContainerHeader.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserAccountsInfo.js" />
-        <option value="$PROJECT_DIR$/src/components/Exchange/InfoDialog.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js" />
         <option value="$PROJECT_DIR$/src/components/Styled/StyledInputFull.js" />
         <option value="$PROJECT_DIR$/src/components/History/ChartHistorySelection.js" />
@@ -144,8 +142,11 @@
         <option value="$PROJECT_DIR$/src/pages/History.js" />
         <option value="$PROJECT_DIR$/src/components/History/Chart.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/pages/Contact.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/Landing/UserLogin.js" />
+        <option value="$PROJECT_DIR$/src/components/Exchange/InfoDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/Contact/SentDialog.js" />
+        <option value="$PROJECT_DIR$/src/pages/Contact.js" />
       </list>
     </option>
   </component>
@@ -155,7 +156,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1920" />
     <option name="width" value="1920" />
     <option name="height" value="1080" />
@@ -166,6 +167,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,7 +191,28 @@
               <item name="currency" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Contact" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
+              <item name="currency" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Exchange" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
+              <item name="currency" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Landing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="currency" type="b2602c69:ProjectViewProjectNode" />
+              <item name="currency" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Progres" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="currency" type="b2602c69:ProjectViewProjectNode" />
@@ -208,7 +231,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -291,18 +313,19 @@
       <workItem from="1556170031247" duration="4156000" />
       <workItem from="1556208833865" duration="12073000" />
       <workItem from="1556258039088" duration="3003000" />
-      <workItem from="1556261891923" duration="125000" />
+      <workItem from="1556261891923" duration="294000" />
+      <workItem from="1556296006994" duration="10135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198833000" />
+    <option name="totallyTimeSpent" value="209137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1990" y="27" width="1850" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15763547" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15763547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -315,7 +338,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3380589" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3380589" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Quokka" order="11" weight="0.3293348" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -353,25 +376,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../CodersLab/GDA_FER_W_02_REACT_React/1_Zadania/Dzien_5/1_Routing_podstawy/js/zadanie00.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NotFound.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Calculation.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/GetData.js" />
     <entry file="file://$PROJECT_DIR$/src/components/Header/Logo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -546,16 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Exchange/ConfirmDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Exchange/ConfirmationMessage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -600,26 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLogin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="95" column="41" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Exchange/InfoDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="31" column="17" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="31" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Landing/UserPasswordInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -639,13 +613,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInputFull.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -733,7 +700,7 @@
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
-          <caret line="72" column="25" lean-forward="true" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
           <folding>
             <element signature="e#23#64#0" expanded="true" />
             <element signature="e#188#229#0" expanded="true" />
@@ -745,16 +712,6 @@
             <element signature="n#!!block;n#getData#0;n#App#0" />
             <element signature="n#!!block;n#componentDidMount#0;n#App#0" />
             <element signature="n#!!block;n#componentWillUnmount#0;n#App#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/Contact.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,6 +734,94 @@
             <element signature="e#6147#6193#0" />
             <element signature="e#6212#6322#0" />
             <element signature="n#!!block;n#componentDidMount#0;n#LoggedExchange#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/UserLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Exchange/ConfirmDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1280">
+          <caret line="64" column="23" selection-end-line="68" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Exchange/ErrorMessage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Exchange/InfoDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Landing/LoaderDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Contact/SentDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Styled/StyledInputFull.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" selection-start-line="6" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Progres/LinearTimerProgress.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" selection-start-line="2" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Contact.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#120#146#0" expanded="true" />
+            <element signature="n#!!block;n#validation#0;n#Contact#0" />
+            <element signature="e#753#921#0" />
+            <element signature="e#1688#1695#0" />
+            <element signature="e#2009#2016#0" />
           </folding>
         </state>
       </provider>

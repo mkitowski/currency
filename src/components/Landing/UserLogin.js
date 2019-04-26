@@ -53,7 +53,6 @@ export class UserLogin extends React.Component {
 		this.setState({loading:true});
 		firebase.auth().signInWithEmailAndPassword(email, password)
 		.catch(error => {
-			console.log('bed');
 			this.setState({
 				error: true,
 				loading: false
