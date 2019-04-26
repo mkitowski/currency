@@ -69,6 +69,9 @@ class App extends Component {
 			}).then(() => {
 				firebase.auth().signOut().then(() => {
 					clearInterval(this.DBinterval);
+					this.setState({
+						loading:false
+					})
 				}).catch(error => {
 					console.log(error.message); //future popup with error message from signout
 				})
