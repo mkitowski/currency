@@ -27,7 +27,6 @@ Online currencies exchange service
 
 ## To do:
 
-- Contact form/page
 - Registration of new user
 - mobile version
 
