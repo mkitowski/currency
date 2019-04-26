@@ -20,5 +20,8 @@ export const UserHistoryPosition = props => {
 		</li>
 	});
 	result = [head, ...result];
+	if(props.count !== undefined){
+		result = result.slice(0,props.count+1);
+	}
 	return result;
 }

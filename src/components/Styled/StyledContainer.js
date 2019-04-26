@@ -20,7 +20,7 @@ const StyledContainer = styled.div`
     height: 30px;
     display: flex;
     justify-content: space-around;
-    font-size: 12px;
+
     .col {
       width: 30%;
       border-bottom: 1px solid gray;
@@ -33,16 +33,41 @@ const StyledContainer = styled.div`
       font-weight: 800;
     }
   }
+  .accounts {
+  	border-radius: 6px;
+		border: solid 1px gray;
+		background: white;
+		width: 80%;
+		margin: 0 auto 5px;
+		padding: 0;
+		p{
+			border-bottom: solid 1px gray;
+			margin: 0;
+			padding: 2px 0;
+			span {
+				font-weight: 600;
+			}
+			:last-child{
+	 			border-bottom: none;
+	 		}
+		}
+  }
 
   ul {
 		list-style: none;
 		background: white;
 		padding: 0;
+		border-radius: 6px;
+		margin: 0 5px;
+		border: solid 1px gray;
 	 	li {
 	 		padding: 5px 15px;
 	 		border-bottom: solid 1px gray;
 	 		transition: background-color .3s linear, font-weight .3s linear;
 	 		display: flex;
+	 		:last-child{
+	 			border-bottom: none;
+	 		}
 	 		.head{
 	 			font-weight: 600;
 	 		}

@@ -10,7 +10,7 @@ export class UserAccountsInfo extends React.Component {
     for (let key in acc) {
       result.push(
         <p key={key}>
-          <span> {acc[key]}</span> {key}
+          {acc[key]}<span> {key}</span>
         </p>
       );
     }
@@ -24,7 +24,7 @@ export class UserAccountsInfo extends React.Component {
       <StyledContainer>
         <p>Witaj <span className={'bold'}>{user.name}</span></p>
         <p>Stan Twojego konta:</p>
-        <div>{this.checkAccounts()}</div>
+        <div className={'accounts'}>{this.checkAccounts()}</div>
         <StyledButton onClick={this.props.userLogin}>Wyloguj</StyledButton>
       </StyledContainer>
     );

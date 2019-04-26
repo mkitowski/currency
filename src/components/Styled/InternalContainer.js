@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const InternalConatainer = styled.div`
+const InternalContainer = styled.div`
 	
 	max-width: 1024px;
 	width: 80%;
@@ -13,4 +13,4 @@ const InternalConatainer = styled.div`
 	color: black;
 `;
 
-export default InternalConatainer;
+export default InternalContainer;

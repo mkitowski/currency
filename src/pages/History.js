@@ -15,6 +15,7 @@ const StyledDiv = styled.div`
 	background-color: #efefef;
 	width: 100vw;
 	min-height: 100vh;
+	text-align: center;
 `;
 
 export class History extends React.Component {

@@ -10,11 +10,16 @@ const StyledDiv = styled.div`
 		list-style: none;
 		background: white;
 		padding: 0;
+		border: solid 1px gray;
+		border-radius: 6px;
 	 	li {
 	 		padding: 5px 15px;
 	 		border-bottom: solid 1px gray;
 	 		transition: background-color .3s linear, font-weight .3s linear;
 	 		display: flex;
+	 		:last-child{
+	 			border-bottom: none;
+	 		}
 	 		.head{
 	 			font-weight: 600;
 	 		}

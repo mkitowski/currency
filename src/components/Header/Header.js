@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {Logo} from "./Logo";
+import {Link} from 'react-router-dom';
 import Navigation from './Navigation';
 
 const HeaderStyled = styled.header`
@@ -25,7 +26,7 @@ const StyledNav = styled.nav`
 export const Header = ({error,userLogged}) => {
 	return (
 		<HeaderStyled>
-			<Logo/>
+			<Link to={'/'}><Logo/></Link>
 			<StyledNav>
 				<Navigation error={error} userLogged={userLogged}/>
 			</StyledNav>
