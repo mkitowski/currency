@@ -4,7 +4,7 @@ import StyledCloseButton from '../../Styled/StyledClosedButton/StyledClosedButto
 import StyledButton from '../../Styled/StyledButton/StyledButton';
 
 const TransactionConfirmed = ({ history, close }) => {
-  let newTransaction = history[0];
+  const newTransaction = history[0];
   return newTransaction ? (
     <StyledInfoWindow justify={'start'}>
       <StyledCloseButton>X</StyledCloseButton>

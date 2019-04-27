@@ -100,9 +100,9 @@ export class History extends React.Component {
         minutes = (minutes + 1) * 60;
         result = this.props.data[currency + '-day']
           .map((el) => {
-            let time =
+            const time =
               this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-            let code2 = this.state.currencySelectedBuy;
+            const code2 = this.state.currencySelectedBuy;
             return { ...el, time, code2 };
           })
           .slice(0, minutes)
@@ -113,9 +113,9 @@ export class History extends React.Component {
         minutes = minutes * 120;
         result = this.props.data[currency + '-day']
           .map((el) => {
-            let time =
+            const time =
               this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-            let code2 = this.state.currencySelectedBuy;
+            const code2 = this.state.currencySelectedBuy;
             return { ...el, time, code2 };
           })
           .slice(0, minutes)
@@ -129,9 +129,9 @@ export class History extends React.Component {
         minutes = minutes * 180;
         result = this.props.data[currency + '-day']
           .map((el) => {
-            let time =
+            const time =
               this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-            let code2 = this.state.currencySelectedBuy;
+            const code2 = this.state.currencySelectedBuy;
             return { ...el, time, code2 };
           })
           .slice(0, minutes)
@@ -156,9 +156,9 @@ export class History extends React.Component {
 
         result = this.props.data[selected1 + '-day']
           .map((el, i) => {
-            let time =
+            const time =
               this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-            let rate =
+            const rate =
               Math.floor((el.bid / selected2Array[i].ask) * 1000) / 1000;
             return { ...el, time, rate };
           })
@@ -170,9 +170,9 @@ export class History extends React.Component {
         minutes = minutes * 120;
         result = this.props.data[selected1 + '-day']
           .map((el) => {
-            let time =
+            const time =
               this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-            let rate =
+            const rate =
               Math.floor((el.bid / selected2Array[i].ask) * 1000) / 1000;
             return { ...el, time, rate };
           })
@@ -187,9 +187,9 @@ export class History extends React.Component {
         minutes = minutes * 180;
         result = this.props.data[selected1 + '-day']
           .map((el) => {
-            let time =
+            const time =
               this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-            let rate =
+            const rate =
               Math.floor((el.bid / selected2Array[i].ask) * 1000) / 1000;
             return { ...el, time, rate };
           })

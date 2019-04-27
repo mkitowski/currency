@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const UserHistoryPosition = (props) => {
+const UserHistoryPosition = (props) => {
   let result = [];
-  let head = (
+  const head = (
     <li key={0}>
       <div className={'col2 head'}>Data</div>
       <div className={'col2 head'}>Godzina</div>
@@ -33,3 +33,5 @@ export const UserHistoryPosition = (props) => {
   }
   return result;
 };
+
+export default UserHistoryPosition;

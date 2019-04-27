@@ -24,7 +24,7 @@ export const Chart = ({ data, dataKey, selected1, selected2 }) => {
     }
   }
 
-  let renderLineChart = (
+  const renderLineChart = (
     <LineChart
       width={900}
       height={300}

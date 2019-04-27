@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserHistoryPosition } from './UserHistoryPosition';
+import UserHistoryPosition from './UserHistoryPosition';
 
 const StyledDiv = styled.div`
   width: 80%;

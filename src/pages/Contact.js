@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import React from 'react';
 import InternalContainer from '../components/Styled/InternalContainer/InternalContainer';
 import StyledButton from '../components/Styled/StyledButton/StyledButton';
-import SentDialog from '../components/Contact/SentDialog';
+import SentDialog from '../components/SentDialog/SentDialog';
 
 const StyledContactPage = styled.div`
   position: absolute;

@@ -57,7 +57,7 @@ class LoggedExchange extends React.Component {
   }
 
   handleChangeInput1 = (event) => {
-    let rate = this.state.rate;
+    const rate = this.state.rate;
     if (event.target.value <= +this.props.accountsInfo[this.state.selected1]) {
       this.setState({
         valueInput1: event.target.value,
@@ -78,7 +78,7 @@ class LoggedExchange extends React.Component {
   };
 
   handleChangeInput2 = (event) => {
-    let rate = this.state.rate;
+    const rate = this.state.rate;
 
     if (this.state.selected2 === 'PLN') {
       this.setState({
@@ -95,7 +95,7 @@ class LoggedExchange extends React.Component {
 
   handleSelected1 = (event) => {
     const array2 = [...currencies, 'PLN'];
-    let oldIndex = array2.indexOf(event.target.value);
+    const oldIndex = array2.indexOf(event.target.value);
     let index, valueInput1;
 
     if (this.state.valueInput1 > this.props.accountsInfo[event.target.value]) {
@@ -117,7 +117,7 @@ class LoggedExchange extends React.Component {
       } else {
         index = oldIndex - 1;
       }
-      let rate = this.updateRate(event.target.value, array2[index]);
+      const rate = this.updateRate(event.target.value, array2[index]);
 
       this.setState({
         selected1: event.target.value,
@@ -126,7 +126,7 @@ class LoggedExchange extends React.Component {
         valueInput2: Math.round(valueInput1 * rate * 100) / 100,
       });
     } else {
-      let rate = this.updateRate(event.target.value, this.state.selected2);
+      const rate = this.updateRate(event.target.value, this.state.selected2);
 
       this.setState({
         selected1: event.target.value,
@@ -138,7 +138,7 @@ class LoggedExchange extends React.Component {
 
   handleSelected2 = (event) => {
     const array1 = Object.keys(this.props.accountsInfo);
-    let oldIndex = array1.indexOf(event.target.value);
+    const oldIndex = array1.indexOf(event.target.value);
     let index;
     if (this.state.selected1 === event.target.value) {
       if (oldIndex === 0) {
@@ -148,7 +148,7 @@ class LoggedExchange extends React.Component {
       } else {
         index = oldIndex - 1;
       }
-      let rate = this.updateRate(array1[index], event.target.value);
+      const rate = this.updateRate(array1[index], event.target.value);
 
       this.setState({
         selected2: event.target.value,
@@ -157,7 +157,7 @@ class LoggedExchange extends React.Component {
         valueInput2: Math.round(this.state.valueInput1 * rate * 100) / 100,
       });
     } else {
-      let rate = this.updateRate(this.state.selected1, event.target.value);
+      const rate = this.updateRate(this.state.selected1, event.target.value);
 
       this.setState({
         selected2: event.target.value,

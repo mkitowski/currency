@@ -1,9 +1,9 @@
 import React from 'react';
 import StyledContainer from '../../Styled/StyledContainer/StyledContainer';
-import { UserHistoryPosition } from '../../History/UserHistoryPosition';
+import UserHistoryPosition from '../../History/UserHistoryPosition';
 
 const UserHistoryLanding = ({ history }) => {
-  let hist = history || [];
+  const hist = history || [];
   return (
     <StyledContainer>
       <h3>Ostanie 4 transakcje</h3>

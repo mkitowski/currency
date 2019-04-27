@@ -61,7 +61,7 @@ class App extends React.Component {
 
   UserLogin = () => {
     if (this.state.userInfo.Login.logged) {
-      let move = this.state.moved; //update db with curent positions of elements on landing page
+      const move = this.state.moved; //update db with curent positions of elements on landing page
       this.state.db
         .doc(`${this.state.userInfo.Login.email}/moved`)
         .set({
@@ -86,7 +86,7 @@ class App extends React.Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in - user data set to state
-        let name = user.displayName || 'Cinkciarz';
+        const name = user.displayName || 'Cinkciarz';
         email = user.email;
         this.setState({
           userInfo: {
@@ -303,7 +303,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getData();
     firebase.initializeApp(firebaseConfig);
-    let db = firebase.firestore();
+    const db = firebase.firestore();
     this.setState({
       db,
     });
@@ -317,8 +317,8 @@ class App extends React.Component {
 
   confirmHandler = (goods) => {
     //after confirmation of transaction
-    let acc = this.state.userInfo.accounts;
-    let newAccounts = JSON.parse(JSON.stringify(acc));
+    const acc = this.state.userInfo.accounts;
+    const newAccounts = JSON.parse(JSON.stringify(acc));
     for (let key in newAccounts) {
       //set new accounts state
       if (key === goods.selected2) {
@@ -333,9 +333,9 @@ class App extends React.Component {
     if (!(goods.selected2 in newAccounts)) {
       newAccounts[goods.selected2] = goods.valueInput2;
     }
-    let date = new Date();
+    const date = new Date();
 
-    let newTransaction = {
+    const newTransaction = {
       date: date.toLocaleDateString('pl-PL'),
       time: date.toLocaleTimeString('pl-PL'),
       sellCurrency: goods.selected1,
