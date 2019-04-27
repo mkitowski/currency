@@ -63,6 +63,7 @@ class App extends React.Component {
 
 	UserLogin = () => {
 		if (this.state.userInfo.Login.logged) {
+			// tutaj nie jest potrzebny let, wystarczy const
 			let move = this.state.moved //update db with curent positions of elements on landing page
 			this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
 				...move
