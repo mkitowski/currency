@@ -24,11 +24,11 @@ const StyledAccountList = styled.div`
 	}
 `;
 
-export class AccountsList extends React.Component {
+class AccountsList extends React.Component {
 	checkAccounts() {
 		const acc = this.props.accountsInfo;
 		const result = [];
-		let cur,word;
+		let cur, word;
 		for (let key in acc) {
 			switch (key) {
 				case 'PLN':
@@ -58,11 +58,11 @@ export class AccountsList extends React.Component {
 
 			}
 			let row;
-			if (key==='USD' || key==='EUR' || key==='GBP'){
-				row = <div key={key}> <span>Konto {word} : </span><span className={'bold'}>{cur}{acc[key]}</span>
+			if (key === 'USD' || key === 'EUR' || key === 'GBP') {
+				row = <div key={key}><span>Konto {word} : </span><span className={'bold'}>{cur}{acc[key]}</span>
 				</div>
 			} else {
-				row = <div key={key}> <span>Konto {word} : </span><span className={'bold'}>{acc[key]}{cur}</span>
+				row = <div key={key}><span>Konto {word} : </span><span className={'bold'}>{acc[key]}{cur}</span>
 				</div>
 			}
 			result.push(row);
@@ -76,3 +76,5 @@ export class AccountsList extends React.Component {
 		</StyledAccountList>
 	}
 }
+
+export default AccountsList;

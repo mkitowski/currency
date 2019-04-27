@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
 
 box-shadow:inset 0px 1px 0px 0px #ffffff;
 background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -45,3 +45,5 @@ text-shadow:0px 1px 0px #ffffff;
 }
 
 `;
+
+export default StyledButton;

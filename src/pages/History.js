@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {ChartHistory} from "../components/History/ChartHistory";
 import {UserHistory} from "../components/History/UserHistory";
 import bck from "../img/background-land.jpg";
-import InternalContainer from '../components/Styled/InternalContainer';
+import InternalContainer from '../components/Styled/InternalContainer/InternalContainer';
 
 const StyledDiv = styled.div`
   position: absolute;
@@ -75,7 +75,7 @@ export class History extends React.Component {
 		}
 	}
 
-	prepareCurrencyValues = (currency,time) => {
+	prepareCurrencyValues = (currency, time) => {
 		let result = [];
 		let minutes = this.state.timeArray.indexOf(time);
 		for (let i = 0; i < this.state.timeArray.length; i++) {
@@ -124,18 +124,18 @@ export class History extends React.Component {
 		return result;
 	}
 
-	prepareCurrencyValuesNonPLN = (selected1,selected2,time) => {
+	prepareCurrencyValuesNonPLN = (selected1, selected2, time) => {
 		let result = [];
 		let minutes = this.state.timeArray.indexOf(time);
-		const selected2Array = this.props.data[selected2+'-day'];
+		const selected2Array = this.props.data[selected2 + '-day'];
 		for (let i = 0; i < this.state.timeArray.length; i++) {
 			if (i === minutes && i < 3) {
 				minutes = (minutes + 1) * 60;
 
 				result = this.props.data[selected1 + '-day']
-					.map((el,i) => {
+					.map((el, i) => {
 						let time = this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-						let rate = Math.floor(el.bid/selected2Array[i].ask*1000)/1000;
+						let rate = Math.floor(el.bid / selected2Array[i].ask * 1000) / 1000;
 						return {...el, time, rate};
 					})
 					.slice(0, minutes)
@@ -148,7 +148,7 @@ export class History extends React.Component {
 				result = this.props.data[selected1 + '-day']
 					.map(el => {
 						let time = this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-						let rate = Math.floor(el.bid/selected2Array[i].ask*1000)/1000;
+						let rate = Math.floor(el.bid / selected2Array[i].ask * 1000) / 1000;
 						return {...el, time, rate};
 					})
 					.slice(0, minutes)
@@ -162,7 +162,7 @@ export class History extends React.Component {
 				result = this.props.data[selected1 + '-day']
 					.map(el => {
 						let time = this.checkTime(el.hour) + ':' + this.checkTime(el.minute);
-						let rate = Math.floor(el.bid/selected2Array[i].ask*1000)/1000;
+						let rate = Math.floor(el.bid / selected2Array[i].ask * 1000) / 1000;
 						return {...el, time, rate};
 					})
 					.slice(0, minutes)
@@ -182,21 +182,20 @@ export class History extends React.Component {
 		}
 		if (currency2 === 'PLN') {
 			this.setState({
-				chartData: this.prepareCurrencyValues(currency1,time),
+				chartData: this.prepareCurrencyValues(currency1, time),
 				dataKey: 'bid'
 			});
 		} else if (currency1 === 'PLN') {
 			this.setState({
-				chartData: this.prepareCurrencyValues(currency2,time),
+				chartData: this.prepareCurrencyValues(currency2, time),
 				dataKey: 'ask'
 			});
 		} else {
 			this.setState({
-				chartData: this.prepareCurrencyValuesNonPLN(currency1,currency2,time),
+				chartData: this.prepareCurrencyValuesNonPLN(currency1, currency2, time),
 				dataKey: 'rate'
 			});
 		}
-
 	}
 
 

@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import bck from "../../img/background-land.jpg";
-import {CurrencyInput} from "./CurrencyInput";
-import {StyledButton} from "../Styled/StyledButton";
-import {AccountsList} from "./AccountsList";
+import CurrencyInput from "./CurrencyInput";
+import StyledButton from "../Styled/StyledButton/StyledButton";
+import AccountsList from "./AccountsList";
 import ErrorMessage from "./ErrorMessage";
 import currencies from "../../Data/currencies";
 import ConfirmDialog from "./ConfirmDialog";
 import {Redirect} from 'react-router'
-import InternalContainer from '../Styled/InternalContainer';
+import InternalContainer from '../Styled/InternalContainer/InternalContainer';
 import InfoDialog from "./InfoDialog";
-import LinearTimerProgress from '../Progres/LinearTimerProgress';
+import LinearTimerProgress from '../Progress/LinearTimerProgress/LinearTimerProgress';
 
 const StyledExchange = styled.div`
 	position: absolute;
@@ -31,8 +31,7 @@ const StyledExchange = styled.div`
 `;
 
 
-
-export class LoggedExchange extends React.Component {
+class LoggedExchange extends React.Component {
 	state = {
 		valueInput1: 0,
 		valueInput2: 0,
@@ -60,8 +59,6 @@ export class LoggedExchange extends React.Component {
 
 	handleChangeInput1 = event => {
 		let rate = this.state.rate;
-		console.log(event.target.value);
-		console.log(this.props.accountsInfo[this.state.selected1]);
 		if (event.target.value <= +this.props.accountsInfo[this.state.selected1]) {
 			this.setState({
 				valueInput1: event.target.value,
@@ -69,7 +66,7 @@ export class LoggedExchange extends React.Component {
 				error: false
 			});
 		} else {
-				this.setState({
+			this.setState({
 				valueInput1: this.props.accountsInfo[this.state.selected1],
 				valueInput2:
 					Math.round(
@@ -239,32 +236,32 @@ export class LoggedExchange extends React.Component {
 	}
 
 	confirm = () => {
-			this.handleDialog();
-			this.props.confirm(this.state);
-			this.setState({
-				finished: true,
-			});
+		this.handleDialog();
+		this.props.confirm(this.state);
+		this.setState({
+			finished: true,
+		});
 
 	}
 
 	componentDidMount() {
-		if(Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
-			this.arrayInput1 = ['PLN',...Object.keys(this.props.accountsInfo).filter(e=> e!=='PLN')];
-		}else{
+		if (Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
+			this.arrayInput1 = ['PLN', ...Object.keys(this.props.accountsInfo).filter(e => e !== 'PLN')];
+		} else {
 			this.arrayInput1 = Object.keys(this.props.accountsInfo);
 		}
-		console.log(this.arrayInput1);
+
 
 		this.setState({
-			selected1:this.arrayInput1[0],
-			rate: this.updateRate(this.arrayInput1[0],currencies[0])
+			selected1: this.arrayInput1[0],
+			rate: this.updateRate(this.arrayInput1[0], currencies[0])
 		})
 	}
 
 	render() {
-		if(Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
-			this.arrayInput1 = ['PLN',...Object.keys(this.props.accountsInfo).filter(e=> e!=='PLN')];
-		}else{
+		if (Object.keys(this.props.accountsInfo).indexOf('PLN') > -1) {
+			this.arrayInput1 = ['PLN', ...Object.keys(this.props.accountsInfo).filter(e => e !== 'PLN')];
+		} else {
 			this.arrayInput1 = Object.keys(this.props.accountsInfo);
 		}
 		return (
@@ -294,10 +291,10 @@ export class LoggedExchange extends React.Component {
 						Tranzakcja zostanie wykonana po kursie:
 						<span className={"rate"}>
             {" "}
-            1 {this.state.selected1} = {this.state.rate} {this.state.selected2}
+							1 {this.state.selected1} = {this.state.rate} {this.state.selected2}
           </span>
 					</p>
-					<p><LinearTimerProgress width={'70%'} height={'10px'} timer={this.props.timer} text={''} /></p>
+					<div><LinearTimerProgress width={'70%'} height={'10px'} timer={this.props.timer} text={''}/></div>
 					<AccountsList accountsInfo={this.props.accountsInfo}/>
 					{this.state.dialogVisible && <ConfirmDialog
 						close={this.handleDialog}
@@ -316,3 +313,5 @@ export class LoggedExchange extends React.Component {
 		);
 	}
 }
+
+export default LoggedExchange;

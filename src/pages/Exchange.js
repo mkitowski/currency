@@ -1,14 +1,16 @@
 import React from 'react';
-import {LoggedExchange} from "../components/Exchange/LoggedExchange";
+import LoggedExchange from "../components/Exchange/LoggedExchange";
 
-export class Exchange extends React.Component {
-	render(){
-		return <LoggedExchange
-			userInfo={this.props.userInfo}
-			accountsInfo={this.props.accountsInfo}
-			currentRates={this.props.currentRates}
-			timer={this.props.timer}
-			confirm={this.props.confirm}
-		/>
-	}
+const Exchange = ({
+										userInfo, accountsInfo, currentRates, timer, confirm
+									}) => {
+	return <LoggedExchange
+		userInfo={userInfo}
+		accountsInfo={accountsInfo}
+		currentRates={currentRates}
+		timer={timer}
+		confirm={confirm}
+	/>
 }
+
+export default Exchange;

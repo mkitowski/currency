@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledContainer from '../../Styled/StyledContainer';
+import StyledContainer from '../../Styled/StyledContainer/StyledContainer';
 import {UserHistoryPosition} from "../../History/UserHistoryPosition";
 
 const UserHistoryLanding = ({history}) => {

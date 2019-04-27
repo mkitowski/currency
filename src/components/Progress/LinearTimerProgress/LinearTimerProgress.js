@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import {mix} from 'polished';
+import {mix} from 'polished/lib/index';
 
 const StyledTimerLine = styled.div`
 
@@ -23,7 +23,6 @@ const StyledLineContainer = styled.div`
     margin: 5px auto 0;
     position: relative;
 `;
-
 
 const LinearTimerProgress = props => {
 

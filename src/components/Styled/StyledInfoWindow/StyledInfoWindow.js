@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledInfoWindow = styled.div`
+const StyledInfoWindow = styled.div`
 	width: 80vw;
   height: 80vh;
   position: fixed;
@@ -17,5 +17,5 @@ export const StyledInfoWindow = styled.div`
   .bold {
   	font-weight: 700;
   }
-
 `;
+export default StyledInfoWindow;

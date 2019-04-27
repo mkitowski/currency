@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class CancelationMessage extends React.Component {
+class CancelationMessage extends React.Component {
     state ={
         vi1 : this.props.valueInput1,
         vi2 : this.props.valueInput2,
@@ -9,7 +9,6 @@ export class CancelationMessage extends React.Component {
         r : this.props.rate
     }
     render() {
-
         return <div className={'confirmed'}>
             <h2>Zatwierdzenie transakcji - anulowanie</h2>
             <p>Transakcja wymiany:</p>
@@ -20,8 +19,7 @@ export class CancelationMessage extends React.Component {
             <h4>{this.state.r}</h4>
             <p><h5>Aktualizacja kursu - transakcja przerwana</h5></p>
         </div>
-
     }
 
-
 }
+export default CancelationMessage;

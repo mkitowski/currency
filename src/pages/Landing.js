@@ -1,13 +1,13 @@
 import bck from "../img/background-land.jpg";
 import styled from "styled-components";
 import React from "react";
-import Rates from "../components/Landing/Rates";
-import { UserLogin } from "../components/Landing/UserLogin";
-import { UserAccountsInfo } from "../components/Landing/UserAccountsInfo";
-import { TransactionConfirmed } from "../components/Landing/TransactionConfirmed";
+import Rates from "../components/Landing/Rates/Rates";
+import UserLogin from "../components/Landing/UserLogin/UserLogin";
+import UserAccountsInfo from "../components/Landing/UserAccountsInfo/UserAccountsInfo";
+import TransactionConfirmed from "../components/Landing/TransactionConfirmed/TransactionConfirmed";
 import MovedContainer from "../components/Landing/MovedContainer/MovedContainer"
 import UserHistoryLanding from "../components/Landing/UserHistory/UserHistory";
-import LoaderDialog from '../components/Landing/LoaderDialog';
+import LoaderDialog from '../components/Landing/LoaderDialog/LoaderDialog';
 
 
 const StyledLanding = styled.div`

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledInfo = styled.div`
+const StyledInfo = styled.div`
 	width: 80%;
 	margin: 20px auto;
 	font-weight: 100;
@@ -16,3 +16,5 @@ export const StyledInfo = styled.div`
 	}
 	
 `;
+
+export default StyledInfo;

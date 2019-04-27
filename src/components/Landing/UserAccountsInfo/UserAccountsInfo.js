@@ -1,8 +1,8 @@
 import React from "react";
-import StyledContainer from "../Styled/StyledContainer";
-import { StyledButton } from "../Styled/StyledButton";
+import StyledContainer from "../../Styled/StyledContainer/StyledContainer";
+import StyledButton from "../../Styled/StyledButton/StyledButton";
 
-export class UserAccountsInfo extends React.Component {
+class UserAccountsInfo extends React.Component {
   checkAccounts() {
     const acc = this.props.accountsInfo;
     const result = [];
@@ -19,7 +19,6 @@ export class UserAccountsInfo extends React.Component {
 
   render() {
     const user = this.props.userInfo;
-
     return (
       <StyledContainer>
         <p>Witaj <span className={'bold'}>{user.name}</span></p>
@@ -30,3 +29,4 @@ export class UserAccountsInfo extends React.Component {
     );
   }
 }
+export default UserAccountsInfo;

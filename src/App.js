@@ -1,5 +1,5 @@
 //import main packages
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //import firebase
@@ -8,8 +8,8 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import firebaseConfig from './Firebase/firebaseConfig';
 //import pages
-import { NotFound } from "./components/NotFound";
-import { Exchange } from "./pages/Exchange";
+import NotFound from "./pages/NotFound";
+import Exchange from "./pages/Exchange";
 import Landing from './pages/Landing';
 import Contact from './pages/Contact';
 //import modules
@@ -30,7 +30,7 @@ const MainDiv = styled.div`
   box-sizing: border-box;
 `;
 
-class App extends Component {
+class App extends React.Component {
 	state = {
 		actual: [],
 		timer: 60,
@@ -136,10 +136,7 @@ class App extends Component {
 						if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
 							this.state.db.doc(`${this.state.userInfo.Login.email}/moved`).set({
 								...this.state.moved,
-							}).then(() => {
-								console.log('moved');
-
-							})
+							});
 						}
 						oldMoved = this.state.moved;
 					}
@@ -296,10 +293,8 @@ class App extends Component {
 		for (let key in newAccounts) { //set new accounts state
 			if (key === goods.selected2) {
 				newAccounts[key] = +newAccounts[key] + goods.valueInput2;
-				console.log('dodaje')
 			} else if (key === goods.selected1) {
 				newAccounts[key] = +newAccounts[key] - goods.valueInput1;
-				console.log('odejmuje');
 				if (newAccounts[key] === 0) {
 					delete newAccounts[key];
 				}
@@ -332,7 +327,6 @@ class App extends Component {
 		//  ---> DATABASE <---
 		// set actual states to DB
 		if (this.state.userInfo.Login.logged && this.state.userInfo.Login.email) {
-
 
 			this.state.db.doc(`${this.state.userInfo.Login.email}/accounts`).set({
 				accounts: newAccounts

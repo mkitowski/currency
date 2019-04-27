@@ -8,10 +8,11 @@ Online currencies exchange service
 - React
 - ES6
 - API
-- React-creat-app
+- [React-creat-app](https://github.com/facebook/create-react-app)
 - styled-component
+- polished
 - recharts
-- material-designs
+- material-ui
 - google firebase
 
 ## Main functionality:

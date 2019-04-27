@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import Icon from '@material-ui/core/Icon';
-import Tooltip from '@material-ui/core/Tooltip';
+import Icon from '@material-ui/core/Icon/index';
+import Tooltip from '@material-ui/core/Tooltip/index';
 
 
 const StyledHeader = styled.div`

@@ -1,4 +1,4 @@
-import MovedContainerHeader from "./MovedContainerHeader";
+import MovedContainerHeader from "./MovedContainerHeader/MovedContainerHeader";
 import React from "react";
 
 

@@ -1,9 +1,8 @@
 import bck from "../img/background-land.jpg";
 import styled from "styled-components";
-// import {calc} from 'polished';
 import React from "react";
-import InternalContainer from '../components/Styled/InternalContainer';
-import {StyledButton} from "../components/Styled/StyledButton";
+import InternalContainer from '../components/Styled/InternalContainer/InternalContainer';
+import StyledButton from "../components/Styled/StyledButton/StyledButton";
 import SentDialog from "../components/Contact/SentDialog";
 
 const StyledContactPage = styled.div`
@@ -30,7 +29,7 @@ const StyledContactPage = styled.div`
   	}
   	input {
    		width: 90%;
-   		margin-bottom: 15px;
+   		margin-top: 15px;
   		padding: 6px;
   		border-radius: 6px;
   		border: 1px solid #dcdcdc;
@@ -45,14 +44,14 @@ const StyledContactPage = styled.div`
   	.subject {
   		display: block;
   		width: 80%;
-  		margin-bottom: 15px;
+  		margin-top: 15px;
   	}
   	textarea {
   		display: block;
   		width: 80%;
   		height: 6em;
   		padding: 6px;
-  		margin-bottom: 15px;
+  		margin-top: 15px;
   		border-radius: 6px;
   		border: 1px solid #dcdcdc;
   		transition: background-color .3s linear;
@@ -62,8 +61,11 @@ const StyledContactPage = styled.div`
 				background-color: lightgray;
 			}
   	}
+  	button {
+  	margin-top: 15px;
+  	}
   	span {
-  	position: absolute;
+  	display: block;
   	color: red;
   	font-size: 0.7em;
   	font-weight: 400;
@@ -163,7 +165,6 @@ class Contact extends React.Component {
 	}
 
 	render() {
-
 		return <StyledContactPage>
 			<InternalContainer>
 				<h2>Skontaktuj się z nami</h2>
@@ -176,11 +177,10 @@ class Contact extends React.Component {
 						{this.state.nameAlert && <span>Imię musi posiadać conajmniej 3 znaki</span>}
 					</div>
 					<div className="input-container">
-
 						<input className={'email'} type={'email'} value={this.state.email} onChange={this.handleChange}
 									 placeholder={'Twój@email'}
 									 name={'email'} required/>
-						{this.state.emailAlert && <span>E-mail nie poprawny</span>}
+						{this.state.emailAlert && <span className={'email'}>E-mail nie poprawny</span>}
 					</div></div>
 					<div className="input-container">
 						<input className={'subject'} type={'text'} value={this.state.subject} onChange={this.handleChange}

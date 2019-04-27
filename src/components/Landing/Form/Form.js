@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImputValue} from '../Exchange/CurrencyInput';
+import {ImputValue} from '../../Exchange/CurrencyInput';
 import {Calc} from "../Calculation";
 
 

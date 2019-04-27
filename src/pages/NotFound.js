@@ -12,12 +12,14 @@ const StyledDiv = styled.div`
 	}
 `;
 
-export const NotFound = () =>{
+const NotFound = () =>{
 	return <StyledDiv>
 		<h1>Błąd - 404</h1>
 		<p>Zgubiliśmy stronę której szukasz...</p>
 		<img src={trev} alt="404"/>
 		<p>...może gdzieś tu jest...</p>
 	</StyledDiv>
-}
+};
+
+export default NotFound;
 

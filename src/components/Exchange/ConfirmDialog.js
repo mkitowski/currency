@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyledInfoWindow} from "../Styled/StyledInfoWindow";
-import {StyledCloseButton} from "../Styled/StyledClosedButton";
-import {StyledButton} from "../Styled/StyledButton";
-import {ConfirmationMessage} from "./ConfirmationMessage";
-import { CancelationMessage } from './CancelationMessage';
+import StyledInfoWindow from "../Styled/StyledInfoWindow/StyledInfoWindow";
+import StyledCloseButton from "../Styled/StyledClosedButton/StyledClosedButton";
+import StyledButton from "../Styled/StyledButton/StyledButton";
+import ConfirmationMessage from "./ConfirmationMessage";
+import CancelationMessage from './CancelationMessage';
 
 
 export default class ConfirmDialog extends React.Component {

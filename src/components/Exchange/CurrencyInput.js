@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-
 const Input = styled.input`
 	border: 1px solid gray;
 	border-radius: 6px;
@@ -40,36 +38,38 @@ const Select = styled.select`
 	}
 `;
 
-export class CurrencyInput extends React.Component {
-         state = {
-           selected: this.props.currenciesArray[this.props.first]
-         };
+class CurrencyInput extends React.Component {
+	state = {
+		selected: this.props.currenciesArray[this.props.first]
+	};
 
-         handleSelect = event => {
-           this.setState({ selected: event.target.value });
-         };
+	handleSelect = event => {
+		this.setState({selected: event.target.value});
+	};
 
-         render() {
-           return (
-             <div>
-               <Input
-                 value={this.props.value}
-                 onChange={this.props.handleChange}
-                 type={"number"}
-               />
-               <Select
-                 value={this.props.selected}
-                 onChange={this.props.handleSelect}
-               >
-					   {this.props.currenciesArray.map(el => {
-                   return (
-                     <option value={el} key={el}>
-                       {el}
-                     </option>
-                   );
-                 })}
-               </Select>
-             </div>
-           );
-         }
-       }
+	render() {
+		return (
+			<div>
+				<Input
+					value={this.props.value}
+					onChange={this.props.handleChange}
+					type={"number"}
+				/>
+				<Select
+					value={this.props.selected}
+					onChange={this.props.handleSelect}
+				>
+					{this.props.currenciesArray.map(el => {
+						return (
+							<option value={el} key={el}>
+								{el}
+							</option>
+						);
+					})}
+				</Select>
+			</div>
+		);
+	}
+}
+
+export default CurrencyInput;

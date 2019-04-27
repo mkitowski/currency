@@ -1,8 +1,8 @@
-import {StyledInfo} from "./StyledInfo";
-import {StyledButton} from "../../Styled/StyledButton";
+import StyledInfo from "../StyledInfo/StyledInfo";
+import StyledButton from "../../../Styled/StyledButton/StyledButton";
 import React from 'react';
 
-export const UserInfo = props => {
+const UserInfo = props => {
 	return <StyledInfo>
 		<h3>Zapomniane hasło ??</h3>
 		<p>Napewno jakoś sobie z tym poradzimy...</p>
@@ -12,3 +12,5 @@ export const UserInfo = props => {
 		<StyledButton onClick={props.action}>Zrozumiałem</StyledButton>
 	</StyledInfo>
 };
+
+export default UserInfo;

@@ -1,8 +1,8 @@
 import React from "react";
-import StyledContainer from "../Styled/StyledContainer";
-import RowRates from './RowRates';
-import imgPath from '../../img/trev.gif';
-import LinearTimerProgress from '../Progres/LinearTimerProgress';
+import StyledContainer from "../../Styled/StyledContainer/StyledContainer";
+import RowRates from '../RowRates/RowRates';
+import imgPath from '../../../img/trev.gif';
+import LinearTimerProgress from '../../Progress/LinearTimerProgress/LinearTimerProgress';
 
 const Rates = ({
 								 currentRates, error, timer

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledInputFull = styled.input`
+const StyledInputFull = styled.input`
 	display: block;
 	margin: 15px auto;
 	padding: 0 5px;
@@ -14,3 +14,5 @@ export const StyledInputFull = styled.input`
 		background-color: lightgray;
 	}
 `;
+
+export default StyledInputFull;
