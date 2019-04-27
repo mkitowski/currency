@@ -1,1 +1,1 @@
-export default ['USD','EUR','GBP','CHF']
+export default ['USD', 'EUR', 'GBP', 'CHF'];
