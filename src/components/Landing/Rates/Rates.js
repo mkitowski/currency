@@ -1,38 +1,52 @@
-import React from "react";
-import StyledContainer from "../../Styled/StyledContainer/StyledContainer";
+import React from 'react';
+import StyledContainer from '../../Styled/StyledContainer/StyledContainer';
 import RowRates from '../RowRates/RowRates';
 import imgPath from '../../../img/trev.gif';
 import LinearTimerProgress from '../../Progress/LinearTimerProgress/LinearTimerProgress';
 
-const Rates = ({
-								 currentRates, error, timer
-							 }) => {
+const Rates = ({ currentRates, error, timer }) => {
+  return (
+    <StyledContainer>
+      {!error ? (
+        <div>
+          <h3>Kursy walut:</h3>
+          <div className={'row'}>
+            <div className={'colHead'} />
+            <div className={'colHead'}>Kupno</div>
+            <div className={'colHead'}>Sprzedaż</div>
+          </div>
+          {currentRates.map((el, i) => {
+            return (
+              <RowRates
+                key={el.code + i}
+                code={el.code}
+                bid={el.bid}
+                ask={el.ask}
+              />
+            );
+          })}
+          <div>
+            <LinearTimerProgress
+              width={'90%'}
+              height={'7px'}
+              timer={timer}
+              text={''}
+            />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h3>Coś nam nie wyszło</h3>
+          <p>Zgubiliśmy kursy walut :(</p>
+          <img
+            src={imgPath}
+            width={'40%'}
+            alt={'tev is looking for current rates'}
+          />
+        </div>
+      )}
+    </StyledContainer>
+  );
+};
 
-	return (
-		<StyledContainer>
-			{!error ? <div><h3>Kursy walut:</h3>
-				<div className={"row"}>
-					<div className={"colHead"}></div>
-					<div className={"colHead"}>Kupno</div>
-					<div className={"colHead"}>Sprzedaż</div>
-				</div>
-				{currentRates.map((el, i) => {
-					return (
-						<RowRates key={el.code + i} code={el.code} bid={el.bid} ask={el.ask}/>
-					);
-				})}<div>
-					<LinearTimerProgress width={'90%'} height={'7px'} timer={timer} text={''} />
-					</div>
-					</div> : <div>
-				<h3>Coś nam nie wyszło</h3>
-				<p>Zgubiliśmy kursy walut :(</p>
-				<img src={imgPath} width={'40%'} alt={'tev is looking for current rates'}/>
-			</div>
-
-			}
-		</StyledContainer>
-	);
-
-}
-
-export default Rates
+export default Rates;

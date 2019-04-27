@@ -1,86 +1,82 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import Icon from '@material-ui/core/Icon/index';
 import Tooltip from '@material-ui/core/Tooltip/index';
 
-
 const StyledHeader = styled.div`
-	padding:5px;
-	cursor: grab;
-	:active {
-		cursor: grabbing;
-	}
+  padding: 5px;
+  cursor: grab;
+  :active {
+    cursor: grabbing;
+  }
 `;
 
-
 class MovedContainerHeader extends React.Component {
+  state = {
+    x: this.props.x,
+    y: this.props.y,
+  };
 
-	state = {
-		x: this.props.x,
-		y: this.props.y,
-	}
+  componentDidMount() {
+    this._isMounted = true;
+  }
 
-	componentDidMount() {
-		this._isMounted = true;
-	}
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
-	componentWillUnmount() {
-		this._isMounted = false;
-	}
+  mouseDown = (e) => {
+    const x = e.pageX;
+    const y = e.pageY;
+    if (this._isMounted) {
+      this.setState({ x, y });
+    }
+    e.preventDefault();
+    document.addEventListener('mousemove', this.mouseMove);
+    document.addEventListener('mouseup', this.mouseUp);
+  };
 
-	mouseDown = (e) => {
+  mouseMove = (e) => {
+    const x = Math.trunc(e.pageX / 10) * 10;
+    const y = Math.trunc(e.pageY / 10) * 10;
+    if (this._isMounted) {
+      this.setState({ x, y });
+    }
+    this.props.action(x, y);
+    e.preventDefault();
+  };
 
-		const x = e.pageX;
-		const y = e.pageY;
-		if (this._isMounted) {
-			this.setState({x, y});
-		}
-		e.preventDefault();
-		document.addEventListener('mousemove', this.mouseMove);
-		document.addEventListener('mouseup', this.mouseUp)
-	}
+  mouseUp = (e) => {
+    const x = Math.trunc(e.pageX / 10) * 10;
+    const y = Math.trunc(e.pageY / 10) * 10;
+    if (this._isMounted) {
+      this.setState({ x, y });
+    }
+    // this.props.action(x,y);
+    document.removeEventListener('mousemove', this.mouseMove);
+    document.removeEventListener('mouseup', this.moueseUp);
+    e.preventDefault();
+  };
 
-	mouseMove = e => {
-		const x = Math.trunc(e.pageX / 10) * 10;
-		const y = Math.trunc(e.pageY / 10) * 10;
-		if (this._isMounted) {
-			this.setState({x, y});
-		}
-		this.props.action(x, y);
-		e.preventDefault();
-	}
-
-	mouseUp = e => {
-		const x = Math.trunc(e.pageX / 10) * 10;
-		const y = Math.trunc(e.pageY / 10) * 10;
-		if (this._isMounted) {
-			this.setState({x, y});
-		}
-		// this.props.action(x,y);
-		document.removeEventListener('mousemove', this.mouseMove);
-		document.removeEventListener('mouseup', this.moueseUp);
-		e.preventDefault();
-	}
-
-
-	render() {
-		return (
-			<div onMouseDown={this.mouseDown} style={{
-				position: "absolute",
-				x: this.props.x,
-				y: this.props.y,
-				zIndex: 7
-			}}>
-				<StyledHeader>
-					<Tooltip title="Przenieś" placement="top">
-						<Icon>
-							drag_indicator
-						</Icon>
-					</Tooltip>
-				</StyledHeader>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div
+        onMouseDown={this.mouseDown}
+        style={{
+          position: 'absolute',
+          x: this.props.x,
+          y: this.props.y,
+          zIndex: 7,
+        }}
+      >
+        <StyledHeader>
+          <Tooltip title="Przenieś" placement="top">
+            <Icon>drag_indicator</Icon>
+          </Tooltip>
+        </StyledHeader>
+      </div>
+    );
+  }
 }
 
-export default MovedContainerHeader
+export default MovedContainerHeader;

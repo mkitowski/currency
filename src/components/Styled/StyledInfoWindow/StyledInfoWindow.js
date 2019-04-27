@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledInfoWindow = styled.div`
-	width: 80vw;
+  width: 80vw;
   height: 80vh;
   position: fixed;
   top: 10vh;
@@ -12,10 +12,10 @@ const StyledInfoWindow = styled.div`
   border-radius: 5px;
   z-index: 500;
   display: flex;
-  justify-content: ${props => props.justify || "space-around"};
+  justify-content: ${(props) => props.justify || 'space-around'};
   flex-direction: column;
   .bold {
-  	font-weight: 700;
+    font-weight: 700;
   }
 `;
 export default StyledInfoWindow;

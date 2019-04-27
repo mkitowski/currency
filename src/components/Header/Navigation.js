@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const StyledList = styled.ul`
 	display: flex;
@@ -21,15 +21,24 @@ const StyledList = styled.ul`
 	}
 `;
 
-
-const Navigation = ({error, userLogged}) => {
-
-	return <StyledList>
-		<li><Link to='/'>Start</Link></li>
-		{!error &&  userLogged && <li><Link to='/exchange'>Wymień</Link></li>}
-		<li><Link to='/history'>Historia</Link></li>
-		<li><Link to={'/contact'}>Kontact</Link></li>
-	</StyledList>
-
+const Navigation = ({ error, userLogged }) => {
+  return (
+    <StyledList>
+      <li>
+        <Link to="/">Start</Link>
+      </li>
+      {!error && userLogged && (
+        <li>
+          <Link to="/exchange">Wymień</Link>
+        </li>
+      )}
+      <li>
+        <Link to="/history">Historia</Link>
+      </li>
+      <li>
+        <Link to={'/contact'}>Kontact</Link>
+      </li>
+    </StyledList>
+  );
 };
 export default Navigation;
