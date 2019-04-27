@@ -30,11 +30,15 @@ const MainDiv = styled.div`
 
 class App extends React.Component {
   state = {
+    // co oznacza ten state?
+    // jakaś lepsz nazwa niz actual?
     actual: [],
     timer: 60,
+    // moze isStarted ?
     start: false,
     showConfirmationDialog: false,
     userInfo: {
+      // dlaczego wielką literą?
       Login: {
         name: '',
         email: false,
@@ -48,6 +52,7 @@ class App extends React.Component {
       history: [],
     },
     error: false,
+    // moze windowsPositions ?
     moved: {
       AIx: '70px',
       AIy: '140px',
@@ -59,13 +64,18 @@ class App extends React.Component {
     loading: false,
   };
 
+  // bardzo duzo kodu jak na jedna funkcję
+  // warto wydzielić funkcje i przenieść do osobnych plików pomocniczych
+  // metody małą literą
+  // jezeli chodzi o logowanie usera 
+  // to proponuję te nazwę loginUser lub login
   UserLogin = () => {
     if (this.state.userInfo.Login.logged) {
-      let move = this.state.moved; //update db with curent positions of elements on landing page
+      //update db with curent positions of elements on landing page
       this.state.db
         .doc(`${this.state.userInfo.Login.email}/moved`)
         .set({
-          ...move,
+          ...this.state.moved,
         })
         .then(() => {
           firebase
@@ -103,15 +113,18 @@ class App extends React.Component {
 
         //   ---->>DATABASE<<---
         // sync from DB
+        // trzy ponizsze funkcje warto wyciącnąć
+        // do osobnych plików .js np. ---> src/lib/<nazwa-funckji>.js
+        // przekazać callback jako argument
         this.state.db
           .doc(`${this.state.userInfo.Login.email}/accounts`)
           .get()
           .then((el) => {
+            // callback
             this.setState({
               userInfo: {
-                Login: { ...this.state.userInfo.Login },
+                ...this.state.userInfo,
                 accounts: el.data().accounts,
-                history: [...this.state.userInfo.history],
               },
             });
           });
@@ -121,8 +134,7 @@ class App extends React.Component {
           .then((el) => {
             this.setState({
               userInfo: {
-                Login: { ...this.state.userInfo.Login },
-                accounts: { ...this.state.userInfo.accounts },
+                ...this.state.userInfo,
                 history: el.data().history,
               },
             });
@@ -145,10 +157,8 @@ class App extends React.Component {
         let oldMoved;
         this.DBinterval = setInterval(() => {
           if (oldMoved !== this.state.moved) {
-            if (
-              this.state.userInfo.Login.logged &&
-              this.state.userInfo.Login.email
-            ) {
+            const { logged, email } = this.state.userInfo.Login;
+            if (logged && email) {
               this.state.db
                 .doc(`${this.state.userInfo.Login.email}/moved`)
                 .set({
@@ -173,6 +183,7 @@ class App extends React.Component {
   };
 
   setBase(NBPinput, code) {
+    // rates[0]
     const bid = NBPinput.rates[0].bid;
     const ask = NBPinput.rates[0].ask;
     const spread = Math.floor((bid / ask) * 10000) / 10000;
@@ -194,14 +205,34 @@ class App extends React.Component {
       actual: [...this.state.actual, newRate],
     });
 
+    // jezeli cos zwracasz to powinna to byc zwykla funkcja
+    // jeśli metoda to this.setState
+    // mieszanie tego moze powodowac bugi
+    // bo jedno jest stnchroniczne a drugie asynchroniczne
     return { code, bid, spread };
   }
 
+  // zdecydowanie do osobnego pliku
+  // nie 
   generateHistory(real, code) {
     let setMin = minutes;
     let setHour = hours;
     const result = [];
     let newBid = real.bid;
+    // wiem, ze to tylko jakies generatory tresci
+    // jednak, warto rozwazyć kilka rzeczy
+    // tutaj warto wygenerowac tablce z wartościami osi x (data)
+    // i następnie tę tablicę przemapować dodając odpowiednie wartości
+    // to ES6
+    // mozna pobawic sie funkcjami matematycznymi :)
+
+    // const seconds = 720;
+    // const dates = [...Array(days).keys()]
+    // const datesWithDate = dates.map(dayNumber => ({
+    //   dayNumber,
+    //   date: new Date(dayNumber),
+    //   value: jakasFunkcjaMatemtatycznaNaPrzykladSinus(dayNumber)
+    // }));
     for (let i = 0; i < 720; i++) {
       //generates random history for every minute
       newBid =
@@ -212,10 +243,14 @@ class App extends React.Component {
         setHour = 23;
       } else if (setMin === 0) {
         setMin = 59;
+        // raczej nie uzywa sie takich operatorów,
+        // ciezko się to czyta, przyczyny bugów
+        // wiesz ze to jest róznica setHour-- a --setHour?
         setHour--;
       } else {
         setMin--;
       }
+      // duzo tych danych
       result.push({
         code: real.code,
         hour: setHour,
@@ -231,6 +266,7 @@ class App extends React.Component {
     });
     const bid = real.bid;
     const spread = real.spread;
+    // albo setState albo return
     return { code, bid, spread };
   }
 
@@ -303,13 +339,13 @@ class App extends React.Component {
   componentDidMount() {
     this.getData();
     firebase.initializeApp(firebaseConfig);
-    let db = firebase.firestore();
     this.setState({
-      db,
+      db: firebase.firestore(),
     });
   }
 
   componentWillUnmount() {
+    // dobra praktyka
     clearInterval(this.interval); //clear live updates
     clearInterval(this.timerInterval); //clear timer
     clearInterval(this.DBinterval); // clear DB sync
@@ -333,8 +369,11 @@ class App extends React.Component {
     if (!(goods.selected2 in newAccounts)) {
       newAccounts[goods.selected2] = goods.valueInput2;
     }
+
+    // chyba const wystarczy
     let date = new Date();
 
+    // chyba const wystarczy
     let newTransaction = {
       date: date.toLocaleDateString('pl-PL'),
       time: date.toLocaleTimeString('pl-PL'),
@@ -372,13 +411,15 @@ class App extends React.Component {
     });
   };
 
+  // 3 następne funkcje AImoved, Rmoved i UHmoved
+  // to duzo podobnego kodu, warto utworzyc wspólną funkcję
   AImoved = (x, y) => {
     if (x <= 10) {
       x = 10;
     }
     if (y <= 80) {
       y = 90;
-    }
+    } 
     this.setState({
       moved: {
         ...this.state.moved,
@@ -388,6 +429,8 @@ class App extends React.Component {
     });
   };
 
+  // metody powinny być małą literą
+  // wiem ze R- to skrót, ale mimo wszystko :)
   Rmoved = (x, y) => {
     if (x <= 10) {
       x = 10;
