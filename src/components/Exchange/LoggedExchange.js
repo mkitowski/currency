@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import bck from '../../img/background-land.jpg';
+import bck from '../../img/background-new.jpg';
 import CurrencyInput from './CurrencyInput';
 import StyledButton from '../Styled/StyledButton/StyledButton';
 import AccountsList from './AccountsList';
@@ -102,7 +102,7 @@ class LoggedExchange extends React.Component {
       this.setState({
         valueInput1: this.props.accountsInfo[event.target.value],
         error:
-          'Nie masz wystarczająco środków, to jest wszystko co moeżesz wymienić',
+          'Nie masz wystarczająco środków, to jest wszystko co możesz wymienić',
       });
       valueInput1 = this.props.accountsInfo[event.target.value];
     } else {

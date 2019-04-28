@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ChartHistory } from '../components/History/ChartHistory';
 import { UserHistory } from '../components/History/UserHistory';
-import bck from '../img/background-land.jpg';
+import bck from '../img/background-new.jpg';
 import InternalContainer from '../components/Styled/InternalContainer/InternalContainer';
 
 const StyledDiv = styled.div`

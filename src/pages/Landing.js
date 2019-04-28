@@ -1,4 +1,4 @@
-import bck from '../img/background-land.jpg';
+import bck from '../img/background-new.jpg';
 import styled from 'styled-components';
 import React from 'react';
 import Rates from '../components/Landing/Rates/Rates';

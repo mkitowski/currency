@@ -1,8 +1,9 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import LoggedExchange from '../components/Exchange/LoggedExchange';
 
 const Exchange = ({ userInfo, accountsInfo, currentRates, timer, confirm }) => {
-  return (
+  return userInfo.logged ? (
     <LoggedExchange
       userInfo={userInfo}
       accountsInfo={accountsInfo}
@@ -10,6 +11,8 @@ const Exchange = ({ userInfo, accountsInfo, currentRates, timer, confirm }) => {
       timer={timer}
       confirm={confirm}
     />
+  ) : (
+    <Redirect to="/NotFound" />
   );
 };
 

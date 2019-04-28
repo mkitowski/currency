@@ -17,6 +17,7 @@ import { Header } from './components/Header/Header';
 import { History } from './pages/History';
 //import data
 import currencyCodes from './Data/currencies';
+// import Footer from './components/Footer/Footer';
 
 //set API addres and current date
 const url = 'https://api.nbp.pl/api/exchangerates/rates/c/';
@@ -49,10 +50,10 @@ class App extends React.Component {
     },
     error: false,
     moved: {
-      AIx: '70px',
-      AIy: '140px',
-      Rx: '380px',
-      Ry: '140px',
+      AIx: '10px',
+      AIy: '90px',
+      Rx: '320px',
+      Ry: '90px',
       UHx: '70px',
       UHy: '400px',
     },
@@ -323,15 +324,18 @@ class App extends React.Component {
       //set new accounts state
       if (key === goods.selected2) {
         newAccounts[key] = +newAccounts[key] + goods.valueInput2;
+        newAccounts[key] = Math.floor(+newAccounts[key] * 1000) / 1000;
       } else if (key === goods.selected1) {
         newAccounts[key] = +newAccounts[key] - goods.valueInput1;
+        newAccounts[key] = Math.floor(+newAccounts[key] * 1000) / 1000;
         if (newAccounts[key] === 0) {
           delete newAccounts[key];
         }
       }
     }
     if (!(goods.selected2 in newAccounts)) {
-      newAccounts[goods.selected2] = goods.valueInput2;
+      newAccounts[goods.selected2] =
+        Math.floor(goods.valueInput2 * 1000) / 1000;
     }
     const date = new Date();
 
@@ -494,6 +498,7 @@ class App extends React.Component {
             />
             <Route path="*" component={NotFound} />
           </Switch>
+          {/*<Footer/>*/}
         </MainDiv>
       </BrowserRouter>
     );

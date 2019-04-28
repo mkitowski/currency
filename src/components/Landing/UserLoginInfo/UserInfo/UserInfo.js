@@ -12,10 +12,10 @@ const UserInfo = (props) => {
         użyj poniższych danych
       </p>
       <p className={'bold'}>
-        Nazwa użytkownika: <span>{props.userInfo.name}</span>
+        Email: <span>test@e-kantor.test</span>
       </p>
       <p className={'bold'}>
-        Hasło: <span>{props.userInfo.password}</span>
+        Hasło: <span>TajneHaslo</span>
       </p>
       <StyledButton onClick={props.action}>Zrozumiałem</StyledButton>
     </StyledInfo>

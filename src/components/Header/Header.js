@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 
 const HeaderStyled = styled.header`
-  position: fixed;
+  position: relative;
   z-index: 3;
   width: 100vw;
   height: 80px;
@@ -13,25 +13,30 @@ const HeaderStyled = styled.header`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: rgba(250, 250, 250, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   @media (min-width: 720px) {
-    justify-content: space-around;
+    justify-content: space-between;
   }
-`;
-
-const StyledNav = styled.nav`
-  margin: 15px 15px 15px 0;
+  .logo {
+    background-color: white;
+    padding: 6px;
+    border: 1px solid gray;
+    border-radius: 6px;
+  }
+  a {
+    margin-left: 10%;
+  }
 `;
 
 export const Header = ({ error, userLogged }) => {
   return (
     <HeaderStyled>
       <Link to={'/'}>
-        <Logo />
+        <div className="logo">
+          <Logo />
+        </div>
       </Link>
-      <StyledNav>
-        <Navigation error={error} userLogged={userLogged} />
-      </StyledNav>
+      <Navigation error={error} userLogged={userLogged} />
     </HeaderStyled>
   );
 };

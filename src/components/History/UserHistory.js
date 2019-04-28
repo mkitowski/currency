@@ -30,11 +30,12 @@ const StyledDiv = styled.div`
 `;
 
 export const UserHistory = (props) => {
+  console.log(props.history);
   return (
     <StyledDiv>
       <h2>Historia Twoich transakcji</h2>
       <ol>
-        {props.history.length === 0 ? (
+        {props.history[0] === '' ? (
           <li>Brak historii na koncie</li>
         ) : (
           <UserHistoryPosition history={props.history} />

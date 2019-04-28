@@ -6,12 +6,17 @@ const StyledList = styled.ul`
 	display: flex;
 	list-style: none;
 	justify-content: space-evenly;
+	width-min: 200px;
 	cursor: pointer;
-	padding: 0;
+	padding: 6px;
+	border: 1px solid gray;
+	border-radius: 6px;
+	background: white;
+	margin-right: 10%;
 	li{
-		padding: 0 5px 0 5px;
 		a {
 			transition: color .3s ease-in-out;
+			padding: 6px;
 			color: #393939
 			text-decoration: none;
 			:hover {

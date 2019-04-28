@@ -8,7 +8,7 @@ const UserHistoryLanding = ({ history }) => {
     <StyledContainer>
       <h3>Ostanie 4 transakcje</h3>
       <ul className={'hist'}>
-        {hist.length === 0 ? (
+        {hist[0] === '' ? (
           <li>Brak historii na koncie</li>
         ) : (
           <UserHistoryPosition history={hist} count={4} />
